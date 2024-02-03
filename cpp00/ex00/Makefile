@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/02/03 08:23:10 by sqiu             ###   ########.fr        #
+#    Updated: 2024/02/03 08:38:58 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,13 +52,6 @@ DEP_DIR := $(OBJ_DIR)/dep
 LOG_DIR := log
 
 # ******************************
-# *     Libraries              *
-# ******************************
-
-LDFLAGS := 
-LDLIBS :=
-
-# ******************************
 # *     Vars for compiling     *
 # ******************************
 
@@ -80,19 +73,19 @@ NAME := megaphone
 # *     Source files           *
 # ******************************
 
-SRC:= 
+SRC:= megaphone.cpp
 
 # ******************************
 # *     Object files           *
 # ******************************
 
-OBJS = 	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJS = 	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 # ******************************
 # *     Dependency files       *
 # ******************************
 
-DEPFILES =	$(SRC:%.c=$(DEP_DIR)/%.d)
+DEPFILES =	$(SRC:%.cpp=$(DEP_DIR)/%.d)
 
 # ******************************
 # *     Log files              *
@@ -116,7 +109,7 @@ all: $(NAME)
 # Linking the NAME target
 $(NAME): $(OBJS)
 	@printf "$(YELLOW)$(BOLD)link binary$(RESET) [$(BLUE)$@$(RESET)]\n"
-	$(SILENT)$(CXX) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
+	$(SILENT)$(CXX) $(OBJS) -o $@
 	@printf "$(YELLOW)$(BOLD)compilation successful$(RESET) [$(BLUE)$@$(RESET)]\n"
 	@printf "$(BOLD)$(GREEN)$(NAME) created!$(RESET)\n"
 
@@ -170,7 +163,7 @@ CURRENT_FILE := 0
 # $(eval ...) =		Increment file counter.
 # $(POSTCOMPILE) =	Move temp dependency file and touch object to ensure right timestamps.
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c message $(DEP_DIR_BASE)/%.d | $(DEP_DIR_BASE)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp message $(DEP_DIR)/%.d | $(DEP_DIR)
 	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
 	@echo "($(CURRENT_FILE)/$(TOTAL_FILES)) Compiling $(BOLD)$< $(RESET)"
 	$(SILENT)$(COMPILE) $< -o $@
