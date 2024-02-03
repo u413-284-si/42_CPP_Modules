@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/02/03 08:09:00 by sqiu             ###   ########.fr        #
+#    Updated: 2024/02/03 08:23:10 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,11 @@ LDLIBS :=
 # *     Vars for compiling     *
 # ******************************
 
-CC := c++
+CXX := c++
 CPPFLAGS := -I $(INC_DIR)
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.Td
-COMPILE = $(CC) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c
+COMPILE = $(CXX) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c
 POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
 
 # ******************************
@@ -116,7 +116,7 @@ all: $(NAME)
 # Linking the NAME target
 $(NAME): $(OBJS)
 	@printf "$(YELLOW)$(BOLD)link binary$(RESET) [$(BLUE)$@$(RESET)]\n"
-	$(SILENT)$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
+	$(SILENT)$(CXX) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
 	@printf "$(YELLOW)$(BOLD)compilation successful$(RESET) [$(BLUE)$@$(RESET)]\n"
 	@printf "$(BOLD)$(GREEN)$(NAME) created!$(RESET)\n"
 
