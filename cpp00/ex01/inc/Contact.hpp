@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 08:58:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/04 16:51:10 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/04 17:11:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 /* ====== LIBRARIES ====== */
 
-#include <iostream>
 #include <string>
 
-/* ====== CLASSES ====== */
+/* ====== CLASS DECLARATION ====== */
 
 class Contact{
 	public:
