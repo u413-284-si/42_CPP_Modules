@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:13:28 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/04 17:00:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/05 17:26:53 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,31 @@ std::string	Contact::getDarkestSecret(void) const{
 	return this->mDarkestSecret;
 }
 
-void	Contact::setFirstName(std::string firstName){
+void	Contact::setFirstName(const std::string& firstName){
 	this->mFirstName = firstName;
 }
 
-void	Contact::setLastName(std::string lastName){
+void	Contact::setLastName(const std::string& lastName){
 	this->mLastName = lastName;
 }
 
-void	Contact::setNickname(std::string nickname){
+void	Contact::setNickname(const std::string& nickname){
 	this->mNickname = nickname;
 }
 
-void	Contact::setPhoneNumber(std::string phoneNumber){
+void	Contact::setPhoneNumber(const std::string& phoneNumber){
 	this->mPhoneNumber = phoneNumber;
 }
 
-void	Contact::setDarkestSecret(std::string darkestSecret){
+void	Contact::setDarkestSecret(const std::string& darkestSecret){
 	this->mDarkestSecret = darkestSecret;
 }
 
-void	Contact::setContactData(std::string firstName, \
-								std::string lastName, \
-								std::string nickname, \
-								std::string phoneNumber, \
-								std::string darkestSecret){
+void	Contact::setContactData(const std::string& firstName, \
+								const std::string& lastName, \
+								const std::string& nickname, \
+								const std::string& phoneNumber, \
+								const std::string& darkestSecret){
 	this->setFirstName(firstName);
 	this->setLastName(lastName);
 	this->setNickname(nickname);

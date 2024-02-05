@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 08:58:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/04 17:11:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/05 17:26:02 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ class Contact{
 				std::string getPhoneNumber(void) const;
 				std::string getDarkestSecret(void) const;
 				void		getContactData(void) const;
-				void		setFirstName(std::string firstName);
-				void		setLastName(std::string lastName);
-				void		setNickname(std::string nickname);
-				void		setPhoneNumber(std::string phoneNumber);
-				void		setDarkestSecret(std::string darkestSecret);
-				void		setContactData(std::string firstName, \
-										   std::string lastName, \
-										   std::string nickname, \
-										   std::string phoneNumber, \
-										   std::string darkestSecret);
+				void		setFirstName(const std::string& firstName);
+				void		setLastName(const std::string& lastName);
+				void		setNickname(const std::string& nickname);
+				void		setPhoneNumber(const std::string& phoneNumber);
+				void		setDarkestSecret(const std::string& darkestSecret);
+				void		setContactData(const std::string& firstName, \
+										   const std::string& lastName, \
+										   const std::string& nickname, \
+										   const std::string& phoneNumber, \
+										   const std::string& darkestSecret);
 			
 	private:
 				std::string	mFirstName;
