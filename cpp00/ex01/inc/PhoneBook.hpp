@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:02:58 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/05 16:06:05 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/05 18:04:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
+#include <algorithm>	//std::all_of
 
 #include "Contact.hpp"
 
@@ -38,15 +39,11 @@ class PhoneBook{
 				Contact	mContactList[NUM_CONTACTS];
 				int		mCurrentIndex;
 
-				enum	eCommand{
-						ADD,
-						SEARCH,
-						EXIT						
-				};
-				
-				void		promptCommands(void);
-				eCommand	parseCommand(std::string cmd);
-				
+				void	promptCommands(void) const;
+				void	addContact(void);
+				void	parseInput(const Contact::eFields field,
+								   std::string	input);
+				void	searchContact(void) const;				
 }
 
 #endif
