@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 08:58:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/05 17:26:02 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/05 17:41:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ class Contact{
 	public:
 				Contact(void);
 				~Contact(void);
+
+				enum	eFields{
+						FirstName,
+						LastName,
+						Nickname,
+						PhoneNumber,
+						DarkestSecret					
+				};
 
 				std::string	getFirstName(void) const;
 				std::string getLastName(void) const;
