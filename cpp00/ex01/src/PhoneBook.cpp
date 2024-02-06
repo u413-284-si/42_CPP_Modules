@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/06 00:07:33 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/06 09:25:01 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,13 @@ void	PhoneBook::parseInput(const int field, std::string *input){
 		std::cin >> *input;
 		if (input->empty() || input->find_first_not_of(" \t\n\v\f\r") == std::string::npos)
 			std::cout << "Input is empty, try again." << std::endl;
-		else if (field == 3 && !all_of(input->begin(), input->end(), ::isdigit))
+		else if (field == 3 && input->find_first_not_of("0123456789") != std::string::npos)
 			std::cout << "Input only digits, try again." << std::endl;
 		else
 			break;
 	}	
+}
+
+void	PhoneBook::searchContact(void) const{
+	
 }
