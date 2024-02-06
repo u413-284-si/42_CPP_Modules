@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:02:58 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/06 00:07:37 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/06 00:14:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ class PhoneBook{
 				void	addContact(void);
 				void	parseInput(const int field, std::string *input);
 				void	searchContact(void) const;				
-}
+};
 
 #endif
