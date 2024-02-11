@@ -6,14 +6,15 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/06 10:54:59 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/11 22:55:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 //Constructor with initialised index to 0
-PhoneBook::PhoneBook(void):mCurrentIndex(0){
+PhoneBook::PhoneBook(void):mCurrentIndex(0), 
+						   mNumContacts(0){
 	return;
 }
 
@@ -59,8 +60,10 @@ void	PhoneBook::promptCommands(void) const{
 void	PhoneBook::addContact(void){
 	std::string	input[5];
 	
-	if (mCurrentIndex >= NUM_CONTACTS)
+	if (mCurrentIndex >= MAX_CONTACTS)
 		mCurrentIndex = 0;
+	if (mNumContacts < MAX_CONTACTS)
+		mNumContacts++;
 	std::cout << std::endl;
 	for (int i = 0; i < 5; i++){
 		parseInput(i, &input[i]);
@@ -96,5 +99,27 @@ void	PhoneBook::parseInput(const int field, std::string *input){
 }
 
 void	PhoneBook::searchContact(void) const{
+	char	index;
+	int		i;
+	
+	if (mNumContacts == 0){
+		std::cout << BOLD "No contacts available. Please add contacts first." RESET << std::endl;
+		return;
+	}		
+	displayContacts();
+	std::cout << "\nChoose the contact to be displayed \
+		by entering the index: " << std::endl;
+	std::cin >> index;
+	i = atoi(&index);
+	if (!isdigit(index))
+		std::cout << RED "The index can only be numerical. By definition. Dipshit." RESET << std::endl;
+	else if ( i > mNumContacts - 1)
+		std::cout << RED "Index is out of bounds. No contact available." RESET << std::endl;
+	else
+		mContactList[i].printContactData();
+	return;
+}
+
+void	PhoneBook::displayContacts(void) const{
 	
 }

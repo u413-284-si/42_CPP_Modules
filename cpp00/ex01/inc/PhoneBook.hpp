@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:02:58 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/06 10:29:51 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/11 22:36:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
-#include <unistd.h>
+#include <unistd.h>		//sleep
+#include <cstdlib>		//atoi
 
 #include "Contact.hpp"
 
 /* ====== MACROS ====== */
 
-# define NUM_CONTACTS 8
+# define MAX_CONTACTS 8
 
 // Text effects
 # define CLRSCR "\033[2J\033[1;1H"
@@ -49,13 +50,16 @@ class PhoneBook{
 				void	start(void);
 				void	processInput(void);
 	private:
-				Contact	mContactList[NUM_CONTACTS];
+				Contact	mContactList[MAX_CONTACTS];
 				int		mCurrentIndex;
+				int		mNumContacts;
 
-				void	promptCommands(void) const;
-				void	addContact(void);
-				void	parseInput(const int field, std::string *input);
-				void	searchContact(void) const;				
+				void		promptCommands(void) const;
+				void		addContact(void);
+				void		parseInput(const int field, std::string *input);
+				void		searchContact(void) const;			
+				void		displayContacts(void) const;
+				std::string	truncateData(std::string data);	
 };
 
 #endif
