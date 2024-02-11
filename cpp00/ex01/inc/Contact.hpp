@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 08:58:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/05 23:58:30 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/11 22:51:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Contact{
 				std::string getNickname(void) const;
 				std::string getPhoneNumber(void) const;
 				std::string getDarkestSecret(void) const;
-				void		getContactData(void) const;
+				void		printContactData(void) const;
 				void		setFirstName(const std::string& firstName);
 				void		setLastName(const std::string& lastName);
 				void		setNickname(const std::string& nickname);
