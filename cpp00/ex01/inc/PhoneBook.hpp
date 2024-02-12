@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:02:58 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/12 11:22:41 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/12 17:58:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 /* ====== MACROS ====== */
 
 # define MAX_CONTACTS 8
+# define COLUMN_WIDTH 10
 
 // Text effects
 # define CLRSCR "\033[2J\033[1;1H"
@@ -55,12 +56,22 @@ class PhoneBook{
 				int		mNumContacts;
 
 				void		promptCommands(void) const;
+				
+				// ADD CONTACT
 				void		addContact(void);
 				void		parseInput(const int field, std::string *input);
+
+				// SEARCH CONTACT
 				void		searchContact(void) const;			
-				void		displayContacts(void) const;
 				void		promptContact(void) const;
-				std::string	truncateData(std::string data);	
+
+				// CREATE CONTACT TABLE
+				void		displayContacts(void) const;
+				void		displayTitleRow(void) const;
+				void		displayContactRow(const int i) const;
+				void		createColumn(void) const;
+				std::size_t	getStrLenUtf8(const std::string& str) const;
+				std::string	truncateData(const std::string& data) const;
 };
 
 #endif

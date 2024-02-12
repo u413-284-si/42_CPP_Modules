@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/12 11:25:27 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/12 17:59:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,56 @@ void	PhoneBook::promptContact(void) const{
 }
 
 void	PhoneBook::displayContacts(void) const{
+	displayTitleRow();
+	for (int i = 0; i < mNumContacts; i++){
+		displayContactRow(i);
+	}
+}
+
+void	PhoneBook::displayTitleRow(void) const{
+	createColumn();
+	std::cout << "Index";
+	createColumn();
+	std::cout << "First name";
+	createColumn();
+	std::cout << "Last name";
+	createColumn();
+	std::cout << "Nickname";
+	std::cout << "|" << std::endl;
+}
+
+void	PhoneBook::displayContactRow(const int i) const{
 	
+	createColumn();
+	std::cout << i;
+	createColumn();
+	std::cout << truncateData(mContactList[i].getFirstName());
+}
+
+std::string PhoneBook::truncateData(const std::string& data) const{
+	std::size_t	len;
+	std::string	truncated;
+
+	len = getStrLenUtf8(data);
+	if (len > COLUMN_WIDTH){
+		truncated = data;
+		truncated[COLUMN_WIDTH - 1] = '.';
+		truncated.resize(COLUMN_WIDTH);
+		return truncated;
+	}
+	else
+		return data;
+}
+
+std::size_t PhoneBook::getStrLenUtf8(const std::string& str) const{
+    std::size_t length = 0;
+
+    for (char c : str)
+        if ((c & 0xC0) != 0x80) // This is the start of a new UTF-8 character
+            ++length;
+    return length;
+}
+
+void	PhoneBook::createColumn(void) const{
+	std::cout << "|" << std::setw(COLUMN_WIDTH);
 }
