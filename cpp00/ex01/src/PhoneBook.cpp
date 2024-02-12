@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/12 11:17:29 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/12 11:25:27 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,22 @@ void	PhoneBook::parseInput(const int field, std::string *input){
 }
 
 void	PhoneBook::searchContact(void) const{
+	if (mNumContacts == 0)
+		std::cout << BOLD "\nNo contacts available. Please add contacts first." RESET << std::endl;
+	else {
+		displayContacts();
+		promptContact();
+	}
+	sleep(2);
+	std::cout << CLRSCR;
+	return;
+}
+
+void	PhoneBook::promptContact(void) const{
 	std::string	input;
 	char		index;
 	int			i;
 	
-	if (mNumContacts == 0){
-		std::cout << BOLD "\nNo contacts available. Please add contacts first." RESET << std::endl;
-		sleep(2);
-		std::cout << CLRSCR;
-		return;
-	}		
-	displayContacts();
 	std::cout << "\nChoose the contact to be displayed by entering the index: " << std::endl;
 	std::getline(std::cin, input);
 	if (input.empty() || input.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
@@ -126,9 +131,6 @@ void	PhoneBook::searchContact(void) const{
 		else
 			mContactList[i].printContactData();
 	}
-	sleep(2);
-	std::cout << CLRSCR;
-	return;
 }
 
 void	PhoneBook::displayContacts(void) const{
