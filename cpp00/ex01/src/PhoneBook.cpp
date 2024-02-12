@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/11 23:11:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/12 11:17:29 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ void	PhoneBook::parseInput(const int field, std::string *input){
 }
 
 void	PhoneBook::searchContact(void) const{
-	char	index;
-	int		i;
+	std::string	input;
+	char		index;
+	int			i;
 	
 	if (mNumContacts == 0){
 		std::cout << BOLD "\nNo contacts available. Please add contacts first." RESET << std::endl;
@@ -110,15 +111,21 @@ void	PhoneBook::searchContact(void) const{
 	}		
 	displayContacts();
 	std::cout << "\nChoose the contact to be displayed by entering the index: " << std::endl;
-	std::cin >> index;
-	i = atoi(&index);
-	std::cout << std::endl;
-	if (!isdigit(index))
-		std::cout << RED "The index can only be numerical. By definition. Dipshit." RESET << std::endl;
-	else if ( i > mNumContacts - 1)
-		std::cout << RED "Index is out of bounds. No contact available." RESET << std::endl;
-	else
-		mContactList[i].printContactData();
+	std::getline(std::cin, input);
+	if (input.empty() || input.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
+		std::cout << RED "Input is empty, try again." RESET << std::endl;
+	else if (input.length() > 1)
+		std::cout << RED "Only one character is accepted." RESET << std::endl;
+	else {	
+		index = input[0];
+		i = atoi(&index);
+		if (!isdigit(index))
+			std::cout << RED "The index can only be numerical. By definition. Dipshit." RESET << std::endl;
+		else if ( i > mNumContacts - 1)
+			std::cout << RED "Index is out of bounds. No contact available." RESET << std::endl;
+		else
+			mContactList[i].printContactData();
+	}
 	sleep(2);
 	std::cout << CLRSCR;
 	return;
