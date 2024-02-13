@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/12 17:59:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/13 15:44:11 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,49 +141,74 @@ void	PhoneBook::displayContacts(void) const{
 }
 
 void	PhoneBook::displayTitleRow(void) const{
-	createColumn();
+	createColumn(0);
 	std::cout << "Index";
-	createColumn();
+	createColumn(0);
 	std::cout << "First name";
-	createColumn();
+	createColumn(0);
 	std::cout << "Last name";
-	createColumn();
+	createColumn(0);
 	std::cout << "Nickname";
 	std::cout << "|" << std::endl;
 }
 
 void	PhoneBook::displayContactRow(const int i) const{
+	int 		extra_width = 0;
+	std::string	data;
 	
-	createColumn();
+	createColumn(extra_width);
 	std::cout << i;
-	createColumn();
-	std::cout << truncateData(mContactList[i].getFirstName());
+	
+	data = truncateData(mContactList[i].getFirstName(), &extra_width);
+	createColumn(extra_width);
+	std::cout << data;
+	
+	extra_width = 0;
+	data = truncateData(mContactList[i].getLastName(), &extra_width);
+	createColumn(extra_width);
+	std::cout << data;
+	
+	extra_width = 0;
+	data = truncateData(mContactList[i].getNickname(), &extra_width);
+	createColumn(extra_width);
+	std::cout << data;
+	
+	std::cout << "|" << std::endl;
 }
 
-std::string PhoneBook::truncateData(const std::string& data) const{
-	std::size_t	len;
-	std::string	truncated;
+std::string PhoneBook::truncateData(std::string data, int *extra) const{
+	size_t	len = 0;
+	int		bytes;
+	int		overshoot = 0;
+	
+    for (size_t i = 0; i < data.length();) {
+        bytes = 1;
+        if ((data[i] & 0xf8) == 0xf0) // checking whether the current byte is the start of a 4-byte UTF-8 character
+			bytes = 4;
+        else if ((data[i] & 0xf0) == 0xe0) // checking whether the current byte is the start of a 3-byte UTF-8 character
+			bytes = 3;
+        else if ((data[i] & 0xe0) == 0xc0) // checking whether the current byte is the start of a 2-byte UTF-8 character
+			bytes = 2;
+		if (bytes > 1)
+			overshoot += bytes - 1;
+        if ((i + bytes) > data.length())
+            bytes = 1;
+        i += bytes;
+        len++;
+        if (len == COLUMN_WIDTH && i < data.length()){
+            data[i - bytes] = '.';
+            data.resize(i - bytes + 1);
+            break;
+        }
+    }
+	if (overshoot > 0 && len < COLUMN_WIDTH)
+		*extra = overshoot;
+	return data;
+}
 
-	len = getStrLenUtf8(data);
-	if (len > COLUMN_WIDTH){
-		truncated = data;
-		truncated[COLUMN_WIDTH - 1] = '.';
-		truncated.resize(COLUMN_WIDTH);
-		return truncated;
-	}
+void	PhoneBook::createColumn(int extra_width) const{
+	if (extra_width > 0)
+			std::cout << "|" << std::setw(COLUMN_WIDTH + extra_width);
 	else
-		return data;
-}
-
-std::size_t PhoneBook::getStrLenUtf8(const std::string& str) const{
-    std::size_t length = 0;
-
-    for (char c : str)
-        if ((c & 0xC0) != 0x80) // This is the start of a new UTF-8 character
-            ++length;
-    return length;
-}
-
-void	PhoneBook::createColumn(void) const{
-	std::cout << "|" << std::setw(COLUMN_WIDTH);
+		std::cout << "|" << std::setw(COLUMN_WIDTH);
 }

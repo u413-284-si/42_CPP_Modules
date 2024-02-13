@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:02:58 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/12 17:58:49 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/13 15:44:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,8 @@ class PhoneBook{
 				void		displayContacts(void) const;
 				void		displayTitleRow(void) const;
 				void		displayContactRow(const int i) const;
-				void		createColumn(void) const;
-				std::size_t	getStrLenUtf8(const std::string& str) const;
-				std::string	truncateData(const std::string& data) const;
+				void		createColumn(int extra_width) const;
+				std::string	truncateData(std::string data, int *extra) const;
 };
 
 #endif
