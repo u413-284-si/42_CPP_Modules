@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/13 15:44:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/14 14:15:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	PhoneBook::searchContact(void) const{
 		displayContacts();
 		promptContact();
 	}
-	sleep(2);
+	sleep(5);
 	std::cout << CLRSCR;
 	return;
 }
