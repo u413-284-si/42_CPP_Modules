@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:06:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/14 14:28:04 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/14 14:35:08 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	PhoneBook::processInput(void){
 			addContact();
 		else if (input == "SEARCH")
 			searchContact();
-		else if (input == "EXIT")
+		else if (input == "EXIT"){
+			std::cout << GREEN "\nUntil we meet again!" RESET << std::endl;
 			break;
+		}
 		else
 		{
 			std::cout << BOLD RED"\nInvalid input, you moron ʕ•́ᴥ•̀ʔっ\n" RESET << std::endl;
