@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/02/06 09:30:29 by sqiu             ###   ########.fr        #
+#    Updated: 2024/02/14 14:29:02 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,10 @@ NAME := phonebook
 
 SRC:= 	Contact.cpp \
 		main.cpp \
-		PhoneBook.cpp
+		PhoneBook.cpp \
+		PhoneBook_AddContact.cpp \
+		PhoneBook_DisplayContacts.cpp \
+		PhoneBook_SearchContact.cpp
 
 # ******************************
 # *     Object files           *
