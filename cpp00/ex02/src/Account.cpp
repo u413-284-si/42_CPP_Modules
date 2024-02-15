@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:49:04 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/15 11:51:46 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:59:03 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool	Account::makeWithdrawal(int withdrawal){
 	_amount -= withdrawal;
 	_nbWithdrawals++;
 	Account::_totalAmount -= withdrawal;
-	Account::_totalNbWithdrawals--;
+	Account::_totalNbWithdrawals++;
 	std::cout << "withdrawal:" << withdrawal << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
@@ -109,5 +109,5 @@ void	Account::displayStatus(void) const{
 }
 
 void	Account::_displayTimestamp(void){
-	std::cout << "[20240214_162033]	";
+	std::cout << "[20240214_162033] ";
 }
