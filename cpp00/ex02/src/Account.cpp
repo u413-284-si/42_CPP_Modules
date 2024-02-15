@@ -6,16 +6,16 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:49:04 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/15 11:06:38 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:51:46 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 
-int	_nbAccounts = 0;
-int	_totalAmount = 0;
-int	_totalNbDeposits = 0;
-int	_totalNbWithdrawals = 0;
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
 
 // Constructor with _amount initialised to initial_deposit
 Account::Account(int initial_deposit):_amount(initial_deposit),
