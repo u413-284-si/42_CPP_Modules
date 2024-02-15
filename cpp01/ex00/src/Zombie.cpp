@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:08:14 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/15 15:18:03 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/15 15:22:52 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ Zombie::Zombie(std::string name):mName(name){
 
 // Destructor
 Zombie::~Zombie(void){
-	std::cout << mName << ": Deeeeed" << std::endl;
+	std::cout << this->mName << ": Deeeeed" << std::endl;
 }
 
 void	Zombie::announce(void){
-	std::cout << mName << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->mName << ": BraiiiiiiinnnzzzZ..." << std::endl;
 	return;
 }
