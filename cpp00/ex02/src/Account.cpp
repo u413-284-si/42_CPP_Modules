@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:49:04 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/15 10:37:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:06:38 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	Account::makeDeposit(int deposit){
 	std::cout << "p_amount:" << _amount << ";";
 	_amount += deposit;
 	_nbDeposits++;
+	Account::_totalAmount += deposit;
+	Account::_totalNbDeposits++;
 	std::cout << "deposit:" << deposit << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
@@ -86,6 +88,8 @@ bool	Account::makeWithdrawal(int withdrawal){
 	}
 	_amount -= withdrawal;
 	_nbWithdrawals++;
+	Account::_totalAmount -= withdrawal;
+	Account::_totalNbWithdrawals--;
 	std::cout << "withdrawal:" << withdrawal << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
@@ -101,7 +105,7 @@ void	Account::displayStatus(void) const{
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "deposits:" << _nbDeposits << ";";
-	std::cout << "withdrawals:" << _nbWithdrawals << ";\n";
+	std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 void	Account::_displayTimestamp(void){
