@@ -30,5 +30,11 @@
 *.exe
 *.out
 *.app
+# cpp00 ex00
 megaphone
+# cpp00 ex01
 phonebook
+# cpp00 ex02
+account_log
+# cpp00 ex00
+zombs
