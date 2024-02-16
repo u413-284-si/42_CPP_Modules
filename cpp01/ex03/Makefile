@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/02/15 17:28:03 by sqiu             ###   ########.fr        #
+#    Updated: 2024/02/16 10:51:33 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,13 +67,16 @@ POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
 # ******************************
 
 # Target
-NAME := zombs
+NAME := human
 
 # ******************************
 # *     Source files           *
 # ******************************
 
-SRC:= 	main.cpp
+SRC:= 	HumanA.cpp \
+		HumanB.cpp \
+		main.cpp \
+		Weapon.cpp
 
 # ******************************
 # *     Object files           *
