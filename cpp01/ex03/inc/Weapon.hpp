@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:52:25 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/16 11:05:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/20 15:09:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 class Weapon{
 	public:
 				Weapon(void);
+				Weapon(std::string type);
 				~Weapon(void);
 
 				const std::string&	getType(void);
