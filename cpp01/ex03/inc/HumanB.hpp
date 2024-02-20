@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:19:38 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/20 16:17:30 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/20 17:20:28 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class HumanB{
 				~HumanB(void);
 
 				void	attack(void);
-				void	setWeapon(Weapon weapon);
+				void	setWeapon(Weapon& weapon);
 	private:
 				std::string	mName;
 				Weapon		*mWeapon;
