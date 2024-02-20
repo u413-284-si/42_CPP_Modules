@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:19:41 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/20 14:57:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/20 16:16:10 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 /* ====== CLASS DECLARATION ====== */
 class HumanA{
 	public:
-				HumanA(void);
+				HumanA(const std::string& name, Weapon& weapon);
 				~HumanA(void);
 
-				void	attack(void);
+				void	attack(void) const;
 	private:
-				Weapon		mWeapon;
 				std::string	mName;
+				Weapon&		mWeapon;
 };
 
 #endif
