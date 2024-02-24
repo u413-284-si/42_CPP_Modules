@@ -1,0 +1,82 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Use active file",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/cpp01/ex04/replace",
+			"args": ["${workspaceFolder}/cpp01/ex04/test.txt", "test", "mumu"],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}/cpp01/ex04/",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "Standard",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/miniRT",
+			"args": ["scenes/cylinder.rt"],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "make"
+		},
+		{
+			"name": "Bonus",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/miniRT_supreme",
+			"args": ["scenes/test_bonus.rt"],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "make bonus"
+		}
+	]
+}
