@@ -6,7 +6,7 @@
 /*   By: u413q <u413q@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:25:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:17:48 by u413q            ###   ########.fr       */
+/*   Updated: 2024/02/24 14:19:59 by u413q            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ Harl::~Harl(void){
 }
 
 void	Harl::complain(std::string level){
+	int		lv = convertLevel(level);
 	
+	if (lv < 0)
+		return;
+	(this->mode[lv])();
+	return;
 }
 
 int		Harl::convertLevel(const std::string level){
