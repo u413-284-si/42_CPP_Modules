@@ -6,13 +6,17 @@
 /*   By: u413q <u413q@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:25:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:09:21 by u413q            ###   ########.fr       */
+/*   Updated: 2024/02/24 14:17:48 by u413q            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 Harl::Harl(void){
+	mode[0] = &Harl::debug;
+	mode[1] = &Harl::info;
+	mode[2] = &Harl::warning;
+	mode[3] = &Harl::error;
 	return;
 }
 
@@ -22,6 +26,17 @@ Harl::~Harl(void){
 
 void	Harl::complain(std::string level){
 	
+}
+
+int		Harl::convertLevel(const std::string level){
+	const std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+	for (int i = 0; i < 4; i++){
+		if (level == levels[i])
+			return i;
+	}
+	std::cerr << "Invalid level. You moron." << std::endl;
+	return -1;
 }
 
 void	Harl::debug(void){
