@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: u413q <u413q@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:25:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:19:59 by u413q            ###   ########.fr       */
+/*   Updated: 2024/02/24 14:41:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 Harl::Harl(void){
-	mode[0] = &Harl::debug;
-	mode[1] = &Harl::info;
-	mode[2] = &Harl::warning;
-	mode[3] = &Harl::error;
 	return;
 }
 
@@ -26,10 +22,11 @@ Harl::~Harl(void){
 
 void	Harl::complain(std::string level){
 	int		lv = convertLevel(level);
+	const pointerMF	mode[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	
 	if (lv < 0)
 		return;
-	(this->mode[lv])();
+	(this->*(mode[lv]))();
 	return;
 }
 

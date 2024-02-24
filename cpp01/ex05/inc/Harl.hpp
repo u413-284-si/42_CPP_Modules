@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: u413q <u413q@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:07:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:13:12 by u413q            ###   ########.fr       */
+/*   Updated: 2024/02/24 14:41:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 
 #include <iostream>
 
-/* ====== TYPEDEFS ====== */
-
-typedef void	(Harl::*pointerMF)(void) const;
-
 /* ====== CLASS DECLARATION ====== */
 
 class Harl{
@@ -30,8 +26,6 @@ class Harl{
 				
 				void	complain(std::string level);
 	private:
-				pointerMF	mode[4];
-				
 				void	debug(void);
 				void	info(void);
 				void	warning(void);
@@ -39,5 +33,9 @@ class Harl{
 
 				int		convertLevel(const std::string level);
 };
+
+/* ====== TYPEDEFS ====== */
+
+typedef void	(Harl::*pointerMF)(void);
 
 #endif
