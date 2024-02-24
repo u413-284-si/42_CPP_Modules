@@ -6,24 +6,25 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:19:50 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 10:56:28 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/24 11:36:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-void	parseAndReplace(std::string& line, std::string const target, std::string const replace){
+void	parseAndReplace(std::string& line, const std::string& target, const std::string& replace){
 	size_t	pos = 0;
 
 	if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
 		return;
-	while (pos != line.length() - 1){
-		pos = line.find(target, pos);
+	pos = line.find(target, pos);
+	while (pos != std::string::npos){
 		line.erase(pos, target.length());
 		line.insert(pos, replace);
-		pos++;
+		pos = line.find(target, pos);
 	}
+	line += '\n';
 	return;
 }
 
