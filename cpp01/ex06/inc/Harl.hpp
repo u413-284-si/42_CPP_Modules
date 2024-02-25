@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:07:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:41:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/25 16:05:35 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ class Harl{
 				~Harl(void);
 				
 				void	complain(std::string level);
+				int		convertLevel(const std::string level);
+
 	private:
 				void	debug(void);
 				void	info(void);
 				void	warning(void);
 				void	error(void);
-
-				int		convertLevel(const std::string level);
 };
 
 /* ====== TYPEDEFS ====== */
