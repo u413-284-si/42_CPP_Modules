@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:25:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 14:52:23 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/25 15:28:12 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	Harl::complain(std::string level){
 	
 	if (lv < 0)
 		return;
-	(this->*(mode[lv]))();
+	for (int i = 0; (lv + i) < 4; i++)
+		(this->*(mode[lv + i]))();
 	return;
 }
 
