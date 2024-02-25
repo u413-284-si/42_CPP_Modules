@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:25:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/25 15:28:12 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/25 16:16:43 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		Harl::convertLevel(const std::string level){
 		if (level == levels[i])
 			return i;
 	}
-	std::cerr << "Invalid level. You moron." << std::endl;
 	return -1;
 }
 
