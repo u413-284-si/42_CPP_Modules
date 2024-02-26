@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:23:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 00:27:12 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 00:32:56 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ Fixed::~Fixed(void){
 }
 
 int		Fixed::getRawBits(void) const{
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->mFixedValue;
 }
 
