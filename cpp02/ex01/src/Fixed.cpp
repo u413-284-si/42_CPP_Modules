@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:23:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 00:32:56 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 00:41:04 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	Fixed::setRawBits(int const raw){
 }
 
 float	Fixed::toFloat(void) const{
-	return (float)(mFixedValue / (1 << msFracBits));
+	return (float)mFixedValue / (1 << msFracBits); // at least one operand has to be float
 }
 
 int		Fixed::toInt(void) const{
-	return (int)roundf((float)(mFixedValue / (1 << msFracBits)));
+	return (int)roundf((float)mFixedValue / (1 << msFracBits));
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed){
