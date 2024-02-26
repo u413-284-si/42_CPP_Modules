@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:05:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/25 16:15:00 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/26 18:57:46 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ int	main(int argc, char **argv){
 	{
 		case 0:			
 			harl.complain("DEBUG");
-			break;
 		case 1:
 			harl.complain("INFO");
-			break;
 		case 2:
 			harl.complain("WARNING");
-			break;
 		case 3:
 			harl.complain("ERROR");
 			break;
