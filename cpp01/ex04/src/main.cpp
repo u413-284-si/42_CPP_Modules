@@ -6,26 +6,30 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:19:50 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/24 11:36:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/26 18:54:24 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-void	parseAndReplace(std::string& line, const std::string& target, const std::string& replace){
-	size_t	pos = 0;
+std::string	parseAndReplace(std::string& line, const std::string& target, const std::string& replace){
+	size_t		pos = 0;
+	size_t		start = 0;
+	std::string	tmp;
 
 	if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
-		return;
-	pos = line.find(target, pos);
+		return tmp;
+	pos = line.find(target, start);
 	while (pos != std::string::npos){
-		line.erase(pos, target.length());
-		line.insert(pos, replace);
-		pos = line.find(target, pos);
+		tmp.append(line, start, pos - start);
+		tmp.append(replace);
+		start = pos + target.length();
+		pos = line.find(target, start);
 	}
-	line += '\n';
-	return;
+	tmp.append(line, start, pos - start);
+	tmp += '\n';
+	return tmp;
 }
 
 int	main(int argc, char **argv){
@@ -45,11 +49,12 @@ int	main(int argc, char **argv){
 	newstr.append(".replace");
 	std::ofstream	newfile(newstr.c_str());
 	if (!newfile.is_open()){
+		file.close();
 		std::cerr << "Unable to create file " << newstr << ". More sad." << std::endl;
 		return 2;
 	}
 	while (std::getline(file, line)){
-		parseAndReplace(line, argv[2], argv[3]);
+		line = parseAndReplace(line, argv[2], argv[3]);
 		newfile << line;
 	}
 	file.close();
