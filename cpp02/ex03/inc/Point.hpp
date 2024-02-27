@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:42:28 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 16:06:45 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 17:05:52 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ class Point{
 
 				Point&	operator=(const Point& rhs);
 				
-				Fixed	getmX(void) const;
-				Fixed	getmY(void) const;
+				float	getmX(void) const;
+				float	getmY(void) const;
+				float	sign2DCrossProduct(const Point& a, const Point& b, const Point& p) const;
 	
 	private:
 				const Fixed mX;
