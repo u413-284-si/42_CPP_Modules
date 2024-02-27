@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:50:15 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:23:42 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 17:47:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ float	Point::getmY(void) const{
 float	Point::sign2DCrossProduct(const Point& a, const Point& b, const Point& p){
 	Fixed	tmp;
 
-	// Compute the cross product of vectors (b - a) and (p - b)
-	tmp = (b.mX - a.mX) * (p.mY - b.mY) - (p.mX - b.mX) * (b.mY - a.mY);
+	// Compute the cross product of vectors (b - a) and (p - a)
+	tmp = (b.mX - a.mX) * (p.mY - a.mY) - (p.mX - a.mX) * (b.mY - a.mY);
 	return tmp.toFloat();
 }

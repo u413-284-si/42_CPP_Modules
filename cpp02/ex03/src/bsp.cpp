@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:17:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:27:28 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 17:48:58 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point){
 	float	sign1, sign2, sign3;
 
 	// Calculate the signs of the point with respect to each of the triangle's edges
-	sign1 = Point::sign2DCrossProduct(b, a, point);
-	sign2 = Point::sign2DCrossProduct(c, b, point);
-	sign3 = Point::sign2DCrossProduct(a, c, point);
-	return 	(sign1 < 0 && sign2 < 0 && sign3 < 0) || (sign1 > 0 && sign2 > 0 && sign3 > 0);
+	sign1 = Point::sign2DCrossProduct(a, b, point);
+	sign2 = Point::sign2DCrossProduct(b, c, point);
+	sign3 = Point::sign2DCrossProduct(c, a, point);
+	return 	((sign1 < 0 && sign2 < 0 && sign3 < 0) || (sign1 > 0 && sign2 > 0 && sign3 > 0));
 }
