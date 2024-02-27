@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:40:49 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 12:13:17 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 15:37:19 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ int	main(void){
 	std::cout << b << std::endl;
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
+	/* std::cout << Fixed::min( a, b ) << std::endl;
+	std::cout << a-- << std::endl;
+	std::cout << a << std::endl; */
 	return 0;
 }
