@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:50:15 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 18:00:41 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 23:40:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ Point::Point(const float& m, const float& n) : mX(Fixed(m)),mY(Fixed(n)){
 	return;											
 }
 
-Point::Point(const Point& other) {
+Point::Point(const Point& other) : mX(other.mX), mY(other.mY){
 	if (VERBOSE)
 		std::cout << "Copy constructor called" << std::endl;
-	*this = other;
 	return;
 }
 
