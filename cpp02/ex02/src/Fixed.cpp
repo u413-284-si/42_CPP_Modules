@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:23:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 12:10:53 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 12:56:37 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int		Fixed::toInt(void) const{
 }
 
 /* OPERATOR OVERLOADING */
+
 // Copy assignment operator
+
 Fixed&	Fixed::operator= (const Fixed& rhs){
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
@@ -71,16 +73,61 @@ Fixed&	Fixed::operator= (const Fixed& rhs){
 	return *this;
 }
 
+// Comparison operators
+
 bool	Fixed::operator>(const Fixed& rhs) const{
-	return this->getRawBits() > rhs.getRawBits();
+	return this->mFixedValue > rhs.getRawBits();
 }
 
 bool	Fixed::operator<(const Fixed& rhs) const{
-	return this->getRawBits() < rhs.getRawBits();
+	return this->mFixedValue < rhs.getRawBits();
 }
 
+bool	Fixed::operator>=(const Fixed& rhs) const{
+	return this->mFixedValue >= rhs.getRawBits();
+}
 
+bool	Fixed::operator<=(const Fixed& rhs) const{
+	return this->mFixedValue <= rhs.getRawBits();
+}
 
+bool	Fixed::operator==(const Fixed& rhs) const{
+	return this->mFixedValue == rhs.getRawBits();
+}
+
+bool	Fixed::operator!=(const Fixed& rhs) const{
+	return this->mFixedValue != rhs.getRawBits();
+}
+
+// Arithmetic operators
+
+Fixed	Fixed::operator+(const Fixed& rhs) const{
+	return Fixed(this->toFloat() + rhs.toFloat());
+}
+
+Fixed	Fixed::operator-(const Fixed& rhs) const{
+	return Fixed(this->toFloat() - rhs.toFloat());
+}
+
+Fixed	Fixed::operator*(const Fixed& rhs) const{
+	return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed& rhs) const{
+	return Fixed(this->toFloat() / rhs.toFloat());
+}
+
+// Increment operators
+
+Fixed&	Fixed::operator++(void){
+	++(this->mFixedValue);
+	return *this;
+}
+
+Fixed	Fixed::operator++(int){
+	Fixed	original = *this;
+	++
+}
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed){
 	os << fixed.toFloat();
