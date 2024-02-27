@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:22:59 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 12:56:48 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 15:25:59 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include <iostream>
 #include <cmath>
+
+# define VERBOSE 0
 
 /* ====== CLASS DECLARATION ====== */
 
