@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:40:49 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:58:29 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 23:48:11 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void){
 	// Points inside the triangle
 	Point	p1(2.0, 1.0);
 	Point	p2(3.0, 2.0);
-	Point	p3(1.0, 3.0);
+	Point	p3(1.0, 1.0);
 
 	// Points outside the triangle
 	Point	p4(6.0, 2.0);
@@ -40,9 +40,10 @@ int	main(void){
 
 	// Points on the edges of the triangle
 	Point	p7(2.5, 0.0);
-	Point	p8(0.0, 2.0);
-	Point	p9(5.0, 2.0);
+	Point	p8(0.0, 0.0);
+	Point	p9(5.0, 0.0);
 	
+	std::cout << "Triangle with a" << a << ", b" << b << ", c" << c << ":" << std::endl;
 	test(a, b, c, p1);
 	test(a, b, c, p2);
 	test(a, b, c, p3);
