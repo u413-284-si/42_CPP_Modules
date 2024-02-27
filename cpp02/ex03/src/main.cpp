@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:40:49 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:44:24 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 17:45:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point);
 void	test(const Point& a, const Point& b, const Point& c, const Point& p, \
 	const int i){
 	if (bsp(a, b, c, p))
-		std::cout << "Point" << i << "is inside the triangle." << std::endl;
+		std::cout << "Point" << i << " is inside the triangle." << std::endl;
 	else
-		std::cout << "Point" << i << "is outside the triangle." << std::endl;
+		std::cout << "Point" << i << " is outside the triangle." << std::endl;
 	return;
 }
 
