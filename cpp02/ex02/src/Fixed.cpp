@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:23:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 12:56:37 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 15:26:59 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,37 @@
 
 // Default constructor
 Fixed::Fixed(void) : mFixedValue(0){
-	std::cout << "Default constructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Default constructor called" << std::endl;
 	return;
 }
 
 // Constructor with int parameter
 Fixed::Fixed(const int num) : mFixedValue(num << msFracBits){
-	std::cout << "Int constructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Int constructor called" << std::endl;
 	return;	
 }
 
 // Constructor with float parameter
 Fixed::Fixed(const float num) : mFixedValue((int)roundf(num * (1 << msFracBits))){
-	std::cout << "Float constructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Float constructor called" << std::endl;
 	return;
 }
 
 // Copy constructor
 Fixed::Fixed(const Fixed& other){
-	std::cout << "Copy constructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 	return;
 }
 
 // Destructor
 Fixed::~Fixed(void){
-	std::cout << "Destructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Destructor called" << std::endl;
 	return;
 }
 
@@ -67,7 +72,8 @@ int		Fixed::toInt(void) const{
 // Copy assignment operator
 
 Fixed&	Fixed::operator= (const Fixed& rhs){
-	std::cout << "Copy assignment operator called" << std::endl;
+	if (VERBOSE)
+		std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
 		this->mFixedValue = rhs.getRawBits();
 	return *this;
@@ -126,7 +132,35 @@ Fixed&	Fixed::operator++(void){
 
 Fixed	Fixed::operator++(int){
 	Fixed	original = *this;
-	++
+	++(this->mFixedValue);
+	return original;
+}
+
+Fixed&	Fixed::operator--(void){
+	--(this->mFixedValue);
+	return *this;
+}
+
+Fixed	Fixed::operator--(int){
+	Fixed	original = *this;
+	--(this->mFixedValue);
+	return original;
+}
+
+static Fixed&		min(Fixed& a, Fixed& b){
+	return a < b ? a : b;
+}
+
+static Fixed&		max(Fixed& a, Fixed& b){
+	return a > b ? a : b;
+}
+
+const static Fixed&	min(const Fixed& a, const Fixed& b){
+	return a < b ? a : b;
+}
+
+const static Fixed&	max(const Fixed& a, const Fixed& b){
+	return a > b ? a : b;
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed){
