@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 22:23:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 15:26:59 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 15:32:24 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,19 +147,19 @@ Fixed	Fixed::operator--(int){
 	return original;
 }
 
-static Fixed&		min(Fixed& a, Fixed& b){
+Fixed&			Fixed::min(Fixed& a, Fixed& b){
 	return a < b ? a : b;
 }
 
-static Fixed&		max(Fixed& a, Fixed& b){
+Fixed&			Fixed::max(Fixed& a, Fixed& b){
 	return a > b ? a : b;
 }
 
-const static Fixed&	min(const Fixed& a, const Fixed& b){
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b){
 	return a < b ? a : b;
 }
 
-const static Fixed&	max(const Fixed& a, const Fixed& b){
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b){
 	return a > b ? a : b;
 }
 
