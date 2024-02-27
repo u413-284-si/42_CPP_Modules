@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:50:15 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:47:49 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 18:00:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Point::Point(void) : mX(0), mY(0){
 	return;
 }
 
-Point::Point(const float& m, const float& n) : mX(m),mY(n){
+Point::Point(const float& m, const float& n) : mX(Fixed(m)),mY(Fixed(n)){
 	if (VERBOSE)
 		std::cout << "Parameterised constructor called" << std::endl;
 	return;											
@@ -60,4 +60,9 @@ float	Point::sign2DCrossProduct(const Point& a, const Point& b, const Point& p){
 	// Compute the cross product of vectors (b - a) and (p - a)
 	tmp = (b.mX - a.mX) * (p.mY - a.mY) - (p.mX - a.mX) * (b.mY - a.mY);
 	return tmp.toFloat();
+}
+
+std::ostream&	operator<<(std::ostream& os, const Point& p){
+	os << "(" << p.getmX() << ", " << p.getmY() << ")";
+	return os;
 }

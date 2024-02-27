@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:42:28 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:23:32 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 17:59:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ class Point{
 				const Fixed mX;
 				const Fixed mY;
 };
+
+std::ostream&	operator<<(std::ostream& os, const Point& p);
 
 #endif
