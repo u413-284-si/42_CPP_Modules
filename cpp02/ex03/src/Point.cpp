@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:50:15 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/27 23:40:00 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/27 23:50:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Point::Point(void) : mX(0), mY(0){
 	return;
 }
 
-Point::Point(const float& m, const float& n) : mX(Fixed(m)),mY(Fixed(n)){
+Point::Point(const float& m, const float& n) : mX(m), mY(n){
 	if (VERBOSE)
 		std::cout << "Parameterised constructor called" << std::endl;
 	return;											
