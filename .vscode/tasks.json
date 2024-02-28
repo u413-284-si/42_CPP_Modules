@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "make",
+			"command": "/usr/bin/make",
+			"args": [],
+			"options": {
+				"cwd": "${workspaceFolder}/cpp03/ex00"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+		},
+		{
+			"type": "cppbuild",
+			"label": "make bonus",
+			"command": "/usr/bin/make",
+			"args": ["bonus"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+		}
+	]
+}
