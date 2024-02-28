@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:34:33 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 14:32:10 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 15:16:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ class ClapTrap{
 				void		attack(const std::string& target);
 				void		takeDamage(unsigned int amount);
 				void		beRepaired(unsigned int amount);
+				void		showStats(void) const;
 
 	private:
 				std::string		mName;
-				int				mHitPoints;
-				int				mEnergyPoints;
-				int				mAttackDamage;
+				unsigned int	mHitPoints;
+				unsigned int	mEnergyPoints;
+				unsigned int	mAttackDamage;
+
+				bool		happy(void) const;
 };
 
 #endif
