@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:15:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 16:02:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 16:37:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ void	ClapTrap::takeDamage(unsigned int amount){
 }
 
 void	ClapTrap::beRepaired(unsigned int amount){
-	long	tmp;
+	unsigned long	tmp;
 	
 	if (this->happy()){
 		std::cout << this->mName << " juicing up by " << amount << " HP!" << std::endl;
-		tmp = this->mHitPoints + amount;
-		if (tmp > 4294967295)
-			this->mHitPoints = 4294967295;
+		tmp = (unsigned long)this->mHitPoints + (unsigned long)amount;
+		if (tmp > MAX_UNSIGNED_INT)
+			this->mHitPoints = MAX_UNSIGNED_INT;
 		else
 			this->mHitPoints += amount;
 		this->mEnergyPoints--;
