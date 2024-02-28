@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:15:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 15:35:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 15:45:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,8 @@ void	ClapTrap::beRepaired(unsigned int amount){
 	}
 	this->showStats();
 	return;
+}
+
+const std::string&	ClapTrap::getmName(void) const{
+	return this->mName;
 }
