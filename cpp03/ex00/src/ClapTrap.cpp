@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:15:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 15:45:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 15:59:35 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ bool	ClapTrap::happy(void) const{
 		std::cout << this->mName << " can't cause dead." << std::endl;
 		return false;
 	}
-	else if (this->mEnergyPoints == 0){
+	else if (this->mEnergyPoints == 0)
 		std::cout << this->mName << " can't cause sooo tired." << std::endl;
-		return false;
-	}
+	return false;
 }
 
 void	ClapTrap::showStats(void) const{
