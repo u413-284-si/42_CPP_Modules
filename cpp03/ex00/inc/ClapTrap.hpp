@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:34:33 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 15:45:19 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 16:14:33 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 /* ====== LIBRARIES ====== */
 
 #include <iostream>
+#include <limits>
+
+# define MAX_UNSIGNED_INT std::numeric_limits<unsigned int>::max()
 
 /* ====== CLASS DECLARATION ====== */
 
