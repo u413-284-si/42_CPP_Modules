@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:38:40 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 15:57:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/28 16:38:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int	main(void){
 	a.attack(b.getmName());
 
 	// test copy constructor
-	c.getmName();
 	c.showStats();
 
 	// test default constructor
-	d.getmName();
 	d.showStats();
 	
 	// test member functions
@@ -39,7 +37,7 @@ int	main(void){
 	a.beRepaired(799);
 	
 	// test overflow
-	b.beRepaired(4294967295);
+	b.beRepaired(MAX_UNSIGNED_INT);
 
 	// test assignment overloading
 	d = b;
