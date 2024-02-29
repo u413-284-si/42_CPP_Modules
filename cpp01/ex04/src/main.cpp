@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:19:50 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/26 18:54:24 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/02/29 18:18:50 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ std::string	parseAndReplace(std::string& line, const std::string& target, const 
 	size_t		start = 0;
 	std::string	tmp;
 
-	if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
-		return tmp;
 	pos = line.find(target, start);
 	while (pos != std::string::npos){
 		tmp.append(line, start, pos - start);
