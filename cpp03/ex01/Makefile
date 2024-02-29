@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/02/28 00:02:34 by sqiu             ###   ########.fr        #
+#    Updated: 2024/02/29 15:01:50 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,8 @@ NAME := claptrap
 # ******************************
 
 SRC:= 	ClapTrap.cpp \
-		main.cpp
+		main.cpp \
+		ScavTrap.cpp
 
 		
 
