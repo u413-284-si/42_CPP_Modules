@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:03:20 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 12:22:42 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 16:00:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ class FragTrap : virtual public ClapTrap{
 				FragTrap&	operator=(const FragTrap& rhs);
 
 				void	highFivesGuys(void);
+	protected:
+				static const unsigned int	mHP = 100;
+				static const unsigned int	mEP = 100;
+				static const unsigned int	mAD = 30;
 };
 
 #endif
