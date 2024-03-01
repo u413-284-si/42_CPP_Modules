@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:03:20 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 11:59:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 12:21:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ class ScavTrap : virtual public ClapTrap{
 
 				void	guardGate(void);
 				void	attack(const std::string& target);
-
-	private:
-	
 };
 
 #endif
