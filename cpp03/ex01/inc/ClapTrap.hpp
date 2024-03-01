@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:34:33 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/28 16:14:33 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 10:46:28 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class ClapTrap{
 				void				beRepaired(unsigned int amount);
 				void				showStats(void) const;
 
-	private:
+	protected:
 				std::string		mName;
 				unsigned int	mHitPoints;
 				unsigned int	mEnergyPoints;
