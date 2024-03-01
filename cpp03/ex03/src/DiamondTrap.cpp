@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:02:07 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 15:10:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 16:01:01 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap(){
 	this->mHitPoints = FragTrap::mHitPoints;
 	this->mEnergyPoints = ScavTrap::mEnergyPoints;
 	this->mAttackDamage = FragTrap::mAttackDamage;
-	std::cout << this->mName << ": Momma?" << std::endl;
+	std::cout << this->mName << ": Momma? [default]" << std::endl;
 	return;
 }
 
-DiamondTrap::DiamondTrap(std::string name) :	ClapTrap(name + "_clap_name"){
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name",
+													  FragTrap::mHP,
+													  ScavTrap::mEP,
+													  FragTrap::mAD){
 	this->mName = name;
-	this->mHitPoints = FragTrap::mHitPoints;
-	this->mEnergyPoints = ScavTrap::mEnergyPoints;
-	this->mAttackDamage = FragTrap::mAttackDamage;
-	std::cout << this->mName << ": Momma?" << std::endl;
+	std::cout << this->mName << ": Momma? [param]" << std::endl;
 	return;
 }
 

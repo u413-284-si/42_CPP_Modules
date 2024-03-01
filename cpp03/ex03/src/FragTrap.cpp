@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:14:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 15:13:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 16:02:36 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 //Constructors & Destructors
 
 FragTrap::FragTrap(void) : ClapTrap(){
-	this->mHitPoints = 100;
-	this->mEnergyPoints = 100;
-	this->mAttackDamage = 30;
-	std::cout << this->mName << ": Ciao bello!" << std::endl;
+	std::cout << this->mName << ": Ciao bello! [default]" << std::endl;
 	return;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name){
-	this->mHitPoints = 100;
-	this->mEnergyPoints = 100;
-	this->mAttackDamage = 30;
-	std::cout << this->mName << ": Ciao bello!" << std::endl;
+FragTrap::FragTrap(std::string name) : ClapTrap(name, mHP, mEP, mAD){
+	std::cout << this->mName << ": Ciao bello! [param]" << std::endl;
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:15:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 14:58:27 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:42:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ ClapTrap::ClapTrap(void) :	mName("CL4P-TP"),
 							mHitPoints(10),
 							mEnergyPoints(10), 
 							mAttackDamage(0){
-	std::cout << "CL4P-TP at your service!" << std::endl;
+	std::cout << this->mName << " at your service! [default]" << std::endl;
 	return;
 }
 
-ClapTrap::ClapTrap(std::string name) :	mName(name),
-										mHitPoints(10),
-										mEnergyPoints(10),
-										mAttackDamage(0){
-	std::cout << this->mName << " at your service!" << std::endl;
+ClapTrap::ClapTrap(std::string name, unsigned int hp, unsigned int ep, \
+	unsigned int a) :	mName(name),
+						mHitPoints(hp),
+						mEnergyPoints(ep),
+						mAttackDamage(a){
+	std::cout << this->mName << " at your service! [param]" << std::endl;
 	return;
 }
 
