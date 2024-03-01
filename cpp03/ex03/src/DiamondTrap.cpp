@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:02:07 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 13:23:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:10:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap(){
 	return;
 }
 
-DiamondTrap::DiamondTrap(std::string name) :	ClapTrap(name + "_clap_name"),
-												ScavTrap(name),
-												FragTrap(name){
+DiamondTrap::DiamondTrap(std::string name) :	ClapTrap(name + "_clap_name"){
 	this->mName = name;
 	this->mHitPoints = FragTrap::mHitPoints;
 	this->mEnergyPoints = ScavTrap::mEnergyPoints;
@@ -53,6 +51,7 @@ DiamondTrap::~DiamondTrap(void){
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& rhs){
 	if (this != &rhs){
 		this->mName = rhs.mName;
+		ClapTrap::mName = rhs.ClapTrap::mName;
 		this->mHitPoints = rhs.mHitPoints;
 		this->mEnergyPoints = rhs.mEnergyPoints;
 		this->mAttackDamage = rhs.mAttackDamage;
@@ -63,8 +62,8 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& rhs){
 // Member functions
 
 void	DiamondTrap::whoAmI(void){
-	std::cout << "I am " << this->mName << "and my ancestor is";
-	std::cout << ClapTrap::mName << std::endl;
+	std::cout << "I am " << this->mName << " and my ancestor is ";
+	std::cout << ClapTrap::mName << "\n" << std::endl;
 }
 
 void	DiamondTrap::attack(const std::string& target){

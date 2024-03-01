@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:14:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 13:24:14 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:13:29 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 //Constructors & Destructors
 
 ScavTrap::ScavTrap(void) : ClapTrap(){
-	this->mName = "SC4V-TP";
 	this->mHitPoints = 100;
 	this->mEnergyPoints = 50;
 	this->mAttackDamage = 20;
@@ -24,7 +23,6 @@ ScavTrap::ScavTrap(void) : ClapTrap(){
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
-	this->mName = name;
 	this->mHitPoints = 100;
 	this->mEnergyPoints = 50;
 	this->mAttackDamage = 20;
@@ -60,7 +58,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& rhs){
 // Member functions
 
 void	ScavTrap::guardGate(void){
-	std::cout << this->mName << ": Gate keeping mode activated!!" << std::endl;
+	std::cout << this->mName << ": Gate keeping mode activated!!\n" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target){
