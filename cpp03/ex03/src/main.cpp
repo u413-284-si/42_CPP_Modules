@@ -6,18 +6,19 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:38:40 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 12:35:20 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 13:19:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
 #include "../inc/ScavTrap.hpp"
 #include "../inc/FragTrap.hpp"
+#include "../inc/DiamondTrap.hpp"
 
 int	main(void){
-	FragTrap	a("Benediktus");
+	DiamondTrap	a("Benediktus");
 	ScavTrap	b("Iggy");
-	FragTrap	c(a);
+	DiamondTrap	c(a);
 	ScavTrap	d;
 	ClapTrap	e;
 
