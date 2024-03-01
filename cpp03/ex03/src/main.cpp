@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:38:40 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 15:13:55 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 16:22:02 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void){
 	a.highFivesGuys();
 	a.beRepaired(3423);
 	a.takeDamage(10000);
+	a.attack("i");
 	
-	DiamondTrap b;
 	return 0;
 }
