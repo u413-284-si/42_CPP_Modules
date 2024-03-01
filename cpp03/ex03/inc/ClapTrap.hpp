@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:34:33 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 10:46:28 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:38:50 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 class ClapTrap{
 	public:
 				ClapTrap(void);
-				ClapTrap(std::string name);
+				ClapTrap(std::string name, unsigned int hp, unsigned int ep, \
+					unsigned int a);
 				ClapTrap(const ClapTrap& other);
 				~ClapTrap(void);
 
