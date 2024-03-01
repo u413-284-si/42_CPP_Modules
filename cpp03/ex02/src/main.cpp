@@ -6,19 +6,22 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:38:40 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 12:11:13 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 12:35:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
 #include "../inc/ScavTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
 int	main(void){
-	ScavTrap	a("Benediktus");
+	FragTrap	a("Benediktus");
 	ScavTrap	b("Iggy");
-	ScavTrap	c(a);
+	FragTrap	c(a);
 	ScavTrap	d;
+	ClapTrap	e;
 
+	e.attack(a.getmName());
 	a.attack(b.getmName());
 
 	// test copy constructor
@@ -45,9 +48,9 @@ int	main(void){
 	d.showStats();
 
 	// test tiring out
-	for (int i = 0; i < 50; i++)
-		c.attack(d.getmName());	
-	c.attack(d.getmName());
+	for (int i = 0; i < 9; i++)
+		e.attack(d.getmName());	
+	e.attack(d.getmName());
 	
 	return 0;
 }
