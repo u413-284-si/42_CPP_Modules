@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:14:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 12:00:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 13:25:47 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other){
-	std::cout << this->mName << ": Cloned Bugalooshrimp it is!" << std::endl;
 	*this = other;
+	std::cout << this->mName << ": Cloned Bugalooshrimp it is!" << std::endl;
 	return;
 }
 

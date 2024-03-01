@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:14:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 12:29:08 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 13:23:39 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name){
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other){
+	*this = other;
 	std::cout << this->mName << ": Ciao belli!";
 	std::cout << std::endl;
-	*this = other;
 	return;
 }
 

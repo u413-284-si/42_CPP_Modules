@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:15:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/02/29 15:01:14 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 13:23:56 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ ClapTrap::ClapTrap(std::string name) :	mName(name),
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other){
-	std::cout << "Let the clone wars begin!" << std::endl;
 	*this = other;
+	std::cout << "Let the clone wars begin!" << std::endl;
 	return;
 }
 
