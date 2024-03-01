@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:14:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 16:02:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 16:16:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //Constructors & Destructors
 
-ScavTrap::ScavTrap(void) : ClapTrap(){
+ScavTrap::ScavTrap(void) : ClapTrap("Scvtrp", mHP, mEP, mAD){
 	std::cout << this->mName << ": Bugalooshrimp it is! [default]" << std::endl;
 	return;
 }
