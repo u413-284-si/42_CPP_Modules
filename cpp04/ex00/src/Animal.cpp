@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 18:35:46 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/01 18:51:46 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 /* CONSTRUCTORS */
 
-Animal::Animal(void) : type("Animal"){
+Animal::Animal(void) : _type("Animal"){
 	std::cout << "[Animal] default constructor called." << std::endl;
+	return;
+}
+
+Animal::Animal(const std::string& typus) : _type(typus){
+	std::cout << "[Animal] param constructor called." << std::endl;
 	return;
 }
 
@@ -34,7 +39,7 @@ Animal::~Animal(void){
 
 Animal&	Animal::operator=(const Animal& rhs){
 	if (this != &rhs){
-		this->type = rhs.type;
+		this->_type = rhs._type;
 	}
 	return *this;
 }
