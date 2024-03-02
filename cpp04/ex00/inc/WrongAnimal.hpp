@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/02 13:53:57 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/02 14:24:32 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class WrongAnimal{
 				WrongAnimal(void);
 				WrongAnimal(const std::string& typus);
 				WrongAnimal(const WrongAnimal& other);
-				~WrongAnimal(void);
+				virtual ~WrongAnimal(void);
 
 				WrongAnimal&		operator=(const WrongAnimal& rhs);
 				const std::string&	getType(void) const;
