@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 18:51:46 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/02 13:49:39 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ Animal&	Animal::operator=(const Animal& rhs){
 
 /* MEMBER FUNCTIONS */
 
-void	Animal::makeSound(void) const{
+const std::string&	Animal::getType(void) const{
+	return this->_type;
+}
+
+void				Animal::makeSound(void) const{
 	std::cout << "[Animal]: Humms curiously" << std::endl;
 	return;
 }
