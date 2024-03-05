@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:11:53 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/04 17:18:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/05 16:36:43 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ Brain::~Brain(void){
 
 Brain&	Brain::operator=(const Brain& rhs){
 	if (this != &rhs){
-		this->ideas = rhs.ideas;
+		for (int i = 0; i < 100; i++)
+			this->_ideas[i] = rhs._ideas[i];
 	}
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:07:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/04 17:13:02 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/05 16:35:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class Brain{
 
 				Brain&	operator=(const Brain& rhs);
 
-				std::string	ideas[100];
+	private:
+				std::string	_ideas[100];
 };
 
 #endif
