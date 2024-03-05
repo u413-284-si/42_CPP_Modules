@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 19:06:45 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/05 16:52:05 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /* ====== LIBRARIES ====== */
 
 #include "../inc/Animal.hpp"
+#include "../inc/Brain.hpp"
 
 /* ====== CLASS DECLARATION ====== */
 
@@ -27,6 +28,9 @@ class Dog : public Animal{
 
 				Dog&	operator=(const Dog& rhs);
 				virtual void	makeSound(void) const;
+
+	private:
+				Brain*	_brain;
 };
 
 #endif

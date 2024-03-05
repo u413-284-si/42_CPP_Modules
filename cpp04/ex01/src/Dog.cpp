@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/01 19:08:33 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/05 17:38:05 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* CONSTRUCTORS */
 
 Dog::Dog(void) : Animal("Dog"){
+	this->_brain = new Brain();
 	std::cout << "[Dog] default constructor called." << std::endl;
 	return;
 }
@@ -26,6 +27,7 @@ Dog::Dog(const Dog& other) : Animal("Dog"){
 }
 
 Dog::~Dog(void){
+	delete this->_brain;
 	std::cout << "[Dog] destructor called." << std::endl;
 	return;
 }
@@ -35,6 +37,8 @@ Dog::~Dog(void){
 Dog&	Dog::operator=(const Dog& rhs){
 	if (this != &rhs){
 		this->_type = rhs._type;
+		this->_brain = new Brain();
+		*(this->_brain) = *(rhs._brain);
 	}
 	return *this;
 }
