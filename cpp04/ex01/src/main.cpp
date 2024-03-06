@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:43:19 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 17:55:34 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/06 18:18:24 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,34 @@ void	testSubject2(void){
 	return;
 }
 
+void	testDeepCopies(void){
+	Dog	d1;
+	int	n1;
+
+	d1.printIdeas();
+	std::cout << std::endl;
+	n1 = d1.getLastIdea();
+	for (int i = n1 + 1; i < n1 + 4; i++){
+		d1.setIdea("Foooood", i);
+		d1.setLastIdea(i);
+	}
+	d1.printIdeas();
+	std::cout << std::endl;
+	n1 = d1.getLastIdea();
+	for (int i = n1 + 1; i < n1 + 4; i++){
+		d1.setIdea("Scratch me!", i);
+		d1.setLastIdea(i);
+	}
+	d1.printIdeas();
+	std::cout << std::endl;
+}
+
 int	main(void){
 	std::cout << "\n* TEST SUBJECT *\n" << std::endl;
 	testSubject();
 	std::cout << "\n* TEST SUBJECT2 *\n" << std::endl;
 	testSubject2();
-	return 0;	
+	std::cout << "\n* TEST DEEPCOPIES *\n" << std::endl;
+	testDeepCopies();
+	return 0;
 }
