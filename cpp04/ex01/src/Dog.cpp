@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 17:38:05 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/06 16:41:14 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 Dog::Dog(void) : Animal("Dog"){
 	this->_brain = new Brain();
+	this->_brain->setIdea("Hola die Waldfee!", 0);
+	this->_brain->setIdea("Throw the bone!", 1);
 	std::cout << "[Dog] default constructor called." << std::endl;
 	return;
 }

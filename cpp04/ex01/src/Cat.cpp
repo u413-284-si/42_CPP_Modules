@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 17:35:10 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/06 16:40:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 Cat::Cat(void) : Animal("Cat"){
 	this->_brain = new Brain();
+	this->_brain->setIdea("My goodness, I'm a cat", 0);
+	this->_brain->setIdea("Caress me hooman", 1);
 	std::cout << "[Cat] default constructor called." << std::endl;
 	return;
 }
