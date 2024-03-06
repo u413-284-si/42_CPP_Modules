@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:11:53 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 16:49:23 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/06 17:59:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Brain::~Brain(void){
 
 Brain&	Brain::operator=(const Brain& rhs){
 	if (this != &rhs){
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < IDEA_CAPACITY; i++)
 			this->_ideas[i] = rhs._ideas[i];
 	}
 	return *this;
@@ -43,7 +43,7 @@ Brain&	Brain::operator=(const Brain& rhs){
 /* MEMBER FUNCTIONS */
 
 void	Brain::setIdea(const std::string& idea, int n){
-	if (n < 0 || n > 99){
+	if (n < 0 || n >= IDEA_CAPACITY){
 		std::cout << "Index out of bounds. Brain can't contain idea.\n";
 		return;
 	}
@@ -52,7 +52,7 @@ void	Brain::setIdea(const std::string& idea, int n){
 }
 
 void	Brain::printIdea(int n) const{
-	if (n < 0 || n > 99){
+	if (n < 0 || n >= IDEA_CAPACITY){
 		std::cout << "Index out of bounds. Brain can't contain idea.\n";
 		return;
 	}

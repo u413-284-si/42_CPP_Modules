@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:07:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 16:42:29 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/06 17:58:29 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 /* ====== LIBRARIES ====== */
 
 #include <iostream>
+
+/* ====== DEFINITIONS ====== */
+
+# define IDEA_CAPACITY 100
 
 /* ====== CLASS DECLARATION ====== */
 
@@ -31,7 +35,7 @@ class Brain{
 				void	printIdea(int n) const;
 				
 	private:
-				std::string	_ideas[100];
+				std::string	_ideas[IDEA_CAPACITY];
 };
 
 #endif
