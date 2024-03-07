@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/06 18:16:48 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/07 16:36:40 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	Dog::printIdeas(void) const{
 	for (int i = 0; i <= this->_lastIdea; i++){
 		this->_brain->printIdea(i);		
 	}
+	std::cout << std::endl;
 	return;
 }
 
