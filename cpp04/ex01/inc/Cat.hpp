@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/05 16:52:13 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 11:56:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ class Cat : public Animal{
 
 				Cat&	operator=(const Cat& rhs);
 				virtual void	makeSound(void) const;
+				void			printIdeas(void) const;
+				int				getLastIdea(void) const;
+				void			setLastIdea(int n);
+				void			setIdea(const std::string& idea, int n);
 				
 	private:
 				Brain*	_brain;
+				int		_lastIdea;
 };
 
 #endif
