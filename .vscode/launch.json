@@ -32,10 +32,10 @@
 			"name": "Standard",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/cpp03/ex00/claptrap",
+			"program": "${workspaceFolder}/cpp04/ex01/a.out",
 			"args": [],
 			"stopAtEntry": true,
-			"cwd": "${workspaceFolder}/cpp03/ex00",
+			"cwd": "${workspaceFolder}/cpp04/ex01",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
@@ -52,31 +52,6 @@
 				}
 			],
 			"preLaunchTask": "make"
-		},
-		{
-			"name": "Bonus",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/miniRT_supreme",
-			"args": ["scenes/test_bonus.rt"],
-			"stopAtEntry": true,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
-				},
-				{
-					"description": "Set Disassembly Flavor to Intel",
-					"text": "-gdb-set disassembly-flavor intel",
-					"ignoreFailures": true
-				}
-			],
-			"preLaunchTask": "make bonus"
 		}
 	]
 }

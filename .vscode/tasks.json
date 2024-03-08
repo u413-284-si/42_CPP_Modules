@@ -7,7 +7,7 @@
 			"command": "/usr/bin/make",
 			"args": [],
 			"options": {
-				"cwd": "${workspaceFolder}/cpp03/ex00"
+				"cwd": "${workspaceFolder}/cpp04/ex01"
 			},
 			"problemMatcher": [
 				"$gcc"
