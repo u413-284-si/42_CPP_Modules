@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:43:19 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 11:49:34 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:40:51 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,36 @@ void	testDog(void){
 		d1.setLastIdea(i);
 	}
 	d1.printIdeas();
+	return;
+}
+
+void	testCat(void){
+	Cat	d1;
+	int	n1;
+
+	d1.printIdeas();
+	n1 = d1.getLastIdea();
+	for (int i = n1 + 1; i < n1 + 4; i++){
+		d1.setIdea("Foooood", i);
+		d1.setLastIdea(i);
+	}
+	d1.printIdeas();
+	n1 = d1.getLastIdea();
+	for (int i = n1 + 1; i < n1 + 4; i++){
+		d1.setIdea("Scratch me!", i);
+		d1.setLastIdea(i);
+	}
+	d1.printIdeas();
+
+	std::cout << "*** Copy assignment: ***\n\n";
+	Cat d2;
+	d2 = d1;
+	d2.printIdeas();
+
+	std::cout << "*** Copy construction: ***\n\n";
+	Cat d3(d1);
+	d3.printIdeas();
+	return;
 }
 
 void	testDeepCopies(void){
@@ -109,6 +139,7 @@ void	testDeepCopies(void){
 	Dog	d3(d1);
 	std::cout << "----- Dog 3 ideas: -----\n";
 	d3.printIdeas();
+	return;
 }
 
 int	main(void){
@@ -120,7 +151,9 @@ int	main(void){
 	testBrain(); */
 	/* std::cout << "\n* TEST DOG *\n" << std::endl;
 	testDog(); */
-	std::cout << "\n* TEST DEEPCOPIES *\n" << std::endl;
-	testDeepCopies();
+	std::cout << "\n* TEST CAT *\n" << std::endl;
+	testCat();
+	/* std::cout << "\n* TEST DEEPCOPIES *\n" << std::endl;
+	testDeepCopies(); */
 	return 0;
 }
