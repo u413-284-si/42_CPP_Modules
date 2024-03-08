@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:41:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 16:18:39 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:32:22 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class AMateria
 				AMateria(void);
 				AMateria(const std::string& type);
 				AMateria(const AMateria& other);
-				~AMateria(void);
+				virtual ~AMateria(void);
 
 				AMateria&			operator=(const AMateria& rhs);
 				

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:45:49 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 15:49:46 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:33:30 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class Ice : public AMateria{
 
 				Ice&				operator=(const Ice& rhs);
 				
-				virtual AMateria*	clone(void) const;
-				virtual void		use(ICharacter& target);
+				AMateria*	clone(void) const;
+				void		use(ICharacter& target);
 };
 
 #endif
