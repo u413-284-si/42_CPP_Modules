@@ -6,11 +6,13 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:20:10 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 15:32:51 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:04:21 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/AMateria.hpp"
+
+/* CONSTRUCTORS */
 
 AMateria::AMateria(void) : _type("undefined"){
 	if (VERBOSE)
@@ -50,4 +52,9 @@ AMateria&	AMateria::operator=(const AMateria& rhs){
 
 const std::string&	AMateria::getType(void) const{
 	return this->_type;
+}
+
+void				AMateria::use(ICharacter& target){
+	std::cout << "* do some shit on " << target.getName() << " *\n";
+	return;
 }
