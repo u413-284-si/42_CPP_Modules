@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:43:19 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 11:31:10 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 11:49:34 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	testDeepCopies(void){
 	d1.printIdeas();
 	std::cout << "----- Dog 2 ideas: -----\n";
 	d2.printIdeas();
-	std::cout << "----- Add ideas: -----\n\n";
+	
+	std::cout << "*** Add ideas: ***\n\n";
 	n1 = d1.getLastIdea();
 	for (int i = n1 + 1; i < n1 + 4; i++){
 		d1.setIdea("Foooood", i);
@@ -96,12 +97,18 @@ void	testDeepCopies(void){
 	d1.printIdeas();
 	std::cout << "----- Dog 2 ideas: -----\n";
 	d2.printIdeas();
-	std::cout << "----- Copy assignment: -----\n\n";
+	
+	std::cout << "*** Copy assignment: ***\n\n";
 	d2 = d1;
 	std::cout << "----- Dog 1 ideas: -----\n";
 	d1.printIdeas();
 	std::cout << "----- Dog 2 ideas: -----\n";
 	d2.printIdeas();
+
+	std::cout << "*** Copy construction: ***\n\n";
+	Dog	d3(d1);
+	std::cout << "----- Dog 3 ideas: -----\n";
+	d3.printIdeas();
 }
 
 int	main(void){

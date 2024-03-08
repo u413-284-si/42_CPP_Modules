@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 11:44:27 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 11:51:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Dog::Dog(void) : Animal("Dog"), _brain(new Brain()){
 	return;
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*(other._brain))){
+Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*(other._brain))),
+								_lastIdea(other._lastIdea){
 	std::cout << "[Dog] copy constructor called." << std::endl;
 	return;
 }
