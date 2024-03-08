@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 11:58:53 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:50:32 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* CONSTRUCTORS */
 
-Cat::Cat(void) : Animal("Cat"), _brain(new Brain()){
+Cat::Cat(void) : AAnimal("Cat"), _brain(new Brain()){
 	this->_brain->setIdea("My goodness, I'm a cat", 0);
 	this->_brain->setIdea("Caress me hooman", 1);
 	this->_lastIdea = 1;
@@ -22,7 +22,7 @@ Cat::Cat(void) : Animal("Cat"), _brain(new Brain()){
 	return;
 }
 
-Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*(other._brain))),
+Cat::Cat(const Cat& other) : AAnimal(other), _brain(new Brain(*(other._brain))),
 								_lastIdea(other._lastIdea){
 	std::cout << "[Cat] copy constructor called." << std::endl;
 	return;

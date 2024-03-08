@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/02 14:24:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:46:24 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 
 /* ====== CLASS DECLARATION ====== */
 
-class Animal{
+class AAnimal{
 	public:
-				Animal(void);
-				Animal(const std::string& typus);
-				Animal(const Animal& other);
-				virtual ~Animal(void);
+				AAnimal(void);
+				AAnimal(const std::string& typus);
+				AAnimal(const AAnimal& other);
+				virtual ~AAnimal(void);
 
-				Animal&				operator=(const Animal& rhs);
+				AAnimal&				operator=(const AAnimal& rhs);
 				const std::string&	getType(void) const;
-				virtual void		makeSound(void) const;
+				virtual void		makeSound(void) const = 0;
 
 	protected:
 				std::string	_type;

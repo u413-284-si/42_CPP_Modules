@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:43:19 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 12:42:41 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:52:56 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../inc/WrongCat.hpp"
 
 void	testSubject(void){
-	Animal*	animals[10];
+	AAnimal*	animals[10];
 	
 	for (int i = 0; i < 5; i++){
 		animals[i] = new Dog();
@@ -28,8 +28,8 @@ void	testSubject(void){
 }
 
 void	testSubject2(void){
-	const Animal*	j = new Dog();
-	const Animal*	i = new Cat();
+	const AAnimal*	j = new Dog();
+	const AAnimal*	i = new Cat();
 	
 	delete j;
 	delete i;
@@ -143,16 +143,16 @@ void	testDeepCopies(void){
 }
 
 int	main(void){
-	std::cout << "\n* TEST SUBJECT *\n" << std::endl;
-	testSubject();
-	std::cout << "\n* TEST SUBJECT2 *\n" << std::endl;
-	testSubject2();
-	std::cout << "\n* TEST BRAIN *\n" << std::endl;
-	testBrain();
-	std::cout << "\n* TEST DOG *\n" << std::endl;
-	testDog();
-	std::cout << "\n* TEST CAT *\n" << std::endl;
-	testCat();
+	/* std::cout << "\n* TEST SUBJECT *\n" << std::endl;
+	testSubject(); */
+	/* std::cout << "\n* TEST SUBJECT2 *\n" << std::endl;
+	testSubject2(); */
+	/* std::cout << "\n* TEST BRAIN *\n" << std::endl;
+	testBrain(); */
+	/* std::cout << "\n* TEST DOG *\n" << std::endl;
+	testDog(); */
+	/* std::cout << "\n* TEST CAT *\n" << std::endl;
+	testCat(); */
 	std::cout << "\n* TEST DEEPCOPIES *\n" << std::endl;
 	testDeepCopies();
 	return 0;

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/06 18:14:33 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:49:19 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 /* ====== CLASS DECLARATION ====== */
 
-class Dog : public Animal{
+class Dog : public AAnimal{
 	public:
 				Dog(void);
 				Dog(const Dog& other);
