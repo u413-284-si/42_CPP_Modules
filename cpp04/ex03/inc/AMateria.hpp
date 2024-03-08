@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:41:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 15:28:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:18:39 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /* ====== LIBRARIES ====== */
 
 #include <iostream>
+#include "ICharacter.hpp"
 
 /* ====== DEFINITIONS ====== */
 
