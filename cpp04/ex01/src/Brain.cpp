@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:11:53 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 00:46:59 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 11:44:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 /* CONSTRUCTORS */
 
 Brain::Brain(void){
+	for (int i = 0; i < IDEA_CAPACITY; i++)
+		this->_ideas[i] = "I think, therefore I am.";
 	std::cout << "[Brain] default constructor called." << std::endl;
 	return;
 }
 
 Brain::Brain(const Brain& other){
+	for (int i = 0; i < IDEA_CAPACITY; i++)
+		this->_ideas[i] = "I think I am a copy.";
 	*this = other;
 	std::cout << "[Brain] copy constructor called." << std::endl;
 	return;
