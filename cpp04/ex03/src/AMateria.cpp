@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:20:10 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 16:04:21 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:48:15 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ AMateria::~AMateria(void){
 /* OPERATOR OVERLOADING */
 
 AMateria&	AMateria::operator=(const AMateria& rhs){
+	if (VERBOSE)
+		std::cout << "[AMateria] copy assignment operator called." << std::endl;
 	if (this != &rhs){
 		this->_type = rhs.getType();
 	}

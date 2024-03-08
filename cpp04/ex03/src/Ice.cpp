@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:50:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 16:08:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:48:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Ice::~Ice(void){
 /* OPERATOR OVERLOADING */
 
 Ice&	Ice::operator=(const Ice& rhs){
+	if (VERBOSE)
+		std::cout << "[Ice] copy assignment operator called." << std::endl;
 	/* if (this != &rhs)
 		this->_type = rhs.getType(); */
 	(void)rhs;
