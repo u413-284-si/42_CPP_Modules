@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:15:59 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 16:19:51 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 16:21:43 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "AMateria.hpp"
 
 /* ====== CLASS DECLARATION ====== */
+class AMateria;
 
 class ICharacter{
 	public:
