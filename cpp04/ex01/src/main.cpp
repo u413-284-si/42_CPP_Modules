@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:43:19 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/06 18:18:24 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 00:50:37 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,58 @@ void	testSubject2(void){
 	return;
 }
 
-void	testDeepCopies(void){
+void	testDog(void){
 	Dog	d1;
 	int	n1;
 
 	d1.printIdeas();
-	std::cout << std::endl;
 	n1 = d1.getLastIdea();
 	for (int i = n1 + 1; i < n1 + 4; i++){
 		d1.setIdea("Foooood", i);
 		d1.setLastIdea(i);
 	}
 	d1.printIdeas();
-	std::cout << std::endl;
 	n1 = d1.getLastIdea();
 	for (int i = n1 + 1; i < n1 + 4; i++){
 		d1.setIdea("Scratch me!", i);
 		d1.setLastIdea(i);
 	}
 	d1.printIdeas();
-	std::cout << std::endl;
+}
+
+void	testDeepCopies(void){
+	Dog	d1;
+	Dog	d2;
+	int	n1;
+	
+	std::cout << "----- Dog 1 ideas: -----\n";
+	d1.printIdeas();
+	std::cout << "----- Dog 2 ideas: -----\n";
+	d2.printIdeas();
+	n1 = d1.getLastIdea();
+	for (int i = n1 + 1; i < n1 + 4; i++){
+		d1.setIdea("Foooood", i);
+		d1.setLastIdea(i);
+	}
+	std::cout << "----- Dog 1 ideas: -----\n";
+	d1.printIdeas();
+	std::cout << "----- Dog 2 ideas: -----\n";
+	d2.printIdeas();
+	std::cout << "----- Copy assignment: -----\n";
+	d2=d1;
+	std::cout << "----- Dog 1 ideas: -----\n";
+	d1.printIdeas();
+	std::cout << "----- Dog 2 ideas: -----\n";
+	d2.printIdeas();
 }
 
 int	main(void){
-	std::cout << "\n* TEST SUBJECT *\n" << std::endl;
+	/* std::cout << "\n* TEST SUBJECT *\n" << std::endl;
 	testSubject();
 	std::cout << "\n* TEST SUBJECT2 *\n" << std::endl;
 	testSubject2();
+	std::cout << "\n* TEST DOG *\n" << std::endl;
+	testDog(); */
 	std::cout << "\n* TEST DEEPCOPIES *\n" << std::endl;
 	testDeepCopies();
 	return 0;
