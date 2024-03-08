@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/07 16:36:40 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 00:51:39 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 /* CONSTRUCTORS */
 
-Dog::Dog(void) : Animal("Dog"){
-	this->_brain = new Brain();
+Dog::Dog(void) : Animal("Dog"), _brain(new Brain()){
 	this->_brain->setIdea("Hola die Waldfee!", 0);
 	this->_brain->setIdea("Throw the bone!", 1);
 	this->_lastIdea = 1;
@@ -23,8 +22,7 @@ Dog::Dog(void) : Animal("Dog"){
 	return;
 }
 
-Dog::Dog(const Dog& other) : Animal("Dog"){
-	*this = other;
+Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain)){
 	std::cout << "[Dog] copy constructor called." << std::endl;
 	return;
 }
@@ -40,7 +38,6 @@ Dog::~Dog(void){
 Dog&	Dog::operator=(const Dog& rhs){
 	if (this != &rhs){
 		this->_type = rhs._type;
-		this->_brain = new Brain();
 		*(this->_brain) = *(rhs._brain);
 	}
 	return *this;
@@ -66,6 +63,8 @@ int		Dog::getLastIdea(void) const{
 }
 
 void	Dog::setLastIdea(int n){
+	if (n < 0 || n >= IDEA_CAPACITY)
+		this->_lastIdea = 0;
 	this->_lastIdea = n;
 	return;
 }
