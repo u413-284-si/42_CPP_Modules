@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:26:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 00:51:39 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/08 11:44:27 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog(void) : Animal("Dog"), _brain(new Brain()){
 	return;
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain)){
+Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*(other._brain))){
 	std::cout << "[Dog] copy constructor called." << std::endl;
 	return;
 }
@@ -39,7 +39,9 @@ Dog&	Dog::operator=(const Dog& rhs){
 	if (this != &rhs){
 		this->_type = rhs._type;
 		*(this->_brain) = *(rhs._brain);
+		this->_lastIdea = rhs._lastIdea;
 	}
+	std::cout << "[Dog] copy assignment operator called." << std::endl;
 	return *this;
 }
 
@@ -54,6 +56,7 @@ void	Dog::printIdeas(void) const{
 	for (int i = 0; i <= this->_lastIdea; i++){
 		this->_brain->printIdea(i);		
 	}
+	std::cout << "Brain address at " << this->_brain << std::endl;
 	std::cout << std::endl;
 	return;
 }
