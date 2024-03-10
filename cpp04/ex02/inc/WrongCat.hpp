@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:15:03 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/02 14:06:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/10 09:17:58 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class WrongCat : public WrongAnimal{
 				~WrongCat(void);
 
 				WrongCat&		operator=(const WrongCat& rhs);
-				virtual void	makeSound(void) const;
+				void			makeSound(void) const;
 };
 
 #endif
