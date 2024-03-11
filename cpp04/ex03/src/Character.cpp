@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:36:21 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 17:59:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 14:33:29 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ const std::string&	Character::getName(void) const{
 	return this->_name;
 }
 
-void				Character::equip(AMateria* m){
+void				Character::equip(AMateria* materia){
 	for (int i = 0; i < INV_CAPA; i++){
 		if (!this->_inventory[i]){
-			this->_inventory[i] = m;
-			std::cout << this->_name << " equipped " << m->getType();
+			this->_inventory[i] = materia;
+			std::cout << this->_name << " equipped " << materia->getType();
 			std::cout << " in slot " << i << std::endl;
 			return;
 			}
