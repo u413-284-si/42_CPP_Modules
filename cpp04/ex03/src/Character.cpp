@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:36:21 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 14:33:29 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 14:58:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Character::Character(const std::string& name) : _name(name){
 	return;
 }
 
-Character::Character(const std::string& other){
+Character::Character(const Character& other){
 	if (VERBOSE)
 		std::cout << "[Character] copy constructor called." << std::endl;
 	*this = other;
