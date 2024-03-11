@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:22:44 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 14:32:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:25:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Character : public ICharacter{
 				Character&			operator=(const Character& rhs);
 				
 				const std::string&	getName(void) const;
+				AMateria*			getMateria(int idx) const;
 				void				equip(AMateria* materia);
 				void				unequip(int idx);
 				void				use(int idx, ICharacter& target);

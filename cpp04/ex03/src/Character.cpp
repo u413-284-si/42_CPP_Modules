@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:36:21 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 14:58:20 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:25:42 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ Character&	Character::operator=(const Character& rhs){
 
 const std::string&	Character::getName(void) const{
 	return this->_name;
+}
+
+AMateria*			Character::getMateria(int idx) const{
+	return this->_inventory[idx];
 }
 
 void				Character::equip(AMateria* materia){
