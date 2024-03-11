@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:48:38 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 15:34:03 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:40:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,13 @@ void	testCharacter(void){
 
 	delete materia;
 	delete cure1;
-	delete cure2;
-	delete ice1;
 	delete dudette;
 	delete dude;
 	return;
 }
 
 void	testMateriaSource(void){
-	
+	//IMateriaSource*	src1 = new MateriaSource();
 }
 
 int	main(void){

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:20:48 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 14:45:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:39:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	MateriaSource::learnMateria(AMateria* materia){
 			return;
 			}
 	}
+	delete materia;
 	std::cout << "Can't store " << materia->getType();
 	std::cout << ". Inventory full!" << std::endl;
 	return;
