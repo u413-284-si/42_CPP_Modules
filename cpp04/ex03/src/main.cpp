@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:48:38 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 15:40:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:51:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,31 @@ void	testCharacter(void){
 }
 
 void	testMateriaSource(void){
-	//IMateriaSource*	src1 = new MateriaSource();
+	IMateriaSource*	src = new MateriaSource();
+	ICharacter*	dude = new Character("Jamal");
+	ICharacter*	dudette = new Character("Teesha");
+	AMateria*	cure1 = new Cure();
+	
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
+	src->learnMateria(new Ice());
+	src->learnMateria(cure1);
+	src->learnMateria(new Ice());
+
+	dude->equip(src->createMateria("ice"));
+	dude->equip(src->createMateria("ice"));
+	dude->equip(src->createMateria("cure"));
+	dude->equip(src->createMateria("cure"));
+
+	dude->use(0, *dudette);
+	dude->use(1, *dudette);
+	dude->use(2, *dudette);
+	dude->use(3, *dudette);
+
+	delete dudette;
+	delete dude;
+	delete src;
+	return;	
 }
 
 int	main(void){

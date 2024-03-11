@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:36:21 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/11 15:39:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:59:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void				Character::equip(AMateria* materia){
 			return;
 			}
 	}
-	delete materia;
 	/* std::cout << this->_name << " can't equip " << m->getType();
 	std::cout << ". Inventory full!" << std::endl; */
+	delete materia;
 	return;
 }
 
