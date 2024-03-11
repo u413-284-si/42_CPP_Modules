@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:41:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/08 16:32:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/11 14:58:40 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 /* ====== DEFINITIONS ====== */
 
-# define VERBOSE 1
+# define VERBOSE 0
 
 /* ====== CLASS DECLARATION ====== */
+class ICharacter;
 
 class AMateria
 {
