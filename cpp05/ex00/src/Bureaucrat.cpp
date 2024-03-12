@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:21:37 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/12 17:51:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/13 00:07:58 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat(void) : _name("undefined"), _grade(1){
 	return;
 }
 
-Bureaucrat::Bureaucrat(const std::string& name, int& grade) : _name(name){
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name){
 	if (VERBOSE)
 		std::cout << "[Bureaucrat] Param constructor called." << std::endl;
 	if (grade < 1)
@@ -57,7 +57,7 @@ Bureaucrat&		Bureaucrat::operator=(const Bureaucrat& rhs){
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b){
-	os << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << std::endl;
+	os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 	return os;
 }
 

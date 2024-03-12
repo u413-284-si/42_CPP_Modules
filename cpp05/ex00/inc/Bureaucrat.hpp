@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:12:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/12 17:46:51 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/13 00:04:05 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class Bureaucrat{
 		public:
 					Bureaucrat(void);
-					Bureaucrat(const std::string& name, int& grade);
+					Bureaucrat(const std::string& name, int grade);
 					Bureaucrat(const Bureaucrat& other);
 					virtual ~Bureaucrat(void);
 
