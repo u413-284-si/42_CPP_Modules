@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 23:57:29 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 00:21:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/13 00:26:08 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	testConstructorLowException(void){
 	Bureaucrat	bubu("bubu", 151);
 	return;
 }
+
+// Unit testing
 
 void	testIncrementHighException(void){
 	Bureaucrat	bubu("bubu", 1);
