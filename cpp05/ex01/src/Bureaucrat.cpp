@@ -6,11 +6,12 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:21:37 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 00:07:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/13 01:11:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
 /* CONSTRUCTORS */
 
@@ -85,4 +86,15 @@ void				Bureaucrat::decrGrade(void){
 	else
 		this->_grade++;
 	return;	
+}
+
+void				Bureaucrat::signForm(Form& form) const{
+	try{
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch(std::exception& e){
+		std::cerr << this->getName() << " couldn't sign " << form.getName();
+		std::cerr << " because " << e.what() << std::endl;
+	} 
 }
