@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:21:37 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 01:11:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/14 17:55:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,22 @@ int					Bureaucrat::getGrade(void) const{
 void				Bureaucrat::incrGrade(void){
 	if (this->_grade == 1)
 		throw GradeTooHighException();
-	else
+	else{
+		std::cout << this->getName() << " increases his grade!" << std::endl;
 		this->_grade--;
+		std::cout << this->getName() <<" current grade: " << this->getGrade() << std::endl;
+	}
 	return;	
 }
 
 void				Bureaucrat::decrGrade(void){
 	if (this->_grade == 150)
 		throw GradeTooLowException();
-	else
+	else{
+		std::cout << this->getName() << " decreases his grade!" << std::endl;
 		this->_grade++;
+		std::cout << this->getName() << " current grade: " << this->getGrade() << std::endl;
+	}
 	return;	
 }
 

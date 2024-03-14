@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 00:43:28 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 01:03:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/14 17:47:11 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ Form&		Form::operator=(const Form& rhs){
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& f){
-	os << f.getName() << ", form min. sign grade " << f.getGradeSign() << ".\n";
-	os << f.getName() << ", form min. exec grade " << f.getGradeExec() << ".\n";
-	os << f.getName() << ", form signed: " << f.getSigned() << ".";
+	os << f.getName() << " form min. sign grade " << f.getGradeSign() << ".\n";
+	os << f.getName() << " form min. exec grade " << f.getGradeExec() << ".\n";
+	os << f.getName() << " form signed: " << f.getSigned() << ".";
 	return os;
 }
 
