@@ -6,53 +6,38 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 23:57:29 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/14 17:47:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/14 18:02:21 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
 #include "../inc/Form.hpp"
 
-void	testNoException(void){
-	Bureaucrat	bibi("bibi", 3);
-	
-	std::cout << bibi << std::endl;
-	bibi.incrGrade();
-	std::cout << bibi << std::endl;
-	bibi.decrGrade();
-	std::cout << bibi << std::endl;
-	return;	
-}
-
 // Boundary value testing
 
-void	testConstructorHighException(void){
-	Bureaucrat	bubu("bubu", -1);
+void	testSignHighException(void){
+	Form	f("test", -1, 8);
 	return;
 }
 
-void	testConstructorLowException(void){
-	Bureaucrat	bubu("bubu", 151);
+void	testSignLowException(void){
+	Form	f("test", 151, 9);
+	return;
+}
+
+void	testExecHighException(void){
+	Form	f("test", 4, -1);
+	return;
+}
+
+void	testExecLowException(void){
+	Form	f("test", 8, 151);
 	return;
 }
 
 // Unit testing
 
-void	testIncrementHighException(void){
-	Bureaucrat	bubu("bubu", 1);
-
-	bubu.incrGrade();
-	return;
-}
-
-void	testDecrementLowException(void){
-	Bureaucrat	bubu("bubu", 150);
-
-	bubu.decrGrade();
-	return;
-}
-
-void	testForm(void){
+void	testFormSigning(void){
 	Form		form("test", 7, 8);
 	Bureaucrat	bubu("bubu", 8);
 
@@ -65,47 +50,39 @@ void	testForm(void){
 }
 
 int	main(void){
-	/* std::cout << "\n* TEST NO EXCEPTION *\n" << std::endl;
+	std::cout << "\n* TEST SIGN HIGH EXCEPTION *\n" << std::endl;
 	try{
-		testNoException();
+		testSignHighException();
 	}
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
-	} */
+	}
 	
-	/* std::cout << "\n* TEST CONSTRUCTOR HIGH EXCEPTION *\n" << std::endl;
+	std::cout << "\n* TEST SIGN LOW EXCEPTION *\n" << std::endl;
 	try{
-		testConstructorHighException();
+		testSignLowException();
 	}
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
-	} */
+	}
 	
-	/* std::cout << "\n* TEST CONSTRUCTOR LOW EXCEPTION *\n" << std::endl;
+	std::cout << "\n* TEST EXEC HIGH EXCEPTION *\n" << std::endl;
 	try{
-		testConstructorLowException();
+		testExecHighException();
 	}
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
-	} */
+	}
 	
-	/* std::cout << "\n* TEST INCREMENT HIGH EXCEPTION *\n" << std::endl;
+	std::cout << "\n* TEST EXEC LOW EXCEPTION *\n" << std::endl;
 	try{
-		testIncrementHighException();
+		testExecLowException();
 	}
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
-	} */
-	
-	/* std::cout << "\n* TEST DECREMENT LOW EXCEPTION *\n" << std::endl;
-	try{
-		testDecrementLowException();
 	}
-	catch(std::exception& e){
-		std::cerr << e.what() << std::endl;
-	} */
 	
-	std::cout << "\n* TEST FORM *\n" << std::endl;
-	testForm();
+	std::cout << "\n* TEST FORM SIGNING*\n" << std::endl;
+	testFormSigning();
 	return 0;
 }
