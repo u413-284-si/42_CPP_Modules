@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 23:57:29 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/15 20:01:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 20:06:35 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	testIntern(void){
 
 	try{
 		fPtr = mumu.makeForm("wrongform", "bubus bamboozle");
+		std::cout << *fPtr << std::endl;
+		bubu.executeForm(*fPtr);
+		bubu.signForm(*fPtr);
 	}
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
