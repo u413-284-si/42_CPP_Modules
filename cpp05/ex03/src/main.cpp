@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 23:57:29 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/15 13:11:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 20:01:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,64 @@
 #include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/Intern.hpp"
 
 // Unit testing
 
-void	testShrubberyForm(void){
-	ShrubberyCreationForm	form("my");
-	Bureaucrat				bubu("bubu", 138);
+void	testIntern(void){
+	Bureaucrat				bubu("bubu", 6);
+	Intern					mumu;
+	AForm*					fPtr = NULL;
 
-	std::cout << form << std::endl;
-	bubu.executeForm(form);
-	bubu.signForm(form);
-	bubu.executeForm(form);
-	bubu.incrGrade();
-	bubu.executeForm(form);
+	try{
+		fPtr = mumu.makeForm("wrongform", "bubus bamboozle");
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try{
+		fPtr = mumu.makeForm("shrubbery creation", "bubus bamboozle");
+		std::cout << *fPtr << std::endl;
+		bubu.executeForm(*fPtr);
+		bubu.signForm(*fPtr);
+		bubu.executeForm(*fPtr);
+		delete fPtr;
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
 
-	std::cout << "\n* Copy constructor test *\n" << std::endl;
-	ShrubberyCreationForm	form02(form);
-	std::cout << form02 << std::endl;
-	return;
-}
-
-void	testRobotomyForm(void){
-	RobotomyRequestForm	form("A199");
-	Bureaucrat			bubu("bubu", 46);
-
-	std::cout << form << std::endl;
-	bubu.executeForm(form);
-	bubu.signForm(form);
-	bubu.executeForm(form);
-	bubu.incrGrade();
-	bubu.executeForm(form);
-	return;
-}
-
-void	testPresidentialForm(void){
-	PresidentialPardonForm	form("Dei mudda");
-	Bureaucrat			bubu("bubu", 6);
-
-	std::cout << form << std::endl;
-	bubu.executeForm(form);
-	bubu.signForm(form);
-	bubu.executeForm(form);
-	bubu.incrGrade();
-	bubu.executeForm(form);
+	try{
+		fPtr = mumu.makeForm("robotomy request", "bubus bamboozle");
+		std::cout << *fPtr << std::endl;
+		bubu.executeForm(*fPtr);
+		bubu.signForm(*fPtr);
+		bubu.executeForm(*fPtr);
+		delete fPtr;
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try{
+		fPtr = mumu.makeForm("presidential pardon", "bubus bamboozle");
+		std::cout << *fPtr << std::endl;
+		bubu.executeForm(*fPtr);
+		bubu.signForm(*fPtr);
+		bubu.executeForm(*fPtr);
+		bubu.incrGrade();
+		bubu.executeForm(*fPtr);
+		delete fPtr;
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
 	return;
 }
 
 int	main(void){
-	/* std::cout << "\n* TEST SHRUBBERY FORM *\n" << std::endl;
-	testShrubberyForm(); */
-
-	/* std::cout << "\n* TEST ROBOTOMY FORM *\n" << std::endl;
-	testRobotomyForm(); */
-
-	std::cout << "\n* TEST PRESIDENTIAL FORM *\n" << std::endl;
-	testPresidentialForm();
+	std::cout << "\n* TEST INTERN *\n" << std::endl;
+	testIntern();
 	return 0;
 }
