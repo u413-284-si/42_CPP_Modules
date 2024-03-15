@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:47:27 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/15 11:11:13 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 11:35:36 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) :	AForm(
 	return;																			
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("shrub", 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other){
 	if (VERBOSE)
 		std::cout << "[ShrubberyCreationForm] Copy constructor called." << std::endl;
 	*this = other;
