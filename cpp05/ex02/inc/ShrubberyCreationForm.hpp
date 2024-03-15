@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:39:28 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/14 18:56:44 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 11:06:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* ====== LIBRARIES ====== */
 
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
@@ -32,6 +33,14 @@ class ShrubberyCreationForm : public AForm{
 				ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& rhs);
 				
 				void	execute(const Bureaucrat& executor) const;
+				void	createASCIITree(std::ofstream& outfile) const;
+
+				class OpenFailException : public std::exception{
+					public:
+							virtual const char* what() const throw(){
+								return "form exception: file not open.";
+							}
+				};
 	private:
 				const std::string	_target;
 };

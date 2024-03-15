@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/03/13 00:28:35 by sqiu             ###   ########.fr        #
+#    Updated: 2024/03/15 10:45:33 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,8 +73,9 @@ NAME := a.out
 # *     Source files           *
 # ******************************
 
-SRC:= 	Bureaucrat.cpp \
-		Form.cpp \
+SRC:= 	AForm.cpp \
+		Bureaucrat.cpp \
+		ShrubberyCreationForm.cpp \
 		main.cpp
 
 # ******************************
