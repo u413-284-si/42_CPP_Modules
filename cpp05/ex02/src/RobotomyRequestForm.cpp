@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:28:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/15 13:02:31 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 13:14:12 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const{
 		checkExec(executor);
 		srand(time(0)); // use current time as seed for random number generator
 		std::cout << "* Rrrrrrr zZZzzBzzz clonk tingeling*" << std::endl;
-		if (rand() % 2 == 0)
+		if (rand() % 2)
 			std::cout << this->_target << " has been robotomised successfully!\n";
 		else
 			std::cout << "Robotomy on " << this->_target << " failed. He dead.\n";
