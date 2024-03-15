@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:47:27 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/15 11:07:33 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 11:11:13 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const{
 		std::ofstream	outfile (filename.c_str());
 		if (!outfile.is_open())
 			throw OpenFailException();
-		else{
+		else
 			createASCIITree(outfile);
-			std::cout << "shrubbery created!" << std::endl;
-		}
 }
 
 void	ShrubberyCreationForm::createASCIITree(std::ofstream& outfile) const{
