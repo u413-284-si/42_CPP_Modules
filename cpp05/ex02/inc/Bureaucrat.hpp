@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:12:18 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 00:41:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 10:54:27 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 /* ====== CLASS DECLARATION ====== */
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 		public:
@@ -37,7 +37,8 @@ class Bureaucrat{
 					int					getGrade(void) const;
 					void				incrGrade(void);
 					void				decrGrade(void);
-					void				signForm(Form& form) const;
+					void				signForm(AForm& form) const;
+					void				executeForm(const AForm& form);
 
 					class GradeTooHighException : public std::exception{
 						public:

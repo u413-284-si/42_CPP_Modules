@@ -6,12 +6,12 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:21:37 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/14 17:55:09 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 11:01:37 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 /* CONSTRUCTORS */
 
@@ -94,7 +94,7 @@ void				Bureaucrat::decrGrade(void){
 	return;	
 }
 
-void				Bureaucrat::signForm(Form& form) const{
+void				Bureaucrat::signForm(AForm& form) const{
 	try{
 		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
@@ -102,5 +102,18 @@ void				Bureaucrat::signForm(Form& form) const{
 	catch(std::exception& e){
 		std::cerr << this->getName() << " couldn't sign " << form.getName();
 		std::cerr << " because " << e.what() << std::endl;
-	} 
+	}
+	return;
+}
+
+void				Bureaucrat::executeForm(const AForm& form){
+	try{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(std::exception& e){
+		std::cerr << this->getName() << " couldn't execute " << form.getName();
+		std::cerr << " because " << e.what() << std::endl;
+	}
+	return;
 }
