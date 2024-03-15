@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 00:28:47 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/13 01:12:14 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/15 11:06:38 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ class Form{
 				class GradeTooHighException : public std::exception{
 						public:
 								virtual const char* what() const throw(){
-									return "Form exception: grade too high.";
+									return "form exception: grade too high.";
 								}
 					};
 
 				class GradeTooLowException : public std::exception{
 					public:
 							virtual const char* what() const throw(){
-								return "Form exception: grade too low.";
+								return "form exception: grade too low.";
 							}
 				};
 
