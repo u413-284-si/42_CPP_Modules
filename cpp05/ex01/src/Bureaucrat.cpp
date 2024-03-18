@@ -46,6 +46,14 @@ Bureaucrat::~Bureaucrat(void){
 	return;
 }
 
+const char* Bureaucrat::GradeTooHighException::what() const throw(){
+	return "Bureaucrat exception: grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw(){
+	return "Bureaucrat exception: grade too low";
+}
+
 /* OPERATOR OVERLOADING */
 
 Bureaucrat&		Bureaucrat::operator=(const Bureaucrat& rhs){

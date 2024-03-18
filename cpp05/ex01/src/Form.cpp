@@ -49,6 +49,14 @@ Form::~Form(void){
 	return;
 }
 
+const char* Form::GradeTooHighException::what() const throw(){
+	return "form exception: grade too high";
+}
+
+const char* Form::GradeTooLowException::what() const throw(){
+	return "form exception: grade too low";
+}
+
 /* OPERATOR OVERLOADING */
 
 Form&		Form::operator=(const Form& rhs){

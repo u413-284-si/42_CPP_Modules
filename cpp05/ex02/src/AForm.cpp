@@ -49,6 +49,18 @@ AForm::~AForm(void){
 	return;
 }
 
+const char* AForm::GradeTooHighException::what() const throw(){
+	return "form exception: grade too high";
+}
+
+const char* AForm::GradeTooLowException::what() const throw(){
+	return "form exception: grade too low";
+}
+
+const char* AForm::FormNotSignedException::what() const throw(){
+	return "form exception: not signed";
+}
+
 /* OPERATOR OVERLOADING */
 
 AForm&		AForm::operator=(const AForm& rhs){

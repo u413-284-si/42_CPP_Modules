@@ -40,8 +40,6 @@ class Intern{
 
 					class WrongFormException : public std::exception{
 					public:
-							virtual const char* what() const throw(){
-								return "form exception: not existent.";
-							}
+							virtual const char* what() const throw();
 					};
 };

@@ -61,11 +61,11 @@ void	testPresidentialForm(void){
 }
 
 int	main(void){
-	/* std::cout << "\n* TEST SHRUBBERY FORM *\n" << std::endl;
-	testShrubberyForm(); */
+	std::cout << "\n* TEST SHRUBBERY FORM *\n" << std::endl;
+	testShrubberyForm();
 
-	/* std::cout << "\n* TEST ROBOTOMY FORM *\n" << std::endl;
-	testRobotomyForm(); */
+	std::cout << "\n* TEST ROBOTOMY FORM *\n" << std::endl;
+	testRobotomyForm();
 
 	std::cout << "\n* TEST PRESIDENTIAL FORM *\n" << std::endl;
 	testPresidentialForm();

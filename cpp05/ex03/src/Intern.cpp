@@ -34,6 +34,10 @@ Intern::~Intern(void){
 	return;
 }
 
+const char* Intern::WrongFormException::what() const throw(){
+	return "form exception: not existent.";
+}
+
 /* OPERATOR OVERLOADING */
 
 Intern&		Intern::operator=(const Intern& rhs){

@@ -37,26 +37,20 @@ class AForm{
 				void				beSigned(const Bureaucrat& b);
 				virtual void		execute(const Bureaucrat& executor) const = 0;
 				void				checkExec(const Bureaucrat& executor) const;
-
+				
 				class GradeTooHighException : public std::exception{
-						public:
-								virtual const char* what() const throw(){
-									return "form exception: grade too high.";
-								}
-					};
+					public:
+							virtual const char* what() const throw();
+				};
 
 				class GradeTooLowException : public std::exception{
 					public:
-							virtual const char* what() const throw(){
-								return "form exception: grade too low.";
-							}
+							virtual const char* what() const throw();
 				};
 
 				class FormNotSignedException : public std::exception{
 					public:
-							virtual const char* what() const throw(){
-								return "form exception: not signed.";
-							}
+							virtual const char* what() const throw();
 				};
 
 	private:

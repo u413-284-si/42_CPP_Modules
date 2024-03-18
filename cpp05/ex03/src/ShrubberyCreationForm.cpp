@@ -42,6 +42,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void){
 	return;		
 }
 
+const char* ShrubberyCreationForm::OpenFailException::what() const throw(){
+	return "form exception: file not open.";
+}
+
 /* OPERATOR OVERLOADING */
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& rhs){
