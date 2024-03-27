@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/03/15 13:34:53 by sqiu             ###   ########.fr        #
+#    Updated: 2024/03/27 18:26:25 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,19 +67,14 @@ POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
 # ******************************
 
 # Target
-NAME := a.out
+NAME := convert
 
 # ******************************
 # *     Source files           *
 # ******************************
 
-SRC:= 	AForm.cpp \
-		Bureaucrat.cpp \
-		Intern.cpp \
-		PresidentialPardonForm.cpp \
-		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp \
-		main.cpp
+SRC:= 	main.cpp \
+		ScalarConverter.cpp
 
 # ******************************
 # *     Object files           *
