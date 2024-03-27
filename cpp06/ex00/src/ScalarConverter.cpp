@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 18:23:27 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 18:45:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ e_type	ScalarConverter::getType(const std::string& str){
 	double	n = strtod(str.c_str(), &endptr);
 	//size_t	lenRemainder = std::strlen(endptr);
 
-	if (str.compare("+inf") == 0 || str.compare("+inff") == 0) // leave out second condition?
-		return PINF;
 	if (str.compare("-inf") == 0 || str.compare("-inff") == 0)
 		return NINF;
 	if (str.compare("nan") == 0 || str.compare("nanf") == 0)
-		return NAN;
+		return NOTANUM;
 	if (str.empty() || str == endptr || (*endptr != '\0' && *endptr != 'f'))
 		throw InvalidInputExceptioin();
 	if (str.length() == 1 && !std::isdigit(str[0]))
@@ -100,7 +98,8 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		else
 			std::cout << "char: " << static_cast<unsigned char>(n) << std::endl;
 		std::cout << "int: " << n << std::endl;
-		std::cout << "float: " << static_cast<float>(n) << std::endl;
+		std::cout.precision(1);
+		std::cout << "float: " << std::fixed << static_cast<float>(n) << std::endl;
 		std::cout << "double: " << static_cast<double>(n) << std::endl;
 		break;
 	}
@@ -138,20 +137,15 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 			std::cout << "int: impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(n) << std::endl;
-		if (n > std::numeric_limits<float>::max() \
+		if (isinf(n))
+			std::cout << "float: " << static_cast<float>(n) << std::endl;
+		else if (n > std::numeric_limits<float>::max() \
 			|| n < std::numeric_limits<float>::min())
 			std::cout << "float: impossible" << std::endl;
 		else
 			std::cout << "float: " << static_cast<float>(n) << std::endl;
 		std::cout << "double: " << n << std::endl;
 		break;			
-	}
-	case PINF:{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: +inff" << std::endl;
-		std::cout << "double: +inf" << std::endl;
-		break;
 	}
 	case NINF:{
 		std::cout << "char: impossible" << std::endl;
@@ -160,7 +154,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		std::cout << "double: -inf" << std::endl;
 		break;
 	}
-	case NAN:{
+	case NOTANUM:{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: nanf" << std::endl;
