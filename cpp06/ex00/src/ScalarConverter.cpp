@@ -6,16 +6,11 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 19:12:32 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 19:40:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ScalarConverter.hpp"
-
-int		ScalarConverter::_i = 0;
-char	ScalarConverter::_c = '\0';
-float	ScalarConverter::_f = 0.0f;
-double	ScalarConverter::_d = 0.0;
 
 /* CONSTRUCTORS */
 

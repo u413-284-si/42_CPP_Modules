@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:28:08 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 18:38:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 19:40:28 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,4 @@ class ScalarConverter{
 				~ScalarConverter(void);
 				
 				ScalarConverter&	operator=(const ScalarConverter& rhs);
-
-				static char		_c;
-				static int		_i;
-				static double	_d;
-				static float	_f;
 };
