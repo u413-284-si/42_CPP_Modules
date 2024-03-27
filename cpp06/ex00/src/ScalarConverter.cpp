@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 18:57:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 19:12:32 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		else
 			std::cout << "char: '" << static_cast<unsigned char>(n) << "'" << std::endl;
 		if (n > std::numeric_limits<int>::max() \
-			|| n < std::numeric_limits<int>::min())
+			|| n < nextafterf(-std::numeric_limits<float>::infinity(), 0.0f))
 			std::cout << "int: impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(n) << std::endl;
@@ -143,7 +143,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		if (isinf(n))
 			std::cout << "float: " << static_cast<float>(n) << "f" << std::endl;
 		else if (n > std::numeric_limits<float>::max() \
-			|| n < std::numeric_limits<float>::min())
+			|| n < nextafterf(-std::numeric_limits<float>::infinity(), 0.0f))
 			std::cout << "float: impossible" << std::endl;
 		else
 			std::cout << "float: " << std::fixed << static_cast<float>(n) << "f" << std::endl;
