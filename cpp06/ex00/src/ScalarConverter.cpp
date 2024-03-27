@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:34:31 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 18:12:50 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 18:23:27 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ bool	ScalarConverter::findNonPrintable(std::string str){
 
 e_type	ScalarConverter::getType(const std::string& str){
 	char	*endptr;
-	double	n = std::strtod(str.c_str(), &endptr);
-	size_t	lenRemainder = std::strlen(endptr);
+	double	n = strtod(str.c_str(), &endptr);
+	//size_t	lenRemainder = std::strlen(endptr);
 
 	if (str.compare("+inf") == 0 || str.compare("+inff") == 0) // leave out second condition?
 		return PINF;
@@ -90,7 +90,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		break;
 	}
 	case INT:{
-		int	n = std::stoi(str);
+		int	n = atoi(str.c_str());
 		
 		if (n > std::numeric_limits<unsigned char>::max() \
 			|| n < std::numeric_limits<unsigned char>::min())
@@ -105,7 +105,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		break;
 	}
 	case FLOAT:{
-		float	n = std::stof(str);
+		float	n = strtof(str.c_str(), NULL);
 		
 		if (n > std::numeric_limits<unsigned char>::max() \
 			|| n < std::numeric_limits<unsigned char>::min())
@@ -124,7 +124,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 		break;
 	}
 	case DOUBLE:{
-		double	n = std::stod(str);
+		double	n = strtod(str.c_str(), NULL);
 
 		if (n > std::numeric_limits<unsigned char>::max() \
 			|| n < std::numeric_limits<unsigned char>::min())

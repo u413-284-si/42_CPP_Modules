@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:28:08 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 18:00:16 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/27 18:21:21 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <string>
 #include <cstring>
 #include <limits>
+#include <cstdlib>
 
 /* ====== DEFINITIONS ====== */
 
