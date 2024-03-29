@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:56:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/29 14:58:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/29 15:11:44 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void){
 	Data		pool;
 	uintptr_t	serialized; 
-	Data*		deserialized;
+	Data		*deserialized;
 	
 	pool.c = 'a';
 	pool.n = 2;
