@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:18:50 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/29 18:00:01 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/29 18:02:50 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int	main(void){
 	Base	*ptr;
 
 	ptr = generate();
-	std::cout << "* Identifying with pointers *\n";
-	identify(ptr);
 	std::cout << "\n* Identifying with pointers *\n";
+	identify(ptr);
+	std::cout << "\n* Identifying with reference *\n";
 	identify(*ptr);
 	return 0;
 }
