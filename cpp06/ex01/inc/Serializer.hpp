@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:36:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/27 19:45:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/28 19:32:13 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 /* ====== LIBRARIES ====== */
 
 #include <iostream>
+#include <stdint.h>
 
 /* ====== DEFINITIONS ====== */
 
 struct Data{
-	int		n;
-	bool	you_good;
-	char	c;
+	int			n;
+	bool		you_good;
+	char		c;
+	std::string	str;
 };
 
 /* ====== CLASS DECLARATION ====== */
