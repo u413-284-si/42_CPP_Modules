@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:56:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/03/29 14:49:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/03/29 14:58:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ int	main(void){
 	std::cout << "boolean: " << deserialized->you_good << "\n";
 	std::cout << "string: " << deserialized->str << "\n";
 	std::cout << "Deserialized adress: " << deserialized << "\n";
+	if (deserialized != &pool)
+		std::cerr << "\nerror: deserialized adress not equal to original" << std::endl;
+	else
+		std::cout << "\ndeserialized adress equal to original" << std::endl;
 	return 0;
 }
