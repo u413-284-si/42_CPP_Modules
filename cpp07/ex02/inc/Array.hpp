@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:23:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/05 18:25:19 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/05 21:25:10 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Array{
 
 				Array<T>&		operator=(const Array<T>& rhs);
 				T&				operator[](const unsigned int n);
+				T				operator[](const unsigned int n) const;
 
 				unsigned int	size(void) const;
 	private:	
