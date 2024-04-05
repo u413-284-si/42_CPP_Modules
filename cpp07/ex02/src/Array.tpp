@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:37:11 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/05 21:25:04 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/05 21:39:17 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ Array<T>&	Array<T>::operator=(const Array<T>& rhs){
 	return *this;
 }
 
+// Give read and write access to Array elements
 template <typename T>
 T&	Array<T>::operator[](const unsigned int n){
 	if (n >= this->_n)
@@ -69,6 +70,7 @@ T&	Array<T>::operator[](const unsigned int n){
 	return this->_arr[n];
 }
 
+// Give only read access to const Array elements
 template <typename T>
 T	Array<T>::operator[](const unsigned int n) const{
 	if (n >= this->_n)
