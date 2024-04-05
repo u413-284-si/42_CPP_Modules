@@ -2,6 +2,7 @@
 #include <Array.hpp>
 
 # define ARR_SIZE 5
+# define MAX_VAL 750
 
 template <typename T>
 void	testEmpty(const std::string& type){
@@ -97,36 +98,8 @@ void	testConst(const std::string& type, unsigned int size){
 	return;
 }
 
-int	main(void){
-	std::cout << "\n* EMPTY ARRAY TESTS *\n";
-	testEmpty<int>("int");
-	testEmpty<float>("float");
-	testEmpty<std::string>("string");
-
-	std::cout << "\n* NUMBER ARRAY TESTS *\n";
-	testConstructors<int>("int", ARR_SIZE);
-	testConstructors<float>("float", ARR_SIZE);
-	testConstructors<double>("double", ARR_SIZE);
-
-	std::cout << "\n* OUT OF RANGE TESTS *\n";
-	testOutOfRange<int>("int", ARR_SIZE);
-	testOutOfRange<float>("float", ARR_SIZE);
-	testOutOfRange<char>("char", ARR_SIZE);
-
-	std::cout << "\n* CONST ARRAY TESTS *\n";
-	testConst<int>("int", ARR_SIZE);
-	testConst<float>("float", ARR_SIZE);
-	testConst<double>("double", ARR_SIZE);
-	return 0;
-}
-
-
-
-// SUBJECT MAIN
-/* #define MAX_VAL 750
-int main(int, char**)
-{
-    Array<int> numbers(MAX_VAL);
+void	testSubject(void){
+	Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
@@ -146,7 +119,7 @@ int main(int, char**)
         if (mirror[i] != numbers[i])
         {
             std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
+            return;
         }
     }
     try
@@ -171,6 +144,31 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
-    return 0;
+    return;
 }
- */
+
+int	main(void){
+	std::cout << "\n* SUBJECT TEST *\n";
+	testSubject();
+
+	std::cout << "\n* EMPTY ARRAY TESTS *\n";
+	testEmpty<int>("int");
+	testEmpty<float>("float");
+	testEmpty<std::string>("string");
+
+	std::cout << "\n* NUMBER ARRAY TESTS *\n";
+	testConstructors<int>("int", ARR_SIZE);
+	testConstructors<float>("float", ARR_SIZE);
+	testConstructors<double>("double", ARR_SIZE);
+
+	std::cout << "\n* OUT OF RANGE TESTS *\n";
+	testOutOfRange<int>("int", ARR_SIZE);
+	testOutOfRange<float>("float", ARR_SIZE);
+	testOutOfRange<char>("char", ARR_SIZE);
+
+	std::cout << "\n* CONST ARRAY TESTS *\n";
+	testConst<int>("int", ARR_SIZE);
+	testConst<float>("float", ARR_SIZE);
+	testConst<double>("double", ARR_SIZE);
+	return 0;
+}
