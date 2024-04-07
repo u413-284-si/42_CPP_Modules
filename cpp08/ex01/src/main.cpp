@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:07:12 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/07 23:26:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/07 23:33:19 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ void	testInsert(void){
 	catch(std::exception& e){
 		std::cerr << e.what() << std::endl;
 	}
-	sp.addNumber(89);
+	std::vector<int>	vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
+	try{
+		sp.insert(vec.begin(), vec.end());
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
 	sp.printElements();
 	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
