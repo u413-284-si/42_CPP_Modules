@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 10:47:56 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/07 22:24:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/07 22:41:19 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,21 @@ void	Span::printElements(void){
 }
 
 unsigned int	Span::shortestSpan(void){
-	unsigned int	minDiff = INT_MAX;
+	int	minDiff = INT_MAX;
 	
+	// Sort vector in increasing order
 	std::sort(this->_vec.begin(), this->_vec.end());
-	for (int i = 0; i < this->_occupancy - 1; i++){
+	for (unsigned int i = 0; i < this->_occupancy - 1; i++){
 		if (this->_vec[i + 1] - this->_vec[i] < minDiff)
 			minDiff = this->_vec[i + 1] - this->_vec[i];
 	}
 	return minDiff;
+}
+
+/* Vector is sorted in increasing order. Return difference between last and
+first element. Iterator of end() needs to be moved back by 1 to point on
+last element. */
+unsigned int	Span::longestSpan(void){
+	std::sort(this->_vec.begin(), this->_vec.end());
+	return *(this->_vec.end() - 1) - *(this->_vec.begin());
 }
