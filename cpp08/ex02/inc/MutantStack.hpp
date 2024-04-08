@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:08:47 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/08 11:54:48 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/08 12:40:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ class MutantStack : public std::stack<T>{
 				//underlying container
 				iterator				begin(void){ return this->c.begin(); }
 				iterator				end(void){ return this->c.end(); }
-				const_iterator			cbegin(void) const{ return this->c.cbegin(); }
-				const_iterator			cend(void) const{ return this->c.cend(); }
+				const_iterator			cbegin(void) const{ return this->c.begin(); }
+				const_iterator			cend(void) const{ return this->c.end(); }
 				reverse_iterator		rbegin(void){ return this->c.rbegin(); }
 				reverse_iterator		rend(void){ return this->c.rend(); }
-				const_reverse_iterator	crbegin(void) const{ return this->c.crbegin(); }
-				const_reverse_iterator	crend(void) const{ return this->c.crend(); }
+				const_reverse_iterator	crbegin(void) const{ return this->c.rbegin(); }
+				const_reverse_iterator	crend(void) const{ return this->c.rend(); }
 };
 
 #include "../src/MutantStack.tpp"
