@@ -35,8 +35,10 @@ class BitcoinExchange{
 
 				BitcoinExchange&	operator=(const BitcoinExchange& rhs);
 
-				int					checkLine(const std::string& line, time_t& date, double& rate);
-				int					checkHeader(const std::string& line);
+				void				checkLine(const std::string& line, time_t& date, double& rate) const;
+				int					checkHeader(const std::string& line) const;
+				void				checkDate(const std::string& line, time_t& date) const;
+				void				checkRate(const std::string& line, double& rate) const;
 				void				parseInput(const char *input) const;
 				void				printValueTable(void) const;
 
