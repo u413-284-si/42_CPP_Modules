@@ -29,11 +29,13 @@ BitcoinExchange::BitcoinExchange(void){
 	lineCount = 1;
 	while (std::getline(data, line)){
 		lineCount++;
-		if (checkLine(line, date, rate)){
-			std::cerr << "Invalid line " << lineCount << std::endl;
-			continue;
+		try{
+			checkLine(line, date, rate);
+			this->_xChangeRate.insert(std::make_pair(date, rate));
 		}
-		this->_xChangeRate.insert(std::make_pair(date, rate));
+		catch(std::exception& e){
+			std::cerr << "Invalid line " << lineCount << ": " e.what() << std::endl;
+		}
 	}
 	data.close();
 	return;
@@ -58,11 +60,34 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& rhs){
 
 /* MEMBER FUNCTIONS */
 
-int	BitcoinExchange::checkHeader(const std::string& line){
+int		BitcoinExchange::checkHeader(const std::string& line) const{
 	return line.compare("date,exchange_rate");
 }
 
-int	BitcoinExchange::checkLine(const std::string& line, time_t& date, double& rate){
+void	BitcoinExchange::checkLine(const std::string& line, time_t& date, double& rate) const{
 	if (line.find(',') == std::string::npos)
-		return 1;
+		throw std::invalid_argument("no delimiter found");
+	checkDate(line, date);
+	checkRate(line, rate);
+	return;
+}
+
+void	BitcoinExchange::checkDate(const std::string& line, time_t& date){
+	std::size_t	pos = line.find(',');
+	std::string	date = line.substr(0, pos);
+	std::size_t	szy;
+	std::size_t	szm;
+	std::size_t	szd;
+	int			year = std::stoi(line.substr(0, 4), szy);
+	int			month = std::stoi(line.substr(5, 2), szm);
+	int			day = std::stoi(line.substr(8, 2), szd);
+	
+
+	if (date.length() != 10)
+		throw std::invalid_argument("date length invalid");
+	if (date.)
+}
+
+void	BitcoinExchange::checkRate(const std::string& line, double& rate){
+
 }
