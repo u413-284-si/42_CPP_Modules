@@ -43,6 +43,7 @@ class BitcoinExchange{
 				void				checkRate(const std::string& line, double& rate) const;
 				bool				isLeapYear(const int year) const;
 				void				parseInput(const char *input) const;
+				void				printData(void) const;
 				void				printValueTable(void) const;
 
 	private:
