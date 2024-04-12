@@ -15,7 +15,8 @@
 /* CONSTRUCTORS */
 
 BitcoinExchange::BitcoinExchange(void){
-	std::ifstream	data("./data/data.csv");
+	//std::ifstream	data("./data/data.csv");
+	std::ifstream	data("./tests/wrongday.csv");
 	std::string		line;
 	time_t			date;
 	double			rate;
