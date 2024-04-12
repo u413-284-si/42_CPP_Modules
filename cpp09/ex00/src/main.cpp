@@ -17,9 +17,10 @@ int	main(int argc, char **argv){
 		std::cerr << "Error: could not open file." << std::endl;
 		return 1;
 	}
+	(void)argv;
 	try{
-		BitcoinExchange	btc();
-		btc.
+		BitcoinExchange	btc;
+		//btc.
 	}
 	catch(std::exception& e){
 		std::cerr << "Error: " << e.what() << std::endl;
