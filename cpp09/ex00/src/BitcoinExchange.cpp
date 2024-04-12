@@ -21,6 +21,7 @@ BitcoinExchange::BitcoinExchange(void){
 	time_t			date;
 	double			rate;
 	unsigned int	lineCount;
+	unsigned int	validCount;
 	
 	if (!data.is_open())
 		throw std::runtime_error("could not open file.");
@@ -28,16 +29,19 @@ BitcoinExchange::BitcoinExchange(void){
 	if(checkHeader(line))
 		throw std::runtime_error("invalid header");
 	lineCount = 1;
+	validCount = 0;
 	while (std::getline(data, line)){
 		lineCount++;
 		try{
 			checkLine(line, date, rate);
 			this->_xChangeRate.insert(std::make_pair(date, rate));
+			validCount++;
 		}
 		catch(std::exception& e){
 			std::cerr << "Invalid line " << lineCount << ": " << e.what() << std::endl;
 		}
 	}
+	std::cout << validCount << "/" << lineCount - 1 << " data lines valid\n";
 	data.close();
 	return;
 }
