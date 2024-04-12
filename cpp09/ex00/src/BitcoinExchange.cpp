@@ -15,7 +15,7 @@
 /* CONSTRUCTORS */
 
 BitcoinExchange::BitcoinExchange(void){
-	std::ifstream	data("./data.csv");
+	std::ifstream	data("./data/data.csv");
 	std::string		line;
 	time_t			date;
 	double			rate;
@@ -115,15 +115,15 @@ void	BitcoinExchange::checkDate(const std::string& strDate, time_t& date) const{
 		throw std::invalid_argument("date length invalid");
 	year = strtod(strDate.c_str(), &endy);
 	if (*endy != '-')
-		throw std::invalid_argument("invalid format");
+		throw std::invalid_argument("invalid format: year");
 	endy++;
 	month = strtod(endy, &endm);
 	if (*endm != '-')
-		throw std::invalid_argument("invalid format");
+		throw std::invalid_argument("invalid format: month");
 	endm++;
 	day = strtod(endm, &endd);
-	if (*endd != ',')
-		throw std::invalid_argument("invalid format");
+	if (*endd != '\0')
+		throw std::invalid_argument("invalid format: day");
 
 	if (month < 1 || month > 12)
 		throw std::invalid_argument("invalid month");
@@ -171,7 +171,9 @@ void	BitcoinExchange::printData(void) const{
 
 	cit = this->_xChangeRate.begin();
 	cite = this->_xChangeRate.end();
-	while (cit != cite)
+	while (cit != cite){
 		std::cout << cit->first << "," << cit->second << "\n";
+		cit++;
+	}
 	return;
 }
