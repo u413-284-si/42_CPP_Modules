@@ -42,12 +42,12 @@ class ScalarConverter{
 										const std::string& str);
 				static bool		findNonPrintable(std::string str);
 
-				class NotDisplayableExceptioin : public std::exception{
+				class NotDisplayableException : public std::exception{
 					public:
 								virtual const char*	what() const throw();
 				};
 				
-				class InvalidInputExceptioin : public std::exception{
+				class InvalidInputException : public std::exception{
 					public:
 								virtual const char*	what() const throw();
 				};

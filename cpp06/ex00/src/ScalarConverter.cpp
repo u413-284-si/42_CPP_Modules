@@ -25,11 +25,11 @@ ScalarConverter::~ScalarConverter(void){return;}
 
 /* EXCEPTIONS */
 
-const char* ScalarConverter::NotDisplayableExceptioin::what() const throw(){
+const char* ScalarConverter::NotDisplayableException::what() const throw(){
 	return "input exception: non printable char found";
 }
 
-const char* ScalarConverter::InvalidInputExceptioin::what() const throw(){
+const char* ScalarConverter::InvalidInputException::what() const throw(){
 	return "input exception: invalid format. conversion failed";
 }
 
@@ -61,7 +61,7 @@ e_type	ScalarConverter::getType(const std::string& str){
 		return NOTANUM;
 	if (str.empty() || str == endptr || (*endptr != '\0' && (*endptr != 'f'\
 		|| lenRemainder > 1)))
-		throw InvalidInputExceptioin();
+		throw InvalidInputException();
 	if (str.length() == 1 && !std::isdigit(str[0]))
 		return CHAR;
 	if (str.find('.') == std::string::npos && *endptr != 'f' \
@@ -166,7 +166,7 @@ void	ScalarConverter::printVars(const e_type& type, const std::string& str){
 void	ScalarConverter::convert(const std::string& str){
 	try{
 		if (findNonPrintable(str))
-			throw NotDisplayableExceptioin();
+			throw NotDisplayableException();
 		e_type type = getType(str);
 		printVars(type, str);
 	}
