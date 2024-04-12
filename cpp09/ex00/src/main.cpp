@@ -20,7 +20,7 @@ int	main(int argc, char **argv){
 	(void)argv;
 	try{
 		BitcoinExchange	btc;
-		//btc.
+		btc.printData();
 	}
 	catch(std::exception& e){
 		std::cerr << "Error: " << e.what() << std::endl;
