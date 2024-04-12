@@ -59,11 +59,11 @@ e_type	ScalarConverter::getType(const std::string& str){
 		return NINF;
 	if (str.compare("nan") == 0 || str.compare("nanf") == 0)
 		return NOTANUM;
+	if (str.length() == 1 && !std::isdigit(str[0]))
+		return CHAR;
 	if (str.empty() || str == endptr || (*endptr != '\0' && (*endptr != 'f'\
 		|| lenRemainder > 1)))
 		throw InvalidInputException();
-	if (str.length() == 1 && !std::isdigit(str[0]))
-		return CHAR;
 	if (str.find('.') == std::string::npos && *endptr != 'f' \
 		&& n <= std::numeric_limits<int>::max() \
 		&& n >= std::numeric_limits<int>::min())
