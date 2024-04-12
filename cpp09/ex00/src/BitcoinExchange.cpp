@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/08 21:58:41 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/11 19:32:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	BitcoinExchange::checkLine(const std::string& line, time_t& date, double& r
 	return;
 }
 
-void	BitcoinExchange::checkDate(const std::string& line, time_t& date){
+void	BitcoinExchange::checkDate(const std::string& line, time_t& date) const{
 	std::size_t	pos = line.find(',');
 	std::string	date = line.substr(0, pos);
-	std::size_t	szy;
-	std::size_t	szm;
-	std::size_t	szd;
-	int			year = std::stoi(line.substr(0, 4), szy);
-	int			month = std::stoi(line.substr(5, 2), szm);
-	int			day = std::stoi(line.substr(8, 2), szd);
+	char		*szy;
+	char		*szm;
+	char		*szd;
+	double		year = stod(line.substr(0, 4).c_str(), &szy);
+	double		month = stod(line.substr(5, 2).c_str(), &szm);
+	double		day = stod(line.substr(8, 2).c_str(), &szd);
 	
 
 	if (date.length() != 10)

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/08 17:10:53 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/11 19:31:12 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 #include <ctime>
 #include <fstream>
 #include <stdexcept>
-
+#include <cstdlib>
+#include <string>
+#include <cstring>
 
 /* ====== DEFINITIONS ====== */
 
