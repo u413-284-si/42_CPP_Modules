@@ -170,6 +170,24 @@ void	BitcoinExchange::checkRate(const std::string& strRate, double& rate) const{
 	return;
 }
 
+std::string	BitcoinExchange::getDate(const time_t& date) const{
+	std::tm				*t = std::localtime(&date);
+	std::ostringstream	strDate;
+	int					month;
+	int					day;
+
+	strDate << t->tm_year << "-";
+	month = t->tm_mon;
+	if (month < 10)
+		strDate << "0";
+	strDate << month << "-";
+	day = t->tm_mday;
+	if (day < 10)
+		strDate << "0";
+	strDate << day;
+	return strDate.str();
+}
+
 void	BitcoinExchange::printData(void) const{
 	std::map<time_t, double>::const_iterator	cit;
 	std::map<time_t, double>::const_iterator	cite;
@@ -177,7 +195,7 @@ void	BitcoinExchange::printData(void) const{
 	cit = this->_xChangeRate.begin();
 	cite = this->_xChangeRate.end();
 	while (cit != cite){
-		std::cout << cit->first << "," << cit->second << "\n";
+		std::cout << getDate(cit->first) << "," << cit->second << "\n";
 		cit++;
 	}
 	return;

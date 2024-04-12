@@ -20,6 +20,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <cstdlib>
+#include <sstream>
 
 /* ====== DEFINITIONS ====== */
 
@@ -40,7 +41,10 @@ class BitcoinExchange{
 				void				checkDate(const std::string& line, time_t& date) const;
 				void				checkRate(const std::string& line, double& rate) const;
 				bool				isLeapYear(const int year) const;
+				
 				void				parseInput(const char *input) const;
+				std::string			getDate(const time_t& date) const;
+
 				void				printData(void) const;
 				void				printValueTable(void) const;
 
