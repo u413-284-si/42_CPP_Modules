@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/13 11:59:27 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/13 12:02:47 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,8 @@ void	BitcoinExchange::checkDate(const std::string& strDate, time_t& date) const{
 		}
 	}
 	initialiseTimeStruct(time);
-	time.tm_year = year;
+	// struct tm measures years starting from 1900
+	time.tm_year = year - 1900;
 	// struct tm measures months in range 0 - 11
 	time.tm_mon = month - 1;
 	time.tm_mday = day;
@@ -160,7 +161,8 @@ std::string	BitcoinExchange::getDate(const time_t& date) const{
 	int					day;
 
 	t = std::localtime(&date);
-	strDate << t->tm_year << "-";
+	// struct tm measures years starting from 1900
+	strDate << t->tm_year + 1900 << "-";
 	// struct tm measures months in range 0 - 11
 	month = t->tm_mon + 1;
 	if (month < 10)
