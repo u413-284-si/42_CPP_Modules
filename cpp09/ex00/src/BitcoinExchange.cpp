@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/11 19:32:54 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/13 11:23:17 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,6 @@ void	BitcoinExchange::checkLine(const std::string& line, time_t& date, double& r
 	return;
 }
 
-/* Any year that is evenly divisible by 4 is a leap year. However, there is still
-a small error that must be accounted for. To eliminate this error, the Gregorian
-calendar stipulates that a year that is evenly divisible by 100 is a leap year only
-if it is also evenly divisible by 400. */
-bool	BitcoinExchange::isLeapYear(const int year) const{
-	if (year % 4 == 0){
-		if (year % 100 == 0){
-			if (year % 400 == 0)
-				return true;
-			else
-				return false;
-		}
-		else
-			return true;
-	}
-	else
-		return false;
-}
-
 void	BitcoinExchange::checkDate(const std::string& strDate, time_t& date) const{
 	char		*endy;
 	char		*endm;
@@ -153,6 +134,7 @@ void	BitcoinExchange::checkDate(const std::string& strDate, time_t& date) const{
 				throw std::invalid_argument("invalid day > 28");
 		}
 	}
+	initialiseTimeStruct(time);
 	time.tm_year = year;
 	time.tm_mon = month;
 	time.tm_mday = day;
@@ -171,11 +153,12 @@ void	BitcoinExchange::checkRate(const std::string& strRate, double& rate) const{
 }
 
 std::string	BitcoinExchange::getDate(const time_t& date) const{
-	std::tm				*t = std::localtime(&date);
+	std::tm				*t;
 	std::ostringstream	strDate;
 	int					month;
 	int					day;
 
+	t = std::localtime(&date);
 	strDate << t->tm_year << "-";
 	month = t->tm_mon;
 	if (month < 10)
@@ -195,8 +178,45 @@ void	BitcoinExchange::printData(void) const{
 	cit = this->_xChangeRate.begin();
 	cite = this->_xChangeRate.end();
 	while (cit != cite){
-		std::cout << getDate(cit->first) << "," << cit->second << "\n";
+		std::cout.precision(2);
+		std::cout << getDate(cit->first) << "," << std::fixed << cit->second << "\n";
 		cit++;
 	}
 	return;
+}
+
+// Helper functions
+
+/* Any year that is evenly divisible by 4 is a leap year. However, there is still
+a small error that must be accounted for. To eliminate this error, the Gregorian
+calendar stipulates that a year that is evenly divisible by 100 is a leap year only
+if it is also evenly divisible by 400. */
+bool	BitcoinExchange::isLeapYear(const int year) const{
+	if (year % 4 == 0){
+		if (year % 100 == 0){
+			if (year % 400 == 0)
+				return true;
+			else
+				return false;
+		}
+		else
+			return true;
+	}
+	else
+		return false;
+}
+/*  Time structs need to be initialised to 0 to avoid the conversion to time_t
+ with mktime to return random values. */
+void	BitcoinExchange::initialiseTimeStruct(std::tm& t) const{
+	t.tm_gmtoff = 0;
+	t.tm_hour = 0;
+	t.tm_isdst = 0;
+	t.tm_mday = 0;
+	t.tm_min = 0;
+	t.tm_mon = 0;
+	t.tm_sec = 0;
+	t.tm_wday = 0;
+	t.tm_yday = 0;
+	t.tm_year = 0;
+	t.tm_zone = 0;	
 }
