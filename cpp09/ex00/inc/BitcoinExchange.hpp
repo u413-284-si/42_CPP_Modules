@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/13 11:17:25 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 13:16:47 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ class BitcoinExchange{
 				~BitcoinExchange(void);
 
 				BitcoinExchange&	operator=(const BitcoinExchange& rhs);
-				
+
+				void		parseInput(const char *input) const;				
 				void		printData(void) const;
 				void		printValueTable(void) const;
 
@@ -44,14 +45,16 @@ class BitcoinExchange{
 
 				void		checkLine(const std::string& line, time_t& date,\
 								double& rate) const;
-				int			checkHeader(const std::string& line) const;
+				int			checkHeader(const std::string& line,\
+								const std::string& key, \
+								const std::string& delim,\
+								const std::string& value) const;
 				void		checkDate(const std::string& line,\
 								time_t& date) const;
 				void		checkRate(const std::string& line,\
 								double& rate) const;
 				bool		isLeapYear(const int year) const;
 								
-				void		parseInput(const char *input) const;
 				std::string	getDate(const time_t& date) const;
 				void		initialiseTimeStruct(std::tm& t) const;
 };

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/13 12:02:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 13:24:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /* CONSTRUCTORS */
 
 BitcoinExchange::BitcoinExchange(void){
-	//std::ifstream	data("./data/data.csv");
-	std::ifstream	data("./tests/wrongday.csv");
+	std::ifstream	data("./data/data.csv");
+	//std::ifstream	data("./tests/wrongheader.csv");
 	std::string		line;
 	time_t			date;
 	double			rate;
@@ -26,10 +26,11 @@ BitcoinExchange::BitcoinExchange(void){
 	if (!data.is_open())
 		throw std::runtime_error("could not open file.");
 	std::getline(data, line);
-	if(checkHeader(line))
-		throw std::runtime_error("invalid header");
+	if(checkHeader(line, "date", ",", "exchange_rate"))
+		throw std::runtime_error("invalid header\nexpected: date,exchange_rate");
 	lineCount = 1;
 	validCount = 0;
+	std::cout << "Reading database...\n";
 	while (std::getline(data, line)){
 		lineCount++;
 		try{
@@ -65,8 +66,13 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& rhs){
 
 /* MEMBER FUNCTIONS */
 
-int		BitcoinExchange::checkHeader(const std::string& line) const{
-	return line.compare("date,exchange_rate");
+int		BitcoinExchange::checkHeader(const std::string& line,\
+			const std::string& key, const std::string& delim,\
+			const std::string& value) const{
+	std::string	expectedheader;
+
+	expectedheader = key + delim + value;
+	return line.compare(expectedheader);
 }
 
 void	BitcoinExchange::checkLine(const std::string& line, time_t& date, double& rate) const{
@@ -154,6 +160,18 @@ void	BitcoinExchange::checkRate(const std::string& strRate, double& rate) const{
 	return;
 }
 
+void	BitcoinExchange::parseInput(const char *input) const{
+	std::ifstream	data(input);
+	std::string		line;
+
+	if (!data.is_open())
+		throw std::runtime_error("could not open file.");
+	std::getline(data, line);
+	if(checkHeader(line, "date", " | ", "value"))
+		throw std::runtime_error("invalid header\nexpected: date | value");
+
+}
+
 std::string	BitcoinExchange::getDate(const time_t& date) const{
 	std::tm				*t;
 	std::ostringstream	strDate;
@@ -209,6 +227,7 @@ bool	BitcoinExchange::isLeapYear(const int year) const{
 	else
 		return false;
 }
+
 /*  Time structs need to be initialised to 0 to avoid the conversion to time_t
  with mktime to return random values. */
 void	BitcoinExchange::initialiseTimeStruct(std::tm& t) const{
@@ -222,5 +241,6 @@ void	BitcoinExchange::initialiseTimeStruct(std::tm& t) const{
 	t.tm_wday = 0;
 	t.tm_yday = 0;
 	t.tm_year = 0;
-	t.tm_zone = 0;	
+	t.tm_zone = 0;
+	return;
 }
