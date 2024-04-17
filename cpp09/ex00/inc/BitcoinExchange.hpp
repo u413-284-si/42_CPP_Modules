@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 13:16:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 13:44:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ class BitcoinExchange{
 
 				void		parseInput(const char *input) const;				
 				void		printData(void) const;
-				void		printValueTable(void) const;
+				void		printResult(const time_t& date, const double& value,\
+								const double& result) const;
 
 	private:
 				std::map<time_t, double>	_xChangeRate;

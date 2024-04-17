@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 13:24:55 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 13:48:29 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,13 +163,30 @@ void	BitcoinExchange::checkRate(const std::string& strRate, double& rate) const{
 void	BitcoinExchange::parseInput(const char *input) const{
 	std::ifstream	data(input);
 	std::string		line;
+	time_t			date;
+	double			value;
+	double			result;
 
 	if (!data.is_open())
 		throw std::runtime_error("could not open file.");
 	std::getline(data, line);
 	if(checkHeader(line, "date", " | ", "value"))
 		throw std::runtime_error("invalid header\nexpected: date | value");
-
+	std::cout << "Reading input...\n";
+	while (std::getline(data, line)){
+		try{
+			checkLine(line, date, value);
+			// compare date to key in _xchangeRate
+			// find match or next lower date and multiply value with stored rate
+			// print out result message
+			printResult(date, value, result);
+		}
+		catch(std::exception& e){
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+	}
+	data.close();
+	return;
 }
 
 std::string	BitcoinExchange::getDate(const time_t& date) const{
@@ -205,6 +222,12 @@ void	BitcoinExchange::printData(void) const{
 		cit++;
 	}
 	return;
+}
+
+void	BitcoinExchange::printResult(const time_t& date, const double& value,\
+								const double& result) const{
+	std::cout << getDate(date) << " => " << value << " = " << result << std::endl;
+	return;									
 }
 
 // Helper functions
