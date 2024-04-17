@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 14:03:21 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 14:13:32 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ BitcoinExchange::BitcoinExchange(void){
 	while (std::getline(data, line)){
 		lineCount++;
 		try{
-			checkLine(line, date, rate, false);
+			checkLine(line, ",", date, rate, false);
 			this->_xChangeRate.insert(std::make_pair(date, rate));
 			validCount++;
 		}
@@ -75,19 +75,21 @@ int		BitcoinExchange::checkHeader(const std::string& line,\
 	return line.compare(expectedheader);
 }
 
-void	BitcoinExchange::checkLine(const std::string& line, time_t& date,\
-			double& value, bool valueFromInput) const{
+void	BitcoinExchange::checkLine(const std::string& line,\
+			const std::string& delim, time_t& date, double& value,\
+			bool valueFromInput) const{
 	std::size_t			pos;
-	std::string	strDate;
-	std::string	strValue;
+	std::string			strDate;
+	std::string			strValue;
 
 	if (line.empty())
 		throw std::invalid_argument("empty line detected");
-	pos = line.find(','); 
+	pos = line.find(delim); 
 	if (pos == std::string::npos)
 		throw std::invalid_argument("no delimiter found");
-	strDate = line.substr(0, pos++);
+	strDate = line.substr(0, pos);
 	checkDate(strDate, date);
+	pos += delim.length();
 	strValue = line.substr(pos, std::string::npos - pos);
 	if (valueFromInput)
 		checkValue(strValue, value);
@@ -195,7 +197,7 @@ void	BitcoinExchange::parseInput(const char *input) const{
 	std::cout << "Reading input...\n";
 	while (std::getline(data, line)){
 		try{
-			checkLine(line, date, value, true);
+			checkLine(line, " | ", date, value, true);
 			// compare date to key in _xchangeRate
 			// find match or next lower date and multiply value with stored rate
 			// print out result message

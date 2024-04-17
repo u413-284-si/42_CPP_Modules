@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 14:02:36 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 14:07:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ class BitcoinExchange{
 	private:
 				std::map<time_t, double>	_xChangeRate;
 
-				void		checkLine(const std::string& line, time_t& date,\
+				void		checkLine(const std::string& line,\
+								const std::string& delim, time_t& date,\
 								double& rate, bool valueFromInput) const;
 				int			checkHeader(const std::string& line,\
 								const std::string& key, \
