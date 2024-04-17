@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 13:44:49 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 14:02:36 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@ class BitcoinExchange{
 				std::map<time_t, double>	_xChangeRate;
 
 				void		checkLine(const std::string& line, time_t& date,\
-								double& rate) const;
+								double& rate, bool valueFromInput) const;
 				int			checkHeader(const std::string& line,\
 								const std::string& key, \
 								const std::string& delim,\
 								const std::string& value) const;
-				void		checkDate(const std::string& line,\
+				void		checkDate(const std::string& strDate,\
 								time_t& date) const;
-				void		checkRate(const std::string& line,\
+				void		checkRate(const std::string& strRate,\
 								double& rate) const;
+				void		checkValue(const std::string& strValue,\
+								double& value) const;
 				bool		isLeapYear(const int year) const;
 								
 				std::string	getDate(const time_t& date) const;
