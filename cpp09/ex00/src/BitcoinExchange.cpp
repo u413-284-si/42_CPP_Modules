@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 14:13:32 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/18 14:06:02 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	BitcoinExchange::parseInput(const char *input) const{
 	std::string		line;
 	time_t			date;
 	double			value;
-	double			result;
+	double			rate;
 
 	if (!data.is_open())
 		throw std::runtime_error("could not open file.");
@@ -198,10 +198,8 @@ void	BitcoinExchange::parseInput(const char *input) const{
 	while (std::getline(data, line)){
 		try{
 			checkLine(line, " | ", date, value, true);
-			// compare date to key in _xchangeRate
-			// find match or next lower date and multiply value with stored rate
-			// print out result message
-			printResult(date, value, result);
+			rate = matchDate(date);
+			printResult(date, value, rate);
 		}
 		catch(std::exception& e){
 			std::cerr << "Error: " << e.what() << std::endl;
@@ -209,6 +207,17 @@ void	BitcoinExchange::parseInput(const char *input) const{
 	}
 	data.close();
 	return;
+}
+
+/* Compare date to key in _xchangeRate. 
+Find match or next lower date and return stored rate. */
+double	BitcoinExchange::matchDate(const time_t& date) const{
+	std::map<time_t, double>::const_iterator	cit;
+
+	cit = this->_xChangeRate.lower_bound(date);
+	if (cit->first != date && cit != this->_xChangeRate.begin())
+		cit--;
+	return cit->second;	
 }
 
 std::string	BitcoinExchange::getDate(const time_t& date) const{
@@ -247,8 +256,9 @@ void	BitcoinExchange::printData(void) const{
 }
 
 void	BitcoinExchange::printResult(const time_t& date, const double& value,\
-								const double& result) const{
-	std::cout << getDate(date) << " => " << value << " = " << result << std::endl;
+								const double& rate) const{
+	std::cout << getDate(date) << " => " << value << " = ";
+	std::cout << rate * value << std::endl;
 	return;									
 }
 

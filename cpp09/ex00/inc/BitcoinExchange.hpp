@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:22:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/17 14:07:09 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/17 14:21:39 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class BitcoinExchange{
 				void		parseInput(const char *input) const;				
 				void		printData(void) const;
 				void		printResult(const time_t& date, const double& value,\
-								const double& result) const;
+								const double& rate) const;
 
 	private:
 				std::map<time_t, double>	_xChangeRate;
@@ -58,7 +58,10 @@ class BitcoinExchange{
 				void		checkValue(const std::string& strValue,\
 								double& value) const;
 				bool		isLeapYear(const int year) const;
+
+				double		matchDate(const time_t& date) const;
 								
 				std::string	getDate(const time_t& date) const;
+				
 				void		initialiseTimeStruct(std::tm& t) const;
 };
