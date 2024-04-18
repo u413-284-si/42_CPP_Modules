@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/18 14:37:40 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/18 14:52:12 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 BitcoinExchange::BitcoinExchange(void){
 	std::ifstream	data("./data/data.csv");
-	//std::ifstream	data("./tests/wrongheader.csv");
+	//std::ifstream	data("./tests/wrongday.csv");
 	std::string		line;
 	time_t			date;
 	double			rate;
