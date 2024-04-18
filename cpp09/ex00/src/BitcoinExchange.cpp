@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:21:52 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/18 14:06:02 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/18 14:37:40 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,26 +159,26 @@ void	BitcoinExchange::checkDate(const std::string& strDate, time_t& date) const{
 void	BitcoinExchange::checkRate(const std::string& strRate, double& rate) const{
 	char	*endptr;
 	if (strRate.empty())
-		throw std::invalid_argument("no rate given");
+		throw std::runtime_error("no rate given");
 	rate = strtod(strRate.c_str(), &endptr);
 	if (*endptr != '\0')
-		throw std::invalid_argument("invalid rate format");
+		throw std::runtime_error("invalid rate format");
 	if (rate < 0)
-		throw std::invalid_argument("not a positive number.");
+		throw std::runtime_error("not a positive number.");
 	return;
 }
 
 void	BitcoinExchange::checkValue(const std::string& strValue, double& value) const{
 	char	*endptr;
 	if (strValue.empty())
-		throw std::invalid_argument("no value given");
+		throw std::runtime_error("no value given");
 	value = strtod(strValue.c_str(), &endptr);
 	if (*endptr != '\0')
-		throw std::invalid_argument("invalid value format");
+		throw std::runtime_error("invalid value format");
 	if (value < 0)
-		throw std::invalid_argument("not a positive number.");
+		throw std::runtime_error("not a positive number.");
 	if (value > 1000)
-		throw std::invalid_argument("too large a number.");
+		throw std::runtime_error("too large a number.");
 	return;
 }
 
@@ -201,7 +201,11 @@ void	BitcoinExchange::parseInput(const char *input) const{
 			rate = matchDate(date);
 			printResult(date, value, rate);
 		}
-		catch(std::exception& e){
+		catch(std::invalid_argument& e){
+			std::cerr << "Error: bad input: " << e.what() << " => ";
+			std::cerr << line.substr(0, 10) << std::endl;
+		}
+		catch(std::runtime_error& e){
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
 	}
