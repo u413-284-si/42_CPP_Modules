@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:30:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 15:55:34 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 16:03:54 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	unitTester(const std::string& name, size_t total,\
 					std::cerr << RESET << std::endl;
 				}
 				else{
-					std::cout << GREEN << "SUCCESS\nresult: " << result;
+					std::cout << GREEN << "SUCCESS -- result: " << result;
 					std::cout << RESET << std::endl;
 					passed++;
 				}
@@ -41,8 +41,8 @@ void	unitTester(const std::string& name, size_t total,\
 			}
 		}
 	}
-	std::cout << CYAN << passed << " of " << total << " passed" << RESET;
-	std::cout << std::endl;
+	std::cout << CYAN << "\nTEST END\n" << passed << " of " << total;
+	std::cout << " passed" << RESET << std::endl;
 	return;
 }
 
