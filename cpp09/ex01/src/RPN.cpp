@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 09:41:35 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 14:38:22 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 15:49:28 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,9 @@ void	RPN::doTheMaths(const std::string::const_iterator& cit){
 
 int		RPN::getResult(void){
 	int	result;
-
+	
+	if (this->_st.size() < 1)
+		throw std::runtime_error("no elements stored");
 	result = this->_st.top();
-	this->_st.pop();
 	return result;
 }
