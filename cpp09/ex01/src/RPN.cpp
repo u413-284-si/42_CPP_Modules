@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 09:41:35 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 15:59:53 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 20:50:25 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	RPN::parseInput(const std::string input){
 			if (this->_st.size() < 2)
 				throw std::runtime_error("not enough numbers for calculation");
 			if (*(cit + 1) != ' ' && *(cit + 1) != '\0')
-				throw std::invalid_argument("an operator must be followed by ' ' or '\0'");
+				throw std::invalid_argument("an operator must be followed by ' ' or NULL");
 			doTheMaths(cit);
 		}
 	}
