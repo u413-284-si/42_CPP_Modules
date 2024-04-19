@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 09:06:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 14:40:02 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 15:26:01 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
 /* ====== DEFINITIONS ====== */
 
 # define VERBOSE 0
+
+// ANSI color codes
+#define RESET   "\033[0m"
+#define RED     "\033[31m"    
+#define GREEN   "\033[32m"    
+#define YELLOW  "\033[33m"    
+#define BLUE    "\033[34m"    
+#define MAGENTA "\033[35m"    
+#define CYAN    "\033[36m"    
+#define WHITE   "\033[37m"  
 
 /* ====== CLASS DECLARATION ====== */
 
