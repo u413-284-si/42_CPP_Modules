@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:30:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 15:42:31 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 15:55:34 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 void	unitTester(const std::string& name, size_t total,\
 			const std::pair<std::string, double> tests[]){
-	RPN 	calculator;
 	size_t	passed = 0;
 	int		result;
 	
 	std::cout << "* " << name << " *\n";
 	for (size_t i = 0; i < total; i++){
 		std::cout << "Test [" << i << "]: " << tests[i].first << std::endl;
-		try{
-			calculator.parseInput(tests[i].first);
-			result = calculator.getResult();
-			if (result != tests[i].second){
-				std::cerr << RED << "FAILURE\nexpected: " << tests[i].second;
-				std::cerr << "; calculated: " << calculator.getResult();
-				std::cerr << RESET << std::endl;
+		{
+			RPN 	calculator;
+			try{
+				calculator.parseInput(tests[i].first);
+				result = calculator.getResult();
+				if (result != tests[i].second){
+					std::cerr << RED << "FAILURE\nexpected: " << tests[i].second;
+					std::cerr << "; calculated: " << calculator.getResult();
+					std::cerr << RESET << std::endl;
+				}
+				else{
+					std::cout << GREEN << "SUCCESS\nresult: " << result;
+					std::cout << RESET << std::endl;
+					passed++;
+				}
 			}
-			else{
-				std::cout << GREEN << "SUCCESS\nresult: " << result;
-				std::cout << RESET << std::endl;
-				passed++;
+			catch(std::exception& e){
+				std::cerr << BLUE << "Error: " << e.what() << RESET << std::endl;
 			}
-		}
-		catch(std::exception& e){
-			std::cerr << BLUE << "Error: " << e.what() << RESET << std::endl;
 		}
 	}
 	std::cout << CYAN << passed << " of " << total << " passed" << RESET;
