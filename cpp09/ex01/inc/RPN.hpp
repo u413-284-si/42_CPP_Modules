@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 09:06:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 15:49:16 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 15:57:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class RPN{
 
 				void	parseInput(const std::string input);
 				int		getResult(void);
+				void	clearStack(void);
 	private:
 				std::stack<int>	_st;
 				

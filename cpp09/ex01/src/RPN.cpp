@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 09:41:35 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 15:49:28 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/19 15:59:53 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,11 @@ int		RPN::getResult(void){
 		throw std::runtime_error("no elements stored");
 	result = this->_st.top();
 	return result;
+}
+
+void	RPN::clearStack(void){
+	if (this->_st.size() < 1)
+		throw std::runtime_error("nothing to be cleared");
+	this->_st.pop();
+	return;
 }
