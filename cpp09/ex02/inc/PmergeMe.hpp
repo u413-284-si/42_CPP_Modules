@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/22 20:47:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/24 15:48:01 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,25 @@
 
 class PmergeMe{
 	public:
+				template <typename Iterator> 
+				class GroupIterator{
+					public:
+								GroupIterator(void);
+								GroupIterator(Iterator it, std::size_t size);
+								GroupIterator(const GroupIterator& other);
+								~GroupIterator(void);
+
+								GroupIterator&	operator=(const GroupIterator& rhs);
+
+								Iterator	getIterator(void) const;
+								std::size_t	getSize(void) const;
+					private:
+								Iterator	_it;
+								std::size_t	_size;	
+				};
 
 	private:
+				
+			
 
 };
