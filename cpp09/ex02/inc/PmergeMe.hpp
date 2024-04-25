@@ -36,54 +36,76 @@
 
 /* ====== CLASS DECLARATION ====== */
 
-class PmergeMe{
+template <typename Iterator> 
+class GroupIterator{
 	public:
-				template <typename Iterator> 
-				class GroupIterator{
-					public:
-								// Constructors & Destructor
-								GroupIterator(void);
-								GroupIterator(Iterator it, std::size_t size);
-								GroupIterator(const GroupIterator& other);
-								~GroupIterator(void);
+				// Constructors & Destructor
+				GroupIterator(void);
+				GroupIterator(Iterator it, std::size_t size);
+				GroupIterator(const GroupIterator& other);
+				~GroupIterator(void);
 
-								GroupIterator&	operator=(const GroupIterator& rhs);
+				GroupIterator&	operator=(const GroupIterator& rhs);
 
-								// Aliases
-								typedef std::random_access_iterator_tag iterator_category;
-								typedef std::iterator_traits<Iterator>::value_type value_type;
-								typedef std::iterator_traits<Iterator>::difference_type difference_type;
-								typedef std::iterator_traits<Iterator>::pointer pointer;
-								typedef std::iterator_traits<Iterator>::reference reference;
+				// Aliases
+				typedef std::random_access_iterator_tag 				iterator_category;
+				typedef std::iterator_traits<Iterator>::value_type 		value_type;
+				typedef std::iterator_traits<Iterator>::difference_type difference_type;
+				typedef std::iterator_traits<Iterator>::pointer 		pointer;
+				typedef std::iterator_traits<Iterator>::reference 		reference;
 
-								// Member access
-								Iterator	getIterator(void) const;
-								std::size_t	getSize(void) const;
+				// Member access
+				Iterator	getIterator(void) const;
+				std::size_t	getSize(void) const;
 
-								// Element access
-								reference	operator*(void) const;
-								pointer		operator->(void) const;
+				// Element access
+				reference	operator*(void) const;
+				pointer		operator->(void) const;
 
-								// Increment/decrement operators
-								GroupIterator&	operator++(void);
-								GroupIterator	operator++(int);
-								GroupIterator&	operator--(void);
-								GroupIterator	operator--(int);
-								GroupIterator&	operator+=(std::size_t increment);
-								GroupIterator&	operator-=(std::size_t increment);
-
-					private:
-								Iterator	_it;
-								std::size_t	_size;	
-				};
-
-				template<typename Iterator1, typename Iterator2>
-				void	iter_swap(GroupIterator<Iterator1> lhs, GroupIterator<Iterator2> rhs);
-
-				// Comparison operators
+				// Increment/decrement operators
+				GroupIterator&	operator++(void);
+				GroupIterator	operator++(int);
+				GroupIterator&	operator--(void);
+				GroupIterator	operator--(int);
+				GroupIterator&	operator+=(std::size_t increment);
+				GroupIterator&	operator-=(std::size_t increment);
 
 	private:
-				
-			
+				Iterator	_it;
+				std::size_t	_size;	
+};
 
+// Utilities
+template<typename Iterator1, typename Iterator2>
+void	iter_swap(GroupIterator<Iterator1> lhs, GroupIterator<Iterator2> rhs);
+
+// Comparison operators
+template<typename Iterator1, typename Iterator2>
+bool	operator==(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterator2>& rhs);
+
+template<typename Iterator1, typename Iterator2>
+bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterator2>& rhs);
+
+// Construction functions
+template<typename Iterator>
+GroupIterator<Iterator>	makeGroupIterator(Iterator it, std::size_t size);
+
+template<typename Iterator>
+GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_t size);
+
+
+class PmergeMe{
+	public:
+				PmergeMe(void);
+				PmergeMe(const PmergeMe& other);
+				~PmergeMe(void);
+
+				PmergeMe&	operator=(const PmergeMe& rhs);
+				
+				void	parseInput(const char **input);
+				void	sortVector(void);
+				void	sortList(void);
+	private:
+				std::vector<int>	_vec;
+				std::list<int>		_list;				
 };
