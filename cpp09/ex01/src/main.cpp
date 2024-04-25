@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:30:55 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/19 20:54:59 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/25 18:04:45 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		main(int argc, char **argv){
 	if (argc != 2){
 		std::cout << "Error: insufficient arguments\n";
 		std::cout << "expected: ./RPN <operation string>" << std::endl;
-		return -1;
+		return 1;
 	}
 	try{
 		calculator.parseInput(argv[1]);
@@ -101,6 +101,7 @@ int		main(int argc, char **argv){
 	}
 	catch(std::exception& e){
 		std::cout << BLUE << "Error: " << e.what() << RESET << std::endl;
+		return 1;
 	}
 	return 0;
 }
