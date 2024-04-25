@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/25 18:25:09 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/25 18:38:36 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,8 @@ void	PmergeMe::parseInput(char **input){
 			throw std::invalid_argument("invalid arg format");
 		if (tmp < 0)
 			throw std::invalid_argument("only positive numbers accepted");
+		if (tmp > std::numeric_limits<int>::max())
+			throw std::invalid_argument("integer overflow found");			
 		this->_vec.push_back(static_cast<int>(tmp));
 		this->_list.push_back(static_cast<int>(tmp));
 	}

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/25 18:22:49 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/25 18:30:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <limits>
 #include <algorithm>
 #include <list>
 #include <vector>
