@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/24 15:50:46 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/24 16:17:53 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,14 @@ Iterator	PmergeMe::GroupIterator<Iterator>::getIterator(void) const{
 template <typename Iterator>
 std::size_t	PmergeMe::GroupIterator<Iterator>::getSize(void) const{
 	return this->_size;
+}
+
+template <typename Iterator>
+PmergeMe::GroupIterator<Iterator>::reference	PmergeMe::GroupIterator<Iterator>::operator*(void) const{
+	return *(this->_it);
+}
+
+template <typename Iterator>
+PmergeMe::GroupIterator<Iterator>::pointer	PmergeMe::GroupIterator<Iterator>::operator->(void) const{
+	return &(operator*());
 }
