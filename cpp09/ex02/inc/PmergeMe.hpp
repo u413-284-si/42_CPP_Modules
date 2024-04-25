@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/24 16:26:32 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/25 18:22:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ class GroupIterator{
 				GroupIterator&	operator=(const GroupIterator& rhs);
 
 				// Aliases
-				typedef std::random_access_iterator_tag 				iterator_category;
-				typedef std::iterator_traits<Iterator>::value_type 		value_type;
-				typedef std::iterator_traits<Iterator>::difference_type difference_type;
-				typedef std::iterator_traits<Iterator>::pointer 		pointer;
-				typedef std::iterator_traits<Iterator>::reference 		reference;
+				typedef std::random_access_iterator_tag 							iterator_category;
+				typedef typename std::iterator_traits<Iterator>::value_type 		value_type;
+				typedef typename std::iterator_traits<Iterator>::difference_type	difference_type;
+				typedef typename std::iterator_traits<Iterator>::pointer 			pointer;
+				typedef typename std::iterator_traits<Iterator>::reference 			reference;
 
 				// Member access
 				Iterator	getIterator(void) const;
@@ -102,7 +102,7 @@ class PmergeMe{
 
 				PmergeMe&	operator=(const PmergeMe& rhs);
 				
-				void	parseInput(const char **input);
+				void	parseInput(char **input);
 				void	sortVector(void);
 				void	sortList(void);
 	private:

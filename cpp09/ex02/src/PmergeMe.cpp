@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/24 16:17:53 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/25 18:25:09 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ std::size_t	GroupIterator<Iterator>::getSize(void) const{
 /* ELEMENT ACCESS */
 
 template <typename Iterator>
-GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator*(void) const{
+typename GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator*(void) const{
 	return *(this->_it);
 }
 
 template <typename Iterator>
-GroupIterator<Iterator>::pointer	GroupIterator<Iterator>::operator->(void) const{
+typename GroupIterator<Iterator>::pointer	GroupIterator<Iterator>::operator->(void) const{
 	return &(operator*());
 }
 
@@ -144,12 +144,12 @@ bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterato
 /* CONSTRUCTION FUNCTIONS */
 template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(Iterator it, std::size_t size){
-	return GroupIterator(it, size);
+	return GroupIterator<Iterator>(it, size);
 }
 
 template<typename Iterator>
-GroupIterator<Iterator>	makeGroupIterator(Iterator it, std::size_t size){
-	return GroupIterator(it.getIterator(), it.getSize() * size);
+GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_t size){
+	return GroupIterator<Iterator>(it.getIterator(), it.getSize() * size);
 }
 
 
@@ -186,4 +186,24 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe& rhs){
 		this->_vec = rhs._vec;
 	}
 	return *this;
+}
+
+/* MEMBER FUNCTIONS */
+
+void	PmergeMe::parseInput(char **input){
+	double	tmp = 0;
+	char	*endptr;
+	
+	for (int i = 1; input[i] != NULL; i++){
+		if (input[i][0] == '\0')
+			throw std::invalid_argument("empty string found");
+		tmp = strtod(input[i], &endptr);
+		if (*endptr != '\0')
+			throw std::invalid_argument("invalid arg format");
+		if (tmp < 0)
+			throw std::invalid_argument("only positive numbers accepted");
+		this->_vec.push_back(static_cast<int>(tmp));
+		this->_list.push_back(static_cast<int>(tmp));
+	}
+	return;
 }
