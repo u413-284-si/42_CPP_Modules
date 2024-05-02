@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/25 18:38:36 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/26 16:38:28 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* CONSTRUCTORS */
 
 template <typename Iterator>
-GroupIterator<Iterator>::GroupIterator(void){
+GroupIterator<Iterator>::GroupIterator(void) : _it(NULL), _size(0){
 	if (VERBOSE)
 		std::cout << "[GroupIterator] Default constructor called." << std::endl;
 	return;
@@ -124,10 +124,23 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator-=(std::size_t increme
 }
 
 /* UTILITIES */
-template<typename Iterator1, typename Iterator2>
-void	iter_swap(GroupIterator<Iterator1> lhs, GroupIterator<Iterator2> rhs){
+template<typename Iterator>
+void	iter_swap(GroupIterator<Iterator> lhs, GroupIterator<Iterator> rhs){
 	std::swap_ranges(lhs.getIterator(), lhs.getIterator() + lhs.getSize(), rhs.getIterator());
 	return;
+}
+
+/* ITERATE FUNCTIONS */
+template <typename Iterator>
+GroupIterator<Iterator>		next(GroupIterator<Iterator> it, std::size_t n){
+	std::advance(it, n);
+	return it;
+}
+
+template <typename Iterator>
+GroupIterator<Iterator>		prev(GroupIterator<Iterator> it, std::size_t n){
+	std::advance(it, -n);
+	return it;
 }
 
 /* COMPARISON OPERATORS */
@@ -208,4 +221,40 @@ void	PmergeMe::parseInput(char **input){
 		this->_list.push_back(static_cast<int>(tmp));
 	}
 	return;
+}
+
+
+int		PmergeMe::sortVector(void){
+	GroupIterator<std::vector<int>::iterator>	first = makeGroupIterator(this->_vec.begin(), 1);;
+	GroupIterator<std::vector<int>::iterator>	last = makeGroupIterator(this->_vec.end(), 1);
+	int											compare = 0;
+
+	fjaVec(first, last, compare);
+	return compare;	
+}
+
+/* Implementation of the Ford-Johnson algorithm using vector as container
+ */
+void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
+							GroupIterator<std::vector<int>::iterator> last,
+							int& compare){
+	std::size_t	size = std::distance(first, last);
+
+	// Exit when only one element present
+	if (size < 2)
+		return;
+
+	// Determine if a stray element is present (= when amount of numbers is uneven)
+	// If so, leave last element in container out of current focus 
+	bool		has_stray = (size % 2 != 0);
+	GroupIterator<std::vector<int>::iterator>	end = has_stray ? std::prev(last) : last;
+	
+	// Create pairs by comparing two consecutive numbers
+	// Position larger number in first
+	for (GroupIterator<std::vector<int>::iterator> it = first; first != end; it += 2){
+		if (*it < *next(it, 1))
+			iter_swap(it, next(it, 1));
+	}
+
+	
 }

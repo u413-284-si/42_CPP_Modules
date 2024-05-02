@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/25 18:30:55 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/04/26 16:38:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,15 @@ class GroupIterator{
 };
 
 // Utilities
-template<typename Iterator1, typename Iterator2>
-void	iter_swap(GroupIterator<Iterator1> lhs, GroupIterator<Iterator2> rhs);
+template<typename Iterator>
+void	iter_swap(GroupIterator<Iterator> lhs, GroupIterator<Iterator> rhs);
+
+// Iterate functions
+template<typename Iterator>
+GroupIterator<Iterator>	next(GroupIterator<Iterator> it, std::size_t n);
+
+template<typename Iterator>
+GroupIterator<Iterator>	prev(GroupIterator<Iterator> it, std::size_t n);
 
 // Comparison operators
 template<typename Iterator1, typename Iterator2>
@@ -104,8 +111,14 @@ class PmergeMe{
 				PmergeMe&	operator=(const PmergeMe& rhs);
 				
 				void	parseInput(char **input);
-				void	sortVector(void);
-				void	sortList(void);
+				int		sortVector(void);
+				int		sortList(void);
+				void	fjaVec(GroupIterator<std::vector<int>::iterator> first,
+							GroupIterator<std::vector<int>::iterator> last,
+							int& compare);
+				void	fjaList(GroupIterator<std::list<int>::iterator> first,
+							GroupIterator<std::list<int>::iterator> last,
+							int& compare);
 	private:
 				std::vector<int>	_vec;
 				std::list<int>		_list;				
