@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/26 16:38:28 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/02 17:29:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,12 @@ void	PmergeMe::parseInput(char **input){
 	return;
 }
 
+template <typename T>
+void	PmergeMe::printElements(const T& container){
+	for (T::const_iterator it = container.begin(); it != container.end(); it++)
+		std::cout << *it << std::endl;
+	return;
+}
 
 int		PmergeMe::sortVector(void){
 	GroupIterator<std::vector<int>::iterator>	first = makeGroupIterator(this->_vec.begin(), 1);;
@@ -250,11 +256,15 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	GroupIterator<std::vector<int>::iterator>	end = has_stray ? std::prev(last) : last;
 	
 	// Create pairs by comparing two consecutive numbers
-	// Position larger number in first
+	// Position larger number first
 	for (GroupIterator<std::vector<int>::iterator> it = first; first != end; it += 2){
 		if (*it < *next(it, 1))
 			iter_swap(it, next(it, 1));
+		compare++;
 	}
 
-	
+	// Recursively sort the pairs by the larger number, creating a sorted 
+	// sequence in ascending order
+	fjaVec(makeGroupIterator(first, 2), makeGroupIterator(end, 2), compare);
+	printElements(_vec);
 }

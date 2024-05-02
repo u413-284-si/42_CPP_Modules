@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/26 16:38:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/02 17:22:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ class PmergeMe{
 				PmergeMe&	operator=(const PmergeMe& rhs);
 				
 				void	parseInput(char **input);
+				template <typename T> void	printElements(const T& container);
 				int		sortVector(void);
 				int		sortList(void);
 				void	fjaVec(GroupIterator<std::vector<int>::iterator> first,

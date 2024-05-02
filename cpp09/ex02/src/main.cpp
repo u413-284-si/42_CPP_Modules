@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:57:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/04/25 18:27:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/02 17:29:15 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int argc, char **argv){
 		return 1;
 	}
 	try{
-		p.parseInput(argv);	
+		p.parseInput(argv);
+		p.sortVector();
 	}
 	catch(std::exception& e){
 		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
