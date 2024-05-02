@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/02 17:29:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/02 18:51:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,28 @@ bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterato
 	return lhs.getIterator() != rhs.getIterator();
 }
 
+/* ARITHMETIC OPERATORS */
+template <typename Iterator>
+GroupIterator<Iterator>	operator+(GroupIterator<Iterator> it, std::size_t size){
+	return it += size;
+}
+
+template <typename Iterator>
+GroupIterator<Iterator>	operator+(std::size_t size, GroupIterator<Iterator> it){
+	return it += size;
+}
+
+template <typename Iterator>
+GroupIterator<Iterator>	operator-(GroupIterator<Iterator> it, std::size_t size){
+	return it -= size;
+}
+
+template <typename Iterator>
+typename GroupIterator<Iterator>::difference_type	operator-(const GroupIterator<Iterator>& lhs,
+															 const GroupIterator<Iterator>& rhs){
+	return (lhs.getIterator() - rhs.getIterator()) / lhs.getSize();
+}
+
 /* CONSTRUCTION FUNCTIONS */
 template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(Iterator it, std::size_t size){
@@ -164,7 +186,6 @@ template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_t size){
 	return GroupIterator<Iterator>(it.getIterator(), it.getSize() * size);
 }
-
 
 /* ====================== PMERGEME CLASS ============================= */
 
@@ -225,7 +246,7 @@ void	PmergeMe::parseInput(char **input){
 
 template <typename T>
 void	PmergeMe::printElements(const T& container){
-	for (T::const_iterator it = container.begin(); it != container.end(); it++)
+	for (typename T::const_iterator it = container.begin(); it != container.end(); it++)
 		std::cout << *it << std::endl;
 	return;
 }
@@ -253,7 +274,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// Determine if a stray element is present (= when amount of numbers is uneven)
 	// If so, leave last element in container out of current focus 
 	bool		has_stray = (size % 2 != 0);
-	GroupIterator<std::vector<int>::iterator>	end = has_stray ? std::prev(last) : last;
+	GroupIterator<std::vector<int>::iterator>	end = has_stray ? prev(last, 1) : last;
 	
 	// Create pairs by comparing two consecutive numbers
 	// Position larger number first

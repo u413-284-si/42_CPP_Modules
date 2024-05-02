@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/02 17:22:31 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/02 18:49:58 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,27 @@ bool	operator==(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterato
 template<typename Iterator1, typename Iterator2>
 bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterator2>& rhs);
 
+// Arithmetic operators
+template <typename Iterator>
+GroupIterator<Iterator>	operator+(GroupIterator<Iterator> it, std::size_t size);
+
+template <typename Iterator>
+GroupIterator<Iterator>	operator+(std::size_t size, GroupIterator<Iterator> it);
+
+template <typename Iterator>
+GroupIterator<Iterator>	operator-(GroupIterator<Iterator> it, std::size_t size);
+
+template <typename Iterator>
+typename GroupIterator<Iterator>::difference_type	operator-(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs);
+
 // Construction functions
 template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(Iterator it, std::size_t size);
 
 template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_t size);
+
+
 
 
 class PmergeMe{
