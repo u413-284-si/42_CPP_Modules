@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 15:08:20 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 15:41:48 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,6 +299,20 @@ int		PmergeMe::sortVector(void){
 void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 							GroupIterator<std::vector<int>::iterator> last,
 							int& compare){
+	const unsigned long jacobsthal_diff[JACOBSTHAL_DIFF_SIZE] = {
+    2ul, 2ul, 6ul, 10ul, 22ul, 42ul, 86ul, 170ul, 342ul, 682ul, 1366ul,
+    2730ul, 5462ul, 10922ul, 21846ul, 43690ul, 87382ul, 174762ul, 349526ul, 699050ul,
+    1398102ul, 2796202ul, 5592406ul, 11184810ul, 22369622ul, 44739242ul, 89478486ul,
+    178956970ul, 357913942ul, 715827882ul, 1431655766ul, 2863311530ul, 5726623062ul,
+    11453246122ul, 22906492246ul, 45812984490ul, 91625968982ul, 183251937962ul,
+    366503875926ul, 733007751850ul, 1466015503702ul, 2932031007402ul, 5864062014806ul,
+    11728124029610ul, 23456248059222ul, 46912496118442ul, 93824992236886ul, 187649984473770ul,
+    375299968947542ul, 750599937895082ul, 1501199875790165ul, 3002399751580331ul,
+    6004799503160661ul, 12009599006321322ul, 24019198012642644ul, 48038396025285288ul,
+    96076792050570576ul, 192153584101141152ul, 384307168202282304ul, 768614336404564608ul,
+    1537228672809129216ul, 3074457345618258432ul, 6148914691236516864ul
+	};
+
 	std::size_t	size = std::distance(first, last);
 	
 	// Exit when only one element present

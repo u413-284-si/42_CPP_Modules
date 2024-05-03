@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 14:51:31 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 15:39:07 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 /* ====== DEFINITIONS ====== */
 
 # define VERBOSE 0
+# define JACOBSTHAL_DIFF_SIZE 63
 
 // ANSI color codes
 #define RESET   "\033[0m"
