@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 08:27:30 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 12:54:41 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,18 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator-=(std::size_t increme
 	return *this;
 }
 
+/* ELEMENT ACCESS OPERATORS */
+template <typename Iterator>
+Iterator	GroupIterator<Iterator>::operator[](std::size_t pos){
+	return this->_it[pos * this->_size + this->_size - 1];
+}
+
+template <typename Iterator>
+Iterator	GroupIterator<Iterator>::operator[](std::size_t pos) const{
+	return this->_it[pos * this->_size + this->_size - 1];
+}
+
+
 /* UTILITIES */
 template<typename Iterator>
 void	iter_swap(GroupIterator<Iterator> lhs, GroupIterator<Iterator> rhs){
@@ -152,6 +164,27 @@ bool	operator==(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterato
 template<typename Iterator1, typename Iterator2>
 bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterator2>& rhs){
 	return lhs.getIterator() != rhs.getIterator();
+}
+
+/* RELATIONAL OPERATORS */
+template<typename Iterator>
+bool	operator<(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs){
+	return lhs.getIterator() < rhs.getIterator();
+}
+
+template<typename Iterator>
+bool	operator<=(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs){
+	return lhs.getIterator() <= rhs.getIterator();
+}
+
+template<typename Iterator>
+bool	operator>(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs){
+	return lhs.getIterator() > rhs.getIterator();
+}
+
+template<typename Iterator>
+bool	operator>=(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs){
+	return lhs.getIterator() >= rhs.getIterator();
 }
 
 /* ARITHMETIC OPERATORS */
@@ -280,7 +313,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// Create pairs by comparing two consecutive numbers
 	// Position larger number first
 	for (GroupIterator<std::vector<int>::iterator> it = first; it != end; it += 2){
-		if (*next(it, 1) < *it)
+		if (it[1] < it[0])
 			iter_swap(it, next(it, 1));
 		compare++;
 	}

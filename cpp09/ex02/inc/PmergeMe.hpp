@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/02 18:49:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 08:48:34 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ class GroupIterator{
 				GroupIterator&	operator+=(std::size_t increment);
 				GroupIterator&	operator-=(std::size_t increment);
 
+				// Element access operators
+				Iterator	operator[](std::size_t pos);
+				Iterator	operator[](std::size_t pos) const;
+
 	private:
 				Iterator	_it;
 				std::size_t	_size;	
@@ -93,6 +97,19 @@ bool	operator==(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterato
 
 template<typename Iterator1, typename Iterator2>
 bool	operator!=(const GroupIterator<Iterator1>& lhs, const GroupIterator<Iterator2>& rhs);
+
+// Relational operators
+template<typename Iterator>
+bool	operator<(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs);
+
+template<typename Iterator>
+bool	operator<=(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs);
+
+template<typename Iterator>
+bool	operator>(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs);
+
+template<typename Iterator>
+bool	operator>=(const GroupIterator<Iterator>& lhs, const GroupIterator<Iterator>& rhs);
 
 // Arithmetic operators
 template <typename Iterator>
