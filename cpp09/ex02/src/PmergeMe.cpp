@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 13:10:30 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 14:22:52 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,12 +304,14 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// Exit when only one element present
 	if (size < 2)
 		return;
-
+		
+	// STEP 1:
 	// Determine if a stray element is present (= when amount of numbers is uneven)
 	// If so, leave last element in container out of current focus 
 	bool		has_stray = (size % 2 != 0);
 	GroupIterator<std::vector<int>::iterator>	end = has_stray ? prev(last, 1) : last;
 	
+	// STEP 2:
 	// Create pairs by comparing two consecutive numbers
 	// Position larger number second
 	for (GroupIterator<std::vector<int>::iterator> it = first; it != end; it += 2){
@@ -318,7 +320,20 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		compare++;
 	}
 
+	// STEP 3:
 	// Recursively sort the pairs by the larger number, creating a sorted 
 	// sequence in ascending order
 	fjaVec(makeGroupIterator(first, 2), makeGroupIterator(end, 2), compare);
+
+	// STEP 4:
+	// Separate main chain and pend chain
+	std::list< GroupIterator<std::vector<int>::iterator> >	main;
+	std::list< node >										pend;
+
+	// The first pend element is always part of the main chain,
+    // so we can safely initialize the list with the first two
+    // elements of the sequence
+	main.push_back(first);
+	main.push_back(next(first, 1));
+	
 }

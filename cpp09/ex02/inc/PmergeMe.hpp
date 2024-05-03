@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 13:07:43 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 14:12:36 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 #define BLUE    "\033[34m"    
 #define MAGENTA "\033[35m"    
 #define CYAN    "\033[36m"    
-#define WHITE   "\033[37m"  
+#define WHITE   "\033[37m"
 
 /* ====== CLASS DECLARATION ====== */
 
@@ -132,7 +132,13 @@ template<typename Iterator>
 GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_t size);
 
 
+/* ====================== PMERGEME CLASS ============================= */
 
+// Node struct for pend elements of vector implementation
+struct node{
+	GroupIterator<std::vector<int>::iterator>	it;
+	typename std::list< GroupIterator<std::vector<int>::iterator> >::iterator next;
+};
 
 class PmergeMe{
 	public:
