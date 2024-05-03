@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 08:48:34 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 13:07:43 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ class GroupIterator{
 				GroupIterator&	operator-=(std::size_t increment);
 
 				// Element access operators
-				Iterator	operator[](std::size_t pos);
-				Iterator	operator[](std::size_t pos) const;
+				typename GroupIterator::reference	operator[](std::size_t pos);
+				typename GroupIterator::reference	operator[](std::size_t pos) const;
 
 	private:
 				Iterator	_it;

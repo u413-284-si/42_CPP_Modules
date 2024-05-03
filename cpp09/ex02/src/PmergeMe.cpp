@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 12:54:41 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 13:10:30 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator++(void){
 }
 
 template <typename Iterator>
-GroupIterator<Iterator>	GroupIterator<Iterator>::operator++(int){
+GroupIterator<Iterator>		GroupIterator<Iterator>::operator++(int){
 	GroupIterator<Iterator>	tmp = *this;
 	operator++();
 	return tmp;
@@ -105,7 +105,7 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator--(void){
 }
 
 template <typename Iterator>
-GroupIterator<Iterator>	GroupIterator<Iterator>::operator--(int){
+GroupIterator<Iterator>		GroupIterator<Iterator>::operator--(int){
 	GroupIterator<Iterator>	tmp = *this;
 	operator--();
 	return tmp;
@@ -125,12 +125,12 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator-=(std::size_t increme
 
 /* ELEMENT ACCESS OPERATORS */
 template <typename Iterator>
-Iterator	GroupIterator<Iterator>::operator[](std::size_t pos){
+typename GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator[](std::size_t pos){
 	return this->_it[pos * this->_size + this->_size - 1];
 }
 
 template <typename Iterator>
-Iterator	GroupIterator<Iterator>::operator[](std::size_t pos) const{
+typename GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator[](std::size_t pos) const{
 	return this->_it[pos * this->_size + this->_size - 1];
 }
 
@@ -311,7 +311,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	GroupIterator<std::vector<int>::iterator>	end = has_stray ? prev(last, 1) : last;
 	
 	// Create pairs by comparing two consecutive numbers
-	// Position larger number first
+	// Position larger number second
 	for (GroupIterator<std::vector<int>::iterator> it = first; it != end; it += 2){
 		if (it[1] < it[0])
 			iter_swap(it, next(it, 1));
