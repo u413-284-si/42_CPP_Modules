@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 14:22:52 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 15:08:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,5 +335,25 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
     // elements of the sequence
 	main.push_back(first);
 	main.push_back(next(first, 1));
-	
+
+	// Insert larger elements (second of each pair) into main
+	// and smaller elements into pend 
+	for (GroupIterator<std::vector<int>::iterator> it = first + 2; it != end; it += 2){
+		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	tmp = main.insert(main.end(), next(it, 1));
+		node	tmpNode;
+		
+		tmpNode.it = it;
+		tmpNode.next = tmp;
+		pend.push_back(tmpNode);
+	}
+
+	// If existing, add stray element to pend by giving it main.end() as 
+	// insertion point for main
+	if (has_stray){
+		node theStray;
+		
+		theStray.it = end;
+		theStray.next = main.end();
+		pend.push_back(theStray);
+	}
 }
