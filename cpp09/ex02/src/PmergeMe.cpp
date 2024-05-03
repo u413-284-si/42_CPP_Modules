@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 15:41:48 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 16:30:02 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,8 +294,7 @@ int		PmergeMe::sortVector(void){
 	return compare;	
 }
 
-/* Implementation of the Ford-Johnson algorithm using vector as container
- */
+/* Implementation of the Ford-Johnson algorithm using vector as container */
 void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 							GroupIterator<std::vector<int>::iterator> last,
 							int& compare){
@@ -370,4 +369,45 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		theStray.next = main.end();
 		pend.push_back(theStray);
 	}
+	
+	// STEP 5:
+	// Insert pend elements into main via binary insertion utilising
+	// an optimal order based on the Jacobsthal numbers
+	for	(int k = 0; ; ++k){
+		
+		// Go to next Jacobsthal index
+		const unsigned long dist = jacobsthal_diff[k];
+		if (dist >= pend.size())
+			break;
+		std::list< node >::iterator	it = pend.begin();
+		std::advance(it, dist);
+		
+		// Insert element at current index and subsequently smaller indices
+		while (true){
+			std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = std::upper_bound(
+   				main.begin(), it->next, it->it, std::less<GroupIterator<std::vector<int> >(*it->it)>());
+			main.insert(insertionPoint, it.it);
+			it = pend.erase(it);
+			if (it == pend.begin())
+				break;
+			--it;
+		}
+	}
+
+	// If elements left in pend, insert them via binary insertion
+	while (not pend.empty()){
+		std::list< node >::iterator	it = prev(pend.end(), 1);
+		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = std::upper_bound(
+   				main.begin(), it->next, it->it, std::less<GroupIterator<std::vector<int> >(*it->it)>());
+		main.insert(insertionPoint, it.it);
+		pend.pop_back();
+	}
+}
+
+std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binaryInsertVec(
+					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
+					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end;
+					GroupIterator<std::vector<int>::iterator> val;
+					std::size_t& compare){
+						
 }

@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 15:39:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 16:28:15 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,16 @@ class PmergeMe{
 				void	parseInput(char **input);
 				template <typename T> void	printElements(const T& container);
 				int		sortVector(void);
-				int		sortList(void);
 				void	fjaVec(GroupIterator<std::vector<int>::iterator> first,
 							GroupIterator<std::vector<int>::iterator> last,
 							int& compare);
+				std::list< GroupIterator<std::vector<int>::iterator> >::iterator	binaryInsertVec(
+					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
+					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end;
+					GroupIterator<std::vector<int>::iterator> val;
+					std::size_t& compare);
+
+				int		sortList(void);
 				void	fjaList(GroupIterator<std::list<int>::iterator> first,
 							GroupIterator<std::list<int>::iterator> last,
 							int& compare);
