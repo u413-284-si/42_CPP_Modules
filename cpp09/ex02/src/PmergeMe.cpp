@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/02 18:51:20 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/03 08:27:30 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,7 @@ int		PmergeMe::sortVector(void){
 	int											compare = 0;
 
 	fjaVec(first, last, compare);
+	printElements(_vec);
 	return compare;	
 }
 
@@ -266,7 +267,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 							GroupIterator<std::vector<int>::iterator> last,
 							int& compare){
 	std::size_t	size = std::distance(first, last);
-
+	
 	// Exit when only one element present
 	if (size < 2)
 		return;
@@ -278,8 +279,8 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	
 	// Create pairs by comparing two consecutive numbers
 	// Position larger number first
-	for (GroupIterator<std::vector<int>::iterator> it = first; first != end; it += 2){
-		if (*it < *next(it, 1))
+	for (GroupIterator<std::vector<int>::iterator> it = first; it != end; it += 2){
+		if (*next(it, 1) < *it)
 			iter_swap(it, next(it, 1));
 		compare++;
 	}
@@ -287,5 +288,4 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// Recursively sort the pairs by the larger number, creating a sorted 
 	// sequence in ascending order
 	fjaVec(makeGroupIterator(first, 2), makeGroupIterator(end, 2), compare);
-	printElements(_vec);
 }
