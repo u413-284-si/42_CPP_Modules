@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/05 15:57:07 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/05 21:34:06 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,10 +326,10 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	
 	// STEP 2:
 	// Create pairs by comparing two consecutive numbers
-	// Position larger number second
+	// Position larger number first
 	for (GroupIterator<std::vector<int>::iterator> it = first; it != end; it += 2){
-		if (it[1] < it[0])
-			iter_swap(it, next(it, 1));
+		if (it[0] < it[1])
+			iter_swap(it, it + 1);
 		compare++;
 	}
 
@@ -346,16 +346,16 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// The first pend element is always part of the main chain,
     // so we can safely initialize the list with the first two
     // elements of the sequence
-	main.push_back(first);
 	main.push_back(next(first, 1));
+	main.push_back(first);
 
-	// Insert larger elements (second of each pair) into main
+	// Insert larger elements (first of each pair) into main
 	// and smaller elements into pend 
-	for (GroupIterator<std::vector<int>::iterator> it = first + 2; it != end; it += 2){
-		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	tmp = main.insert(main.end(), next(it, 1));
+	for (GroupIterator<std::vector<int>::iterator> it = first + 2; it != end; it++){
+		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	tmp = main.insert(main.end(), it);
 		node	tmpNode;
 		
-		tmpNode.it = it;
+		tmpNode.it = ++it;
 		tmpNode.next = tmp;
 		pend.push_back(tmpNode);
 	}
@@ -380,9 +380,11 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		if (dist >= pend.size())
 			break;
 		std::list< node >::iterator	it = pend.begin();
-		std::advance(it, dist);
+		std::advance(it, dist - 1);
 		
 		// Insert element at current index and subsequently smaller indices
+		// Insertion point is the element in front of which the new element is
+		// introduced (the first element greater than the new element)
 		while (true){
 			std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVec(
    				main.begin(), it->next, it->it, compare);
@@ -394,6 +396,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		}
 	}
 
+	// STEP 6:
 	// If elements left in pend, insert them via binary insertion
 	while (not pend.empty()){
 		std::list< node >::iterator	it = --pend.end();
@@ -402,12 +405,25 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		main.insert(insertionPoint, it->it);
 		pend.pop_back();
 	}
+
+	// Move elements into a cache and then back into the container
+	// while keeping the new sorted sequence
+	std::vector<typename std::iterator_traits< GroupIterator<std::vector<int>::iterator> >::value_type> cache;
+    cache.reserve(size);
+
+	for (std::list< GroupIterator<std::vector<int>::iterator> >::iterator it = main.begin(); it != main.end(); it++){
+		std::vector<int>::iterator	begin = it->getIterator();
+		std::vector<int>::iterator	end = begin + it->getSize();
+		for (; begin != end; begin++)
+			cache.push_back(*begin);
+	}
+	std::copy(cache.begin(), cache.end(), first.getIterator());
 }
 
 bool	PmergeMe::compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
 								GroupIterator<std::vector<int>::iterator> val, int& compare){
 	compare++;
-	return 	**it < *val;
+	return 	**it <= *val;
 }
 
 std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binaryInsertVec(
@@ -415,8 +431,8 @@ std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binar
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end,
 					GroupIterator<std::vector<int>::iterator> val,
 					int& compare){
-	
-	while (std::size_t range = std::distance(begin, end) > 0){
+	std::size_t	range = std::distance(begin, end);
+	while (range > 0){
 		std::size_t	half = range >> 1;
 		std::list< GroupIterator<std::vector<int>::iterator> >::iterator mid = begin;
 		std::advance(mid, half);
@@ -424,15 +440,13 @@ std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binar
 		// If value to be inserted is larger than the middle element,
 		// the new range starts at the next element after the middle
 		if (compareVecIt(mid, val, compare)){
-			std::advance(mid, 1);
-			begin = mid;
+			begin = ++mid;
+			range = range - half - 1;
 		}
 		// If value to be inserted is smaller than the middle element,
 		// the new range ends at the previous element of the middle
-		else{
-			std::advance(mid, -1);
-			end = mid;
-		}
+		else
+			range = half;
 	}
 	return begin;
 }
