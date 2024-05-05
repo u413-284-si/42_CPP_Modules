@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/03 16:28:15 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/05 15:50:15 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,11 @@ class PmergeMe{
 							int& compare);
 				std::list< GroupIterator<std::vector<int>::iterator> >::iterator	binaryInsertVec(
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
-					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end;
-					GroupIterator<std::vector<int>::iterator> val;
-					std::size_t& compare);
-
+					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end,
+					GroupIterator<std::vector<int>::iterator> val, int& compare);
+				bool	compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
+							GroupIterator<std::vector<int>::iterator> val, int& compare);
+							
 				int		sortList(void);
 				void	fjaList(GroupIterator<std::list<int>::iterator> first,
 							GroupIterator<std::list<int>::iterator> last,
