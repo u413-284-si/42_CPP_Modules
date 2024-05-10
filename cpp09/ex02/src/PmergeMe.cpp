@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/05 21:34:06 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/10 18:17:01 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,12 @@ GroupIterator<Iterator>&	GroupIterator<Iterator>::operator-=(std::size_t increme
 /* ELEMENT ACCESS OPERATORS */
 template <typename Iterator>
 typename GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator[](std::size_t pos){
-	return this->_it[pos * this->_size + this->_size - 1];
+	return this->_it[pos * this->_size];
 }
 
 template <typename Iterator>
 typename GroupIterator<Iterator>::reference	GroupIterator<Iterator>::operator[](std::size_t pos) const{
-	return this->_it[pos * this->_size + this->_size - 1];
+	return this->_it[pos * this->_size];
 }
 
 
