@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/05 15:50:15 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/15 17:30:47 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,23 +149,23 @@ class PmergeMe{
 
 				PmergeMe&	operator=(const PmergeMe& rhs);
 				
-				void	parseInput(char **input);
+				void						checkInput(char **input);
 				template <typename T> void	printElements(const T& container);
-				int		sortVector(void);
-				void	fjaVec(GroupIterator<std::vector<int>::iterator> first,
-							GroupIterator<std::vector<int>::iterator> last,
-							int& compare);
+				int							sortVector(void);
+				void						fjaVec(GroupIterator<std::vector<int>::iterator> first,
+												GroupIterator<std::vector<int>::iterator> last,
+												int& compare);
 				std::list< GroupIterator<std::vector<int>::iterator> >::iterator	binaryInsertVec(
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end,
 					GroupIterator<std::vector<int>::iterator> val, int& compare);
-				bool	compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
-							GroupIterator<std::vector<int>::iterator> val, int& compare);
+				bool						compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
+												GroupIterator<std::vector<int>::iterator> val, int& compare);
 							
-				int		sortList(void);
-				void	fjaList(GroupIterator<std::list<int>::iterator> first,
-							GroupIterator<std::list<int>::iterator> last,
-							int& compare);
+				int							sortList(void);
+				void						fjaList(GroupIterator<std::list<int>::iterator> first,
+												GroupIterator<std::list<int>::iterator> last,
+												int& compare);
 	private:
 				std::vector<int>	_vec;
 				std::list<int>		_list;				
