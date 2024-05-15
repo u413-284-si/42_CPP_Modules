@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 17:30:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/15 17:51:18 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,8 +271,6 @@ void	PmergeMe::checkInput(char **input){
 			throw std::invalid_argument("only positive numbers accepted");
 		if (tmp > std::numeric_limits<int>::max())
 			throw std::invalid_argument("integer overflow found");			
-		this->_vec.push_back(static_cast<int>(tmp));
-		this->_list.push_back(static_cast<int>(tmp));
 	}
 	return;
 }
@@ -280,7 +278,25 @@ void	PmergeMe::checkInput(char **input){
 template <typename T>
 void	PmergeMe::printElements(const T& container){
 	for (typename T::const_iterator it = container.begin(); it != container.end(); it++)
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	return;
+}
+
+void	PmergeMe::handleInputWithVector(char **input){
+	char	*endptr;
+	int		nComp = 0;
+
+	
+	for (int i = 1; input[i] != NULL; i++)
+		this->_vec.push_back(static_cast<int>(strtod(input[i], &endptr)));
+
+	std::cout << "Before:\t";
+	printElements(this->_vec);
+	nComp = sortVector();
+	std::cout << "After:\t";
+	printElements(this->_vec);
+	std::cout << "Number of comparisons: " << nComp << std::endl;
 	return;
 }
 

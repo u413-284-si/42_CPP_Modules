@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:57:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 17:30:47 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/15 17:50:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int	main(int argc, char **argv){
 		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
 		return 1;
 	}
-	int	nComp = 0;
-
-	std::cout << "Before: ";
-	p.printElements();
-	nComp = p.sortVector();
+	p.handleInputWithVector(argv);
 	return 0;
 }
