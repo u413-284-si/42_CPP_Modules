@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 17:51:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/15 18:35:14 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,18 +284,31 @@ void	PmergeMe::printElements(const T& container){
 }
 
 void	PmergeMe::handleInputWithVector(char **input){
-	char	*endptr;
 	int		nComp = 0;
-
+	double	durationDataIngestion, durationSorting;
 	
+	clock_t	start = clock();
 	for (int i = 1; input[i] != NULL; i++)
-		this->_vec.push_back(static_cast<int>(strtod(input[i], &endptr)));
-
+		this->_vec.push_back(atoi(input[i]));
+	clock_t	end = clock();
+	// return value in microseconds; conversion to double only on clock_t variables
+	durationDataIngestion = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+	
 	std::cout << "Before:\t";
 	printElements(this->_vec);
+	
+	start = clock();
 	nComp = sortVector();
+	end = clock();
+	durationSorting = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+
 	std::cout << "After:\t";
 	printElements(this->_vec);
+	std::cout << "Time for data ingestion:\t" << durationDataIngestion << " us\n"; 
+	std::cout << "Time for data sorting:\t\t" << durationSorting << " us\n"; 
+	std::cout << "Time to process a range of " << this->_vec.size();
+	std::cout << " elements with std::vector : ";
+	std::cout << durationDataIngestion + durationSorting << " us\n"; 
 	std::cout << "Number of comparisons: " << nComp << std::endl;
 	return;
 }
