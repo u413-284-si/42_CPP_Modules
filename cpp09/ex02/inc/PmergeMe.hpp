@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 18:04:58 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 16:51:31 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,20 +155,27 @@ class PmergeMe{
 				
 				void						handleInputWithVector(char** input);
 				int							sortVector(void);
-				void						fjaVec(GroupIterator<std::vector<int>::iterator> first,
+				void						fjaVector(GroupIterator<std::vector<int>::iterator> first,
 												GroupIterator<std::vector<int>::iterator> last,
-												int& compare);
-				std::list< GroupIterator<std::vector<int>::iterator> >::iterator	binaryInsertVec(
+												int& nComp);
+				std::list< GroupIterator<std::vector<int>::iterator> >::iterator	binaryInsertVector(
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end,
-					GroupIterator<std::vector<int>::iterator> val, int& compare);
-				bool						compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
-												GroupIterator<std::vector<int>::iterator> val, int& compare);
-							
+					GroupIterator<std::vector<int>::iterator> val, int& nComp);
+				bool						compareVectorIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
+												GroupIterator<std::vector<int>::iterator> val, int& nComp);
+
+				void						handleInputWithList(char** input);							
 				int							sortList(void);
 				void						fjaList(GroupIterator<std::list<int>::iterator> first,
 												GroupIterator<std::list<int>::iterator> last,
-												int& compare);
+												int& nComp);
+				std::list< GroupIterator<std::list<int>::iterator> >::iterator	binaryInsertList(
+					std::list< GroupIterator<std::list<int>::iterator> >::iterator begin,
+					std::list< GroupIterator<std::list<int>::iterator> >::iterator end,
+					GroupIterator<std::list<int>::iterator> val, int& nComp);
+				bool						compareListIt(std::list< GroupIterator<std::list<int>::iterator> >::iterator it,
+												GroupIterator<std::list<int>::iterator> val, int& nComp);
 	private:
 				std::vector<int>	_vec;
 				std::list<int>		_list;				

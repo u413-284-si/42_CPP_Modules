@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 18:35:14 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 16:52:55 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,12 +318,12 @@ int		PmergeMe::sortVector(void){
 	GroupIterator<std::vector<int>::iterator>	last = makeGroupIterator(this->_vec.end(), 1);
 	int											nComp = 0;
 
-	fjaVec(first, last, nComp);
+	fjaVector(first, last, nComp);
 	return nComp;	
 }
 
 /* Implementation of the Ford-Johnson algorithm using vector as container */
-void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
+void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 							GroupIterator<std::vector<int>::iterator> last,
 							int& nComp){
 	const unsigned long jacobsthal_diff[JACOBSTHAL_DIFF_SIZE] = {
@@ -364,7 +364,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// STEP 3:
 	// Recursively sort the pairs by the larger number, creating a sorted 
 	// sequence in ascending order
-	fjaVec(makeGroupIterator(first, 2), makeGroupIterator(end, 2), nComp);
+	fjaVector(makeGroupIterator(first, 2), makeGroupIterator(end, 2), nComp);
 
 	// STEP 4:
 	// Separate main chain and pend chain
@@ -414,7 +414,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 		// Insertion point is the element in front of which the new element is
 		// introduced (the first element greater than the new element)
 		while (true){
-			std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVec(
+			std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVector(
    				main.begin(), it->next, it->it, nComp);
 			main.insert(insertionPoint, it->it);
 			it = pend.erase(it);
@@ -428,7 +428,7 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	// If elements left in pend, insert them via binary insertion
 	while (not pend.empty()){
 		std::list< node >::iterator	it = --pend.end();
-		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVec(
+		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVector(
    				main.begin(), it->next, it->it, nComp);
 		main.insert(insertionPoint, it->it);
 		pend.pop_back();
@@ -449,13 +449,13 @@ void	PmergeMe::fjaVec(GroupIterator<std::vector<int>::iterator> first,
 	return;
 }
 
-bool	PmergeMe::compareVecIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
+bool	PmergeMe::compareVectorIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
 								GroupIterator<std::vector<int>::iterator> val, int& nComp){
 	nComp++;
 	return 	**it <= *val;
 }
 
-std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binaryInsertVec(
+std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binaryInsertVector(
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator begin,
 					std::list< GroupIterator<std::vector<int>::iterator> >::iterator end,
 					GroupIterator<std::vector<int>::iterator> val,
@@ -468,7 +468,7 @@ std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binar
 		
 		// If value to be inserted is larger than the middle element,
 		// the new range starts at the next element after the middle
-		if (compareVecIt(mid, val, nComp)){
+		if (compareVectorIt(mid, val, nComp)){
 			begin = ++mid;
 			range = range - half - 1;
 		}
