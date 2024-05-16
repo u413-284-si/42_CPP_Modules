@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 16:51:31 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 18:33:14 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <algorithm>
 #include <list>
 #include <vector>
+#include <deque>
 #include <ctime>
 
 /* ====== DEFINITIONS ====== */
@@ -137,9 +138,15 @@ GroupIterator<Iterator>	makeGroupIterator(GroupIterator<Iterator> it, std::size_
 /* ====================== PMERGEME CLASS ============================= */
 
 // Node struct for pend elements of vector implementation
-struct node{
+struct nodeVector{
 	GroupIterator<std::vector<int>::iterator>	it;
 	typename std::list< GroupIterator<std::vector<int>::iterator> >::iterator next;
+};
+
+// Node struct for pend elements of deque implementation
+struct nodeDeque{
+	GroupIterator<std::deque<int>::iterator>	it;
+	typename std::list< GroupIterator<std::deque<int>::iterator> >::iterator next;
 };
 
 class PmergeMe{
@@ -153,6 +160,7 @@ class PmergeMe{
 				void						checkInput(char **input);
 				template <typename T> void	printElements(const T& container);
 				
+				// Implementation with vector
 				void						handleInputWithVector(char** input);
 				int							sortVector(void);
 				void						fjaVector(GroupIterator<std::vector<int>::iterator> first,
@@ -165,18 +173,19 @@ class PmergeMe{
 				bool						compareVectorIt(std::list< GroupIterator<std::vector<int>::iterator> >::iterator it,
 												GroupIterator<std::vector<int>::iterator> val, int& nComp);
 
-				void						handleInputWithList(char** input);							
-				int							sortList(void);
-				void						fjaList(GroupIterator<std::list<int>::iterator> first,
-												GroupIterator<std::list<int>::iterator> last,
+				// Implementation with Deque
+				void						handleInputWithDeque(char** input);							
+				int							sortDeque(void);
+				void						fjaDeque(GroupIterator<std::deque<int>::iterator> first,
+												GroupIterator<std::deque<int>::iterator> last,
 												int& nComp);
-				std::list< GroupIterator<std::list<int>::iterator> >::iterator	binaryInsertList(
-					std::list< GroupIterator<std::list<int>::iterator> >::iterator begin,
-					std::list< GroupIterator<std::list<int>::iterator> >::iterator end,
-					GroupIterator<std::list<int>::iterator> val, int& nComp);
-				bool						compareListIt(std::list< GroupIterator<std::list<int>::iterator> >::iterator it,
-												GroupIterator<std::list<int>::iterator> val, int& nComp);
+				std::list< GroupIterator<std::deque<int>::iterator> >::iterator	binaryInsertDeque(
+					std::list< GroupIterator<std::deque<int>::iterator> >::iterator begin,
+					std::list< GroupIterator<std::deque<int>::iterator> >::iterator end,
+					GroupIterator<std::deque<int>::iterator> val, int& nComp);
+				bool						compareDequeIt(std::list< GroupIterator<std::deque<int>::iterator> >::iterator it,
+												GroupIterator<std::deque<int>::iterator> val, int& nComp);
 	private:
 				std::vector<int>	_vec;
-				std::list<int>		_list;				
+				std::deque<int>		_deq;				
 };

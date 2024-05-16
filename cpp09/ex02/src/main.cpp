@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:57:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/15 17:50:55 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 18:44:11 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main(int argc, char **argv){
 		return 1;
 	}
 	p.handleInputWithVector(argv);
+	p.handleInputWithDeque(argv);
 	return 0;
 }

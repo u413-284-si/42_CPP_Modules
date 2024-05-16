@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 16:52:55 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 18:43:20 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* CONSTRUCTORS */
 
 template <typename Iterator>
-GroupIterator<Iterator>::GroupIterator(void) : _it(NULL), _size(0){
+GroupIterator<Iterator>::GroupIterator(void) : _it(), _size(0){
 	if (VERBOSE)
 		std::cout << "[GroupIterator] Default constructor called." << std::endl;
 	return;
@@ -249,7 +249,7 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe& rhs){
 	if (VERBOSE)
 		std::cout << "[PmergeMe] Assignment operator called." << std::endl;
 	if (this != &rhs){
-		this->_list = rhs._list;
+		this->_deq = rhs._deq;
 		this->_vec = rhs._vec;
 	}
 	return *this;
@@ -282,6 +282,8 @@ void	PmergeMe::printElements(const T& container){
 	std::cout << std::endl;
 	return;
 }
+
+/* IMPLEMENTATION WITH VECTOR */
 
 void	PmergeMe::handleInputWithVector(char **input){
 	int		nComp = 0;
@@ -369,7 +371,7 @@ void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 	// STEP 4:
 	// Separate main chain and pend chain
 	std::list< GroupIterator<std::vector<int>::iterator> >	main;
-	std::list< node >										pend;
+	std::list< nodeVector >										pend;
 
 	// The first pend element is always part of the main chain,
     // so we can safely initialize the list with the first two
@@ -381,7 +383,7 @@ void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 	// and smaller elements into pend 
 	for (GroupIterator<std::vector<int>::iterator> it = first + 2; it != end; it++){
 		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	tmp = main.insert(main.end(), it);
-		node	tmpNode;
+		nodeVector	tmpNode;
 		
 		tmpNode.it = ++it;
 		tmpNode.next = tmp;
@@ -391,7 +393,7 @@ void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 	// If existing, add stray element to pend by giving it main.end() as 
 	// insertion point for main
 	if (has_stray){
-		node theStray;
+		nodeVector theStray;
 		
 		theStray.it = end;
 		theStray.next = main.end();
@@ -407,7 +409,7 @@ void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 		const unsigned long dist = jacobsthal_diff[k];
 		if (dist >= pend.size())
 			break;
-		std::list< node >::iterator	it = pend.begin();
+		std::list< nodeVector >::iterator	it = pend.begin();
 		std::advance(it, dist - 1);
 		
 		// Insert element at current index and subsequently smaller indices
@@ -427,7 +429,7 @@ void	PmergeMe::fjaVector(GroupIterator<std::vector<int>::iterator> first,
 	// STEP 6:
 	// If elements left in pend, insert them via binary insertion
 	while (not pend.empty()){
-		std::list< node >::iterator	it = --pend.end();
+		std::list< nodeVector >::iterator	it = --pend.end();
 		std::list< GroupIterator<std::vector<int>::iterator> >::iterator	insertionPoint = binaryInsertVector(
    				main.begin(), it->next, it->it, nComp);
 		main.insert(insertionPoint, it->it);
@@ -469,6 +471,205 @@ std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binar
 		// If value to be inserted is larger than the middle element,
 		// the new range starts at the next element after the middle
 		if (compareVectorIt(mid, val, nComp)){
+			begin = ++mid;
+			range = range - half - 1;
+		}
+		// If value to be inserted is smaller than the middle element,
+		// the new range ends at the previous element of the middle
+		else
+			range = half;
+	}
+	return begin;
+}
+
+/* IMPLEMENTATION WITH DEQUE */
+
+void	PmergeMe::handleInputWithDeque(char **input){
+	int		nComp = 0;
+	double	durationDataIngestion, durationSorting;
+	
+	clock_t	start = clock();
+	for (int i = 1; input[i] != NULL; i++)
+		this->_deq.push_back(atoi(input[i]));
+	clock_t	end = clock();
+	// return value in microseconds; conversion to double only on clock_t variables
+	durationDataIngestion = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+	
+	std::cout << "Before:\t";
+	printElements(this->_deq);
+	
+	start = clock();
+	nComp = sortDeque();
+	end = clock();
+	durationSorting = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+
+	std::cout << "After:\t";
+	printElements(this->_deq);
+	std::cout << "Time for data ingestion:\t" << durationDataIngestion << " us\n"; 
+	std::cout << "Time for data sorting:\t\t" << durationSorting << " us\n"; 
+	std::cout << "Time to process a range of " << this->_deq.size();
+	std::cout << " elements with std::deque : ";
+	std::cout << durationDataIngestion + durationSorting << " us\n"; 
+	std::cout << "Number of comparisons: " << nComp << std::endl;
+	return;
+}
+
+int		PmergeMe::sortDeque(void){
+	GroupIterator<std::deque<int>::iterator>	first = makeGroupIterator(this->_deq.begin(), 1);;
+	GroupIterator<std::deque<int>::iterator>	last = makeGroupIterator(this->_deq.end(), 1);
+	int											nComp = 0;
+
+	fjaDeque(first, last, nComp);
+	return nComp;	
+}
+
+/* Implementation of the Ford-Johnson algorithm using vector as container */
+void	PmergeMe::fjaDeque(GroupIterator<std::deque<int>::iterator> first,
+							GroupIterator<std::deque<int>::iterator> last,
+							int& nComp){
+	const unsigned long jacobsthal_diff[JACOBSTHAL_DIFF_SIZE] = {
+    2ul, 2ul, 6ul, 10ul, 22ul, 42ul, 86ul, 170ul, 342ul, 682ul, 1366ul,
+    2730ul, 5462ul, 10922ul, 21846ul, 43690ul, 87382ul, 174762ul, 349526ul, 699050ul,
+    1398102ul, 2796202ul, 5592406ul, 11184810ul, 22369622ul, 44739242ul, 89478486ul,
+    178956970ul, 357913942ul, 715827882ul, 1431655766ul, 2863311530ul, 5726623062ul,
+    11453246122ul, 22906492246ul, 45812984490ul, 91625968982ul, 183251937962ul,
+    366503875926ul, 733007751850ul, 1466015503702ul, 2932031007402ul, 5864062014806ul,
+    11728124029610ul, 23456248059222ul, 46912496118442ul, 93824992236886ul, 187649984473770ul,
+    375299968947542ul, 750599937895082ul, 1501199875790165ul, 3002399751580331ul,
+    6004799503160661ul, 12009599006321322ul, 24019198012642644ul, 48038396025285288ul,
+    96076792050570576ul, 192153584101141152ul, 384307168202282304ul, 768614336404564608ul,
+    1537228672809129216ul, 3074457345618258432ul, 6148914691236516864ul
+	};
+
+	std::size_t	size = std::distance(first, last);
+	
+	// Exit when only one element present
+	if (size < 2)
+		return;
+		
+	// STEP 1:
+	// Determine if a stray element is present (= when amount of numbers is uneven)
+	// If so, leave last element in container out of current focus 
+	bool		has_stray = (size % 2 != 0);
+	GroupIterator<std::deque<int>::iterator>	end = has_stray ? prev(last, 1) : last;
+	
+	// STEP 2:
+	// Create pairs by comparing two consecutive numbers
+	// Position larger number first
+	for (GroupIterator<std::deque<int>::iterator> it = first; it != end; it += 2){
+		if (it[0] < it[1])
+			iter_swap(it, it + 1);
+		nComp++;
+	}
+
+	// STEP 3:
+	// Recursively sort the pairs by the larger number, creating a sorted 
+	// sequence in ascending order
+	fjaDeque(makeGroupIterator(first, 2), makeGroupIterator(end, 2), nComp);
+
+	// STEP 4:
+	// Separate main chain and pend chain
+	std::list< GroupIterator<std::deque<int>::iterator> >	main;
+	std::list< nodeDeque >									pend;
+
+	// The first pend element is always part of the main chain,
+    // so we can safely initialize the list with the first two
+    // elements of the sequence
+	main.push_back(next(first, 1));
+	main.push_back(first);
+
+	// Insert larger elements (first of each pair) into main
+	// and smaller elements into pend 
+	for (GroupIterator<std::deque<int>::iterator> it = first + 2; it != end; it++){
+		std::list< GroupIterator<std::deque<int>::iterator> >::iterator	tmp = main.insert(main.end(), it);
+		nodeDeque	tmpNode;
+		
+		tmpNode.it = ++it;
+		tmpNode.next = tmp;
+		pend.push_back(tmpNode);
+	}
+
+	// If existing, add stray element to pend by giving it main.end() as 
+	// insertion point for main
+	if (has_stray){
+		nodeDeque theStray;
+		
+		theStray.it = end;
+		theStray.next = main.end();
+		pend.push_back(theStray);
+	}
+	
+	// STEP 5:
+	// Insert pend elements into main via binary insertion utilising
+	// an optimal order based on the Jacobsthal numbers
+	for	(int k = 0; ; ++k){
+		
+		// Go to next Jacobsthal index
+		const unsigned long dist = jacobsthal_diff[k];
+		if (dist >= pend.size())
+			break;
+		std::list< nodeDeque >::iterator	it = pend.begin();
+		std::advance(it, dist - 1);
+		
+		// Insert element at current index and subsequently smaller indices
+		// Insertion point is the element in front of which the new element is
+		// introduced (the first element greater than the new element)
+		while (true){
+			std::list< GroupIterator<std::deque<int>::iterator> >::iterator	insertionPoint = binaryInsertDeque(
+   				main.begin(), it->next, it->it, nComp);
+			main.insert(insertionPoint, it->it);
+			it = pend.erase(it);
+			if (it == pend.begin())
+				break;
+			--it;
+		}
+	}
+
+	// STEP 6:
+	// If elements left in pend, insert them via binary insertion
+	while (not pend.empty()){
+		std::list< nodeDeque >::iterator	it = --pend.end();
+		std::list< GroupIterator<std::deque<int>::iterator> >::iterator	insertionPoint = binaryInsertDeque(
+   				main.begin(), it->next, it->it, nComp);
+		main.insert(insertionPoint, it->it);
+		pend.pop_back();
+	}
+
+	// Move elements into a cache and then back into the container
+	// while keeping the new sorted sequence
+	std::vector<typename std::iterator_traits< GroupIterator<std::vector<int>::iterator> >::value_type> cache;
+    cache.reserve(size);
+
+	for (std::list< GroupIterator<std::deque<int>::iterator> >::iterator it = main.begin(); it != main.end(); it++){
+		std::deque<int>::iterator	begin = it->getIterator();
+		std::deque<int>::iterator	end = begin + it->getSize();
+		for (; begin != end; begin++)
+			cache.push_back(*begin);
+	}
+	std::copy(cache.begin(), cache.end(), first.getIterator());
+	return;
+}
+
+bool	PmergeMe::compareDequeIt(std::list< GroupIterator<std::deque<int>::iterator> >::iterator it,
+								GroupIterator<std::deque<int>::iterator> val, int& nComp){
+	nComp++;
+	return 	**it <= *val;
+}
+
+std::list< GroupIterator<std::deque<int>::iterator> >::iterator	PmergeMe::binaryInsertDeque(
+					std::list< GroupIterator<std::deque<int>::iterator> >::iterator begin,
+					std::list< GroupIterator<std::deque<int>::iterator> >::iterator end,
+					GroupIterator<std::deque<int>::iterator> val,
+					int& nComp){
+	std::size_t	range = std::distance(begin, end);
+	while (range > 0){
+		std::size_t	half = range >> 1;
+		std::list< GroupIterator<std::deque<int>::iterator> >::iterator mid = begin;
+		std::advance(mid, half);
+		
+		// If value to be inserted is larger than the middle element,
+		// the new range starts at the next element after the middle
+		if (compareDequeIt(mid, val, nComp)){
 			begin = ++mid;
 			range = range - half - 1;
 		}
