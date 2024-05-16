@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 18:43:20 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/16 18:50:18 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,8 @@ void	PmergeMe::printElements(const T& container){
 void	PmergeMe::handleInputWithVector(char **input){
 	int		nComp = 0;
 	double	durationDataIngestion, durationSorting;
-	
+
+	std::cout << "\n\\* VECTOR IMPLEMENTATION *\\\n";
 	clock_t	start = clock();
 	for (int i = 1; input[i] != NULL; i++)
 		this->_vec.push_back(atoi(input[i]));
@@ -488,6 +489,7 @@ void	PmergeMe::handleInputWithDeque(char **input){
 	int		nComp = 0;
 	double	durationDataIngestion, durationSorting;
 	
+	std::cout << "\n\\* DEQUE IMPLEMENTATION *\\\n";
 	clock_t	start = clock();
 	for (int i = 1; input[i] != NULL; i++)
 		this->_deq.push_back(atoi(input[i]));
