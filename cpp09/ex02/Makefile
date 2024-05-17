@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/05/03 08:11:52 by sqiu             ###   ########.fr        #
+#    Updated: 2024/05/17 11:39:45 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ LOG_DIR := log
 
 CXX := c++
 CPPFLAGS := -I $(INC_DIR)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g
+CXXFLAGS = -Wall -Werror -Wextra  -pedantic -g #-std=c++98
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.Td
 COMPILE = $(CXX) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c
 POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
@@ -69,6 +69,8 @@ POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
 # Target
 NAME := PmergeMe
 
+TEST := test
+
 # ******************************
 # *     Source files           *
 # ******************************
@@ -76,6 +78,8 @@ NAME := PmergeMe
 SRC:= 	main.cpp \
 		PmergeMe.cpp
 		
+TEST_SRC := PmergeMe.cpp \
+			test.cpp
 
 # ******************************
 # *     Object files           *
@@ -83,11 +87,15 @@ SRC:= 	main.cpp \
 
 OBJS = 	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
+TEST_OBJS = $(addprefix $(OBJ_DIR)/, $(TEST_SRC:.cpp=.o))
+
 # ******************************
 # *     Dependency files       *
 # ******************************
 
 DEPFILES =	$(SRC:%.cpp=$(DEP_DIR)/%.d)
+
+TEST_DEPFILES =	$(TEST_SRC:%.cpp=$(DEP_DIR)/%.d)
 
 # ******************************
 # *     Log files              *
@@ -113,8 +121,15 @@ $(NAME): $(OBJS)
 	@printf "$(YELLOW)$(BOLD)link binary$(RESET) [$(BLUE)$@$(RESET)]\n"
 	$(SILENT)$(CXX) $(OBJS) -o $@
 	@printf "$(YELLOW)$(BOLD)compilation successful$(RESET) [$(BLUE)$@$(RESET)]\n"
-	@printf "$(BOLD)$(GREEN)$(NAME) created!$(RESET)\n"
+	@printf "$(BOLD)$(GREEN)$@ created!$(RESET)\n"
 
+# Linking the TEST target
+$(TEST): $(TEST_OBJS)
+	@printf "$(YELLOW)$(BOLD)link binary$(RESET) [$(BLUE)$@$(RESET)]\n"
+	$(SILENT)$(CXX) $(TEST_OBJS) -o $@
+	@printf "$(YELLOW)$(BOLD)compilation successful$(RESET) [$(BLUE)$@$(RESET)]\n"
+	@printf "$(BOLD)$(GREEN)$@ created!$(RESET)\n"
+	
 # ******************************
 # *     Special targets        *
 # ******************************
@@ -154,6 +169,7 @@ valgr: $(NAME) | $(LOG_DIR)
 
 # File counter for status output
 TOTAL_FILES := $(words $(OBJS))
+TOTAL_TEST_FILES := $(words $(TEST_OBJS))
 CURRENT_FILE := 0
 
 # Create object and dependency files
@@ -171,6 +187,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp message $(DEP_DIR)/%.d | $(DEP_DIR)
 	$(SILENT)$(COMPILE) $< -o $@
 	$(SILENT)$(POSTCOMPILE)
 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp message $(DEP_DIR)/%.d | $(DEP_DIR)
+	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
+	@echo "($(CURRENT_FILE)/$(TOTAL_TEST_FILES)) Compiling $(BOLD)$< $(RESET)"
+	$(SILENT)$(COMPILE) $< -o $@
+	$(SILENT)$(POSTCOMPILE)
+
 # Print message only if there are objects to compile
 .INTERMEDIATE: message
 message:
@@ -185,6 +207,8 @@ $(DEP_DIR) $(LOG_DIR):
 # Mention each dependency file as a target, so that make won’t fail if the file doesn’t exist.
 $(DEPFILES):
 
+$(TEST_DEPFILES):
+
 # ******************************
 # *     Cleanup                *
 # ******************************
@@ -197,11 +221,19 @@ clean:
 	@printf "$(RED)removed dir $(OBJ_DIR)$(RESET)\n"
 
 # Remove all object, dependency, binaries and log files
-# Remove all object, dependency, binaries and log files
 .PHONY: fclean
 fclean: clean
 	@rm -rf $(NAME)*
 	@printf "$(RED)removed binaries $(NAME)*$(RESET)\n"
+	@rm -rf $(LOG_DIR)
+	@printf "$(RED)removed subdir $(LOG_DIR)$(RESET)\n"
+	@echo
+
+# Remove all object, dependency, binaries and log files
+.PHONY: tclean
+tclean: clean
+	@rm -rf $(TEST)*
+	@printf "$(RED)removed binaries $(TEST)*$(RESET)\n"
 	@rm -rf $(LOG_DIR)
 	@printf "$(RED)removed subdir $(LOG_DIR)$(RESET)\n"
 	@echo
@@ -220,6 +252,8 @@ re: fclean all
 # Include the dependency files that exist. Use wildcard to avoid failing on non-existent files.
 # Needs to be last target
 include $(wildcard $(DEPFILES))
+
+include $(wildcard $(TEST_DEPFILES))
 
 # ******************************
 # *     Help Target            *
