@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:37:32 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/17 16:18:04 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 16:22:00 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ void	runTests(const std::string& name, size_t total, const std::pair<std::vector
 						std::cout << GREEN << "\nSUCCESS!\n" << RESET << std::endl;
 					else
 						std::cerr << RED << "\nFAILURE - numbers are not sorted\n" << RESET;
-					freeCharArray(testArr, tests[i].first.size());
 			}
 			catch(std::exception& e){
 				std::cout << RED << "Error: " << e.what() << RESET << std::endl;
 			}
+			freeCharArray(testArr, tests[i].first.size());
 		}
 	}
 	return;
