@@ -6,7 +6,7 @@
 #    By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 13:03:05 by gwolf             #+#    #+#              #
-#    Updated: 2024/05/17 11:39:45 by sqiu             ###   ########.fr        #
+#    Updated: 2024/05/17 16:25:42 by sqiu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ LOG_DIR := log
 
 CXX := c++
 CPPFLAGS := -I $(INC_DIR)
-CXXFLAGS = -Wall -Werror -Wextra  -pedantic -g #-std=c++98
+CXXFLAGS = -Wall -Werror -Wextra  -pedantic -g -std=c++98
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.Td
 COMPILE = $(CXX) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c
 POSTCOMPILE = @mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
