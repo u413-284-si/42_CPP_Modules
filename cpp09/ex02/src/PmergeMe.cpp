@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/17 11:12:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 16:16:35 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,9 @@ void	PmergeMe::checkInput(char **input){
 			throw std::invalid_argument("empty string found");
 		tmp = strtod(input[i], &endptr);
 		if (*endptr != '\0')
-			throw std::invalid_argument("invalid arg format");
+			throw std::invalid_argument("invalid argument provided");
+		if (strchr(input[i], '.'))
+			throw std::invalid_argument("only integers accepted");
 		if (tmp < 0)
 			throw std::invalid_argument("only positive numbers accepted");
 		if (tmp > std::numeric_limits<int>::max())

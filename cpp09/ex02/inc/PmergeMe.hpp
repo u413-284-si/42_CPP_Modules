@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/17 11:10:49 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 16:14:24 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include <vector>
 #include <deque>
 #include <ctime>
+#include <cmath>
+#include <cstring>
 
 /* ====== DEFINITIONS ====== */
 
