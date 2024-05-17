@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:43:01 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 18:33:14 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 11:10:49 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,13 @@ class PmergeMe{
 
 				PmergeMe&	operator=(const PmergeMe& rhs);
 				
+				std::vector<int>			getVector(void) const;
+				std::deque<int>				getDeque(void) const;
 				void						checkInput(char **input);
 				template <typename T> void	printElements(const T& container);
 				
 				// Implementation with vector
-				void						handleInputWithVector(char** input);
+				int							handleInputWithVector(char** input);
 				int							sortVector(void);
 				void						fjaVector(GroupIterator<std::vector<int>::iterator> first,
 												GroupIterator<std::vector<int>::iterator> last,
@@ -174,7 +176,7 @@ class PmergeMe{
 												GroupIterator<std::vector<int>::iterator> val, int& nComp);
 
 				// Implementation with Deque
-				void						handleInputWithDeque(char** input);							
+				int							handleInputWithDeque(char** input);							
 				int							sortDeque(void);
 				void						fjaDeque(GroupIterator<std::deque<int>::iterator> first,
 												GroupIterator<std::deque<int>::iterator> last,

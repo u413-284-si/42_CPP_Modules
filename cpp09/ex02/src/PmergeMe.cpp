@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:33:06 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 18:50:18 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 11:12:11 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,14 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe& rhs){
 
 /* MEMBER FUNCTIONS */
 
+std::vector<int>	PmergeMe::getVector(void) const{
+	return this->_vec;
+}
+
+std::deque<int>	PmergeMe::getDeque(void) const{
+	return this->_deq;
+}
+
 void	PmergeMe::checkInput(char **input){
 	double	tmp = 0;
 	char	*endptr;
@@ -285,7 +293,7 @@ void	PmergeMe::printElements(const T& container){
 
 /* IMPLEMENTATION WITH VECTOR */
 
-void	PmergeMe::handleInputWithVector(char **input){
+int		PmergeMe::handleInputWithVector(char **input){
 	int		nComp = 0;
 	double	durationDataIngestion, durationSorting;
 
@@ -313,7 +321,7 @@ void	PmergeMe::handleInputWithVector(char **input){
 	std::cout << " elements with std::vector : ";
 	std::cout << durationDataIngestion + durationSorting << " us\n"; 
 	std::cout << "Number of comparisons: " << nComp << std::endl;
-	return;
+	return nComp;
 }
 
 int		PmergeMe::sortVector(void){
@@ -485,7 +493,7 @@ std::list< GroupIterator<std::vector<int>::iterator> >::iterator	PmergeMe::binar
 
 /* IMPLEMENTATION WITH DEQUE */
 
-void	PmergeMe::handleInputWithDeque(char **input){
+int		PmergeMe::handleInputWithDeque(char **input){
 	int		nComp = 0;
 	double	durationDataIngestion, durationSorting;
 	
@@ -513,7 +521,7 @@ void	PmergeMe::handleInputWithDeque(char **input){
 	std::cout << " elements with std::deque : ";
 	std::cout << durationDataIngestion + durationSorting << " us\n"; 
 	std::cout << "Number of comparisons: " << nComp << std::endl;
-	return;
+	return nComp;
 }
 
 int		PmergeMe::sortDeque(void){
