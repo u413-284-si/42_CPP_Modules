@@ -43,6 +43,10 @@ BitcoinExchange::BitcoinExchange(void){
 		}
 	}
 	std::cout << validCount << "/" << lineCount - 1 << " data lines valid\n";
+	if (!validCount){
+		time_t now = std::time(0);
+		this->_xChangeRate.insert(std::make_pair(now, 0.0));
+	}
 	data.close();
 	return;
 }
