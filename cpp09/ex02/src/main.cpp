@@ -6,7 +6,7 @@
 /*   By: sqiu <sqiu@student.42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:57:02 by sqiu              #+#    #+#             */
-/*   Updated: 2024/05/16 18:44:11 by sqiu             ###   ########.fr       */
+/*   Updated: 2024/05/17 15:53:04 by sqiu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	main(int argc, char **argv){
 	}
 	try{
 		p.checkInput(argv);
+		p.handleInputWithVector(argv);
+		p.handleInputWithDeque(argv);
 	}
 	catch(std::exception& e){
 		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
 		return 1;
 	}
-	p.handleInputWithVector(argv);
-	p.handleInputWithDeque(argv);
 	return 0;
 }
